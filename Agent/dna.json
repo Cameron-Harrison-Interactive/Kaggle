@@ -1,0 +1,23 @@
+{
+  "target_hires": 8,
+  "buy_land": 3,
+  "land_reserve": 0,
+  "max_land_buy_day": 20,
+  "dump_turn": 690,
+  "field_util_early": 96,
+  "field_util_mid": 90,
+  "field_util_late": 80,
+  "melon_danger_opp": 6,
+  "melon_crash_price": 185,
+  "seed_buffer_early": 10,
+  "seed_buffer_mid": 3,
+  "use_brain": 1,
+  "wheat_sell": 25,
+  "carrot_sell": 32,
+  "tomato_sell": 60,
+  "strawberry_sell": 120,
+  "melon_sell": 230,
+  "fertilizer_sell": 105,
+  "max_wheat_seed_bank": 6,
+  "weed_panic": 999
+}
