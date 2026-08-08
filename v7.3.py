@@ -1,0 +1,761 @@
+"""
+Kaggriculture v6.5 "Dairy Baron" — lane routing — animal-first economic engine.
+
+Our own implementation, modeled on the decoded top-player meta:
+  - 14 animals: 8 cows + 6 sheep on pastures in a compact corridor around
+    the shed, spread across NW + NE + SW (never SE).
+  - Land: NE day 7, SW day 11.
+  - Day 0: hire 5, buy 2 cows + 2 sheep, 7 wheat seed + 12 melon seed, 5 wheat.
+  - Animal ramp: +1 cow d3, +1 cow d5, +2 cow/+2 sheep d7, +2 cow d9, +2 sheep d11.
+  - NO dedicated tender. Every hand carries 1-3 wheat and opportunistically FEEDs
+    any unfed animal it walks past while routing between crop columns. This is
+    exactly how the top bots keep 14 animals alive with one pass per day.
+  - Farmer builds/places animals during the opening, then joins the crop/feed loop.
+  - Sell milk, wool, fertilizer, melon, strawberry, surplus wheat daily.
+  - Crop layout: checkerboard of wheat (feed) and melon in NW; strawberry in
+    NE/SW after expansion.
+
+No ML; rule-based autonomous agent.
+"""
+
+DEFAULT_DNA = {
+    "version": "v7.0",
+    "target_cows": 10,
+    "target_sheep": 2,
+    "buy_ne_day": 7,
+    "buy_sw_day": 11,
+    "hires_day0": 5,
+    "hires_cap": 14,
+    "wheat_seed_day0": 7,
+    "melon_seed_day0": 12,
+    "strawberry_seed_day7": 19,
+    "melon_seed_restock_day11": 12,
+    "strawberry_seed_restock_day11": 23,
+    "milk_sell": 90,
+    "wool_sell": 120,
+    "fertilizer_sell": 40,
+    "melon_sell": 140,
+    "strawberry_sell": 80,
+    "wheat_sell": 16,
+    "feed_reserve": 15,
+    "use_brain": 0,
+}
+
+
+def _load_dna():
+    # Single-file submission: NEVER load external DNA (a stale dna_v6.json on
+    # the worker would silently override tuned values). All tuning lives in
+    # DEFAULT_DNA above.
+    return dict(DEFAULT_DNA)
+
+
+DNA = _load_dna()
+
+ANIMALS = {"COW", "SHEEP", "GOOSE"}
+ANIMAL_STRUCT = {"COW": "PASTURE", "SHEEP": "PASTURE", "GOOSE": "COOP"}
+ANIMAL_COST = {"COW": 400, "SHEEP": 500, "GOOSE": 300}
+CROP_FIRST_YIELD = {"WHEAT": 2, "CARROT": 2, "TOMATO": 8, "STRAWBERRY": 10, "MELON": 10}
+SHED_TILES = [(4, 4), (5, 4), (4, 5), (5, 5)]
+QUAD_TILES = {
+    "NW": [(x, y) for y in range(0, 5) for x in range(0, 5)],
+    "NE": [(x, y) for y in range(0, 5) for x in range(5, 10)],
+    "SW": [(x, y) for y in range(5, 10) for x in range(0, 5)],
+    "SE": [(x, y) for y in range(5, 10) for x in range(5, 10)],
+}
+
+# Compact pasture corridor target positions (built in this order). Mirrors the
+# top bots: NW first (4 animals around shed), then NE row 3/4, then SW row 5.
+PASTURE_LAYOUT = [
+    # Day 0: build 6 NW pastures in a tight 2x3 block around the shed
+    # (rows 3-4, cols 2-4). All within 3 tiles of shed = feedable day 1.
+    (3, 4), (4, 4), (3, 3), (4, 3), (2, 4), (2, 3),
+    # NE expansion (rows 3-4, cols 5-8) after day 7.
+    (5, 3), (6, 3), (5, 4), (6, 4), (7, 4), (7, 3), (8, 3), (8, 4),
+    # SW (row 5 + one of row 6) after day 11.
+    (0, 5), (1, 5), (3, 5), (4, 5), (2, 5), (4, 6),
+]
+
+
+# ---------------------------- utilities ------------------------------------
+def tile(farm, x, y):
+    try:
+        return farm["tiles"][y][x]
+    except Exception:
+        return None
+
+
+def manhattan(a, b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+
+def move_toward(pos, target):
+    dx = target[0] - pos[0]
+    dy = target[1] - pos[1]
+    if dx == 0 and dy == 0:
+        return ["PASS"]
+    if abs(dx) >= abs(dy):
+        return ["EAST"] if dx > 0 else ["WEST"]
+    return ["SOUTH"] if dy > 0 else ["NORTH"]
+
+
+def nearest(pos, targets):
+    best, bd = None, 10**9
+    for t in targets:
+        d = manhattan(pos, t)
+        if d < bd:
+            best, bd = t, d
+    return best, bd
+
+
+def shed_adj(pos):
+    return tuple(pos) in set(SHED_TILES)
+
+
+def unlocked(farm):
+    return set(farm.get("unlocked_quadrants") or ["NW"])
+
+
+def owned_tiles(farm):
+    for q in unlocked(farm):
+        for p in QUAD_TILES[q]:
+            yield p
+
+
+def count_animals(farm):
+    return sum(
+        1 for row in farm["tiles"] for t in row
+        if isinstance(t, dict) and t.get("animal") in ANIMALS
+    )
+
+
+def count_kind(farm, kind):
+    return sum(
+        1 for row in farm["tiles"] for t in row
+        if isinstance(t, dict) and t.get("animal") == kind
+    )
+
+
+def inv_get(private, item, idx):
+    invs = private.get("inventories", []) or []
+    if idx < len(invs):
+        return (invs[idx] or {}).get(item, 0)
+    return 0
+
+
+def inv_carrying(private, idx):
+    invs = private.get("inventories", []) or []
+    if idx < len(invs):
+        for k, v in (invs[idx] or {}).items():
+            if v:
+                return k, v
+    return None, 0
+
+
+
+# ---------------------------- v6.5 crop-lane routing ----------------------
+# Borrowed from v5.8z5f's proven coverage: 2 hands per unlocked quadrant,
+# each sweeping two columns. This gives 40-55 crops vs v6.3's 7-10.
+
+def _active_quads(farm):
+    """Quads in unlock order."""
+    u = unlocked(farm)
+    return [q for q in ("NW", "NE", "SW", "SE") if q in u]
+
+
+def _quad_sector(q, board_size=10):
+    h = board_size // 2
+    if q == "NW": return (0, h - 1, 0, h - 1)
+    if q == "NE": return (h, board_size - 1, 0, h - 1)
+    if q == "SW": return (0, h - 1, h, board_size - 1)
+    return (h, board_size - 1, h, board_size - 1)
+
+
+def worker_quadrant(idx, farm):
+    """Hands 1-2 are animal tenders. Hands 3+ are crop workers: 2 per
+    active quadrant, lane = (idx-3) % 2."""
+    if idx <= 2:
+        return None
+    quads = _active_quads(farm)
+    if not quads:
+        return "NW"
+    return quads[((idx - 3) // 2) % len(quads)]
+
+
+def _lane_local_path(lane, h):
+    """Two strict routes over a quadrant's 4 usable columns.
+    lane 0 = shed-side cols 0-1; lane 1 = outer cols 2-3. Far/fence col ignored."""
+    if h <= 2:
+        return [(0, 0)]
+    max_work_col = h - 2
+    if lane == 0:
+        pts = [(0, ay) for ay in range(h)]
+        if max_work_col >= 1:
+            pts += [(1, ay) for ay in range(h - 1, -1, -1)]
+        return pts
+    c1 = min(2, max_work_col)
+    c2 = max_work_col
+    pts = [(ax, 0) for ax in range(c1 + 1)]
+    pts += [(c1, ay) for ay in range(1, h)]
+    if c2 > c1:
+        pts.append((c2, h - 1))
+        pts += [(c2, ay) for ay in range(h - 2, -1, -1)]
+    return list(dict.fromkeys(pts))
+
+
+def _local_to_global(q, lx, ly, board_size=10):
+    h = board_size // 2
+    if q == "NW": return (h - 1 - lx, h - 1 - ly)
+    if q == "NE": return (h + lx, h - 1 - ly)
+    if q == "SW": return (h - 1 - lx, h + ly)
+    return (h + lx, h + ly)
+
+
+def worker_route(idx, farm, board_size=10):
+    """Ordered list of global tiles this hand patrols (planters only)."""
+    q = worker_quadrant(idx, farm)
+    if q is None:
+        return []
+    lane = (idx - 3) % 2
+    h = board_size // 2
+    return [_local_to_global(q, lx, ly, board_size) for lx, ly in _lane_local_path(lane, h)]
+
+
+def route_order(idx, pos, target, farm, board_size=10):
+    """How far along the hand's route target is (low = next). Off-route penalized."""
+    if idx <= 0:
+        return manhattan(pos, target)
+    path = worker_route(idx, farm, board_size)
+    if not path:
+        return manhattan(pos, target)
+    cur_i = min(range(len(path)), key=lambda i: manhattan(pos, path[i]))
+    try:
+        tgt_i = path.index(tuple(target))
+    except ValueError:
+        return 1000 + manhattan(pos, target)
+    if tgt_i >= cur_i:
+        return tgt_i - cur_i
+    return (len(path) - cur_i) + tgt_i + 20
+
+
+def in_worker_quad(idx, target, farm, board_size=10):
+    if idx <= 2:
+        return True
+    q = worker_quadrant(idx, farm)
+    sector = _quad_sector(q, board_size)
+    if sector is None:
+        return True
+    x0, x1, y0, y1 = sector
+    return x0 <= target[0] <= x1 and y0 <= target[1] <= y1
+
+
+
+# ---------------------------- market ---------------------------------------
+def plan_market(obs, farm, private):
+    market = []
+    day = obs.get("day", 0)
+    hour = obs.get("hour", 0)
+    cash = float(farm.get("money", 0))
+    seeds = private.get("seeds", {}) or {}
+    shed = private.get("shed", {}) or {}
+    prices = (obs.get("market", {}) or {}).get("prices", {}) or {}
+
+    # Hour 0 is observation/setup; the first real action is hour 1. Do nothing
+    # at hour 0 (the top bots PASS here; hiring at hour 0 wastes the budget
+    # before the opening orders).
+    if hour == 0 and day == 0:
+        return []
+
+    if day == 0 and hour == 1:
+        for _ in range(int(DNA["hires_day0"])):
+            market.append(["HIRE"])
+        market.append(["BUY_ANIMAL", "SHEEP", 2])
+        market.append(["BUY_ANIMAL", "COW", 2])
+        if seeds.get("WHEAT", 0) < 7:
+            market.append(["BUY_SEED", "WHEAT", 7])
+        if seeds.get("MELON", 0) < 8:
+            market.append(["BUY_SEED", "MELON", 8])
+        market.append(["BUY_PRODUCT", "WHEAT", 12])
+        return market
+
+    # ---- SELL orders are built LAST (appended after buys) so the 10-order
+    # cap can never silently drop a hire / land / animal / seed order. Sells
+    # retry every turn, so a one-turn delay costs nothing. ----
+    sell_orders = []
+
+    def sell(item, gate):
+        n = shed.get(item, 0)
+        if n <= 0:
+            return
+        p = prices.get(item, 0) or 0
+        # NEVER hold produce off-market waiting for a gate: in a shared,
+        # contested market prices only crash further, and unsold inventory
+        # pays nothing while wages and feed run daily. Sell every day; the
+        # gate only throttles *small* holdings early in the day.
+        if day >= 27 or n >= 6 or hour >= 6 or p >= gate:
+            sell_orders.append(["SELL", item, n])
+
+    # ---- Land-as-target: retry EVERY hour until bought (the old exact-day
+    # gate skipped the purchase forever when cash was short on that day). ----
+    if "NE" not in unlocked(farm) and day >= int(DNA["buy_ne_day"]) and cash >= 1000:
+        market.append(["BUY_LAND"])
+        cash -= 1000
+    if "SW" not in unlocked(farm) and day >= int(DNA["buy_sw_day"]) and cash >= 2000:
+        market.append(["BUY_LAND"])
+        cash -= 2000
+
+
+    # ---- Animals on schedule (after land + hires so they don't starve them,
+    #      but only if budget remains) ----
+    cows = count_kind(farm, "COW") + shed.get("COW", 0)
+    sheep = count_kind(farm, "SHEEP") + shed.get("SHEEP", 0)
+    tmap = {"COW": int(DNA["target_cows"]), "SHEEP": int(DNA["target_sheep"])}
+    hmap = {"COW": cows, "SHEEP": sheep}
+
+    def schedule_buy(kind, qty, dc):
+        nonlocal cash
+        if day != dc:
+            return
+        want_qty = max(0, min(qty, tmap[kind] - hmap[kind]))
+        if want_qty > 0 and cash >= ANIMAL_COST[kind] * want_qty + 20:
+            market.append(["BUY_ANIMAL", kind, want_qty])
+            cash -= ANIMAL_COST[kind] * want_qty
+
+    # Ramp-as-target (Seb-style, self-healing): buy toward the day's herd
+    # target every hour cash allows, instead of fixed-day shots that are
+    # skipped forever if cash is short that day. 13 cows / 7 sheep by day 15.
+    COW_RAMP = {0: 2, 3: 3, 5: 4, 7: 6, 9: 8, 11: 10}
+    SHEEP_RAMP = {0: 2}
+    # Market-adaptive herd: sheep are only worth their wool if the price
+    # hasn't crashed to the floor (in contested matches it does); same for
+    # cow/milk. Skip buys for a kind whose product is nearly worthless.
+    # True payback gates (contested prices): a new cow must earn back $400 +
+    # feed before season end. Milk <$110/2d under ~$50 contested wheat makes
+    # late cows net-negative; sheep at wool <$130 are pure feed burn.
+    price_ok = {"COW": prices.get("MILK", 160) >= 110 and day <= 14,
+                "SHEEP": prices.get("WOOL", 200) >= 130 and day <= 12}
+    for kind, ramp in (("COW", COW_RAMP), ("SHEEP", SHEEP_RAMP)):
+        tgt = max((v for d0, v in ramp.items() if day >= d0), default=0)
+        tgt = min(tgt, tmap[kind])
+        if not price_ok[kind]:
+            continue
+        # Keep a 250 coin buffer after each buy so feed/wages never bounce.
+        while (hmap[kind] < tgt and cash >= ANIMAL_COST[kind] + 250
+               and len(market) < 10):
+            market.append(["BUY_ANIMAL", kind, 1])
+            cash -= ANIMAL_COST[kind]
+            hmap[kind] += 1
+
+    # ---- Seed restocks (hour 1 ONLY): fixed waves for the cash ramp, then
+    # rolling buffers so crop lanes never sit empty after harvests. ----
+    if hour == 1 and len(market) < 9 and cash >= 150:
+        # Wheat pipeline ALWAYS stocked (cheap feed insurance + THUNDER edge:
+        # wheat prices spike in contested matches; growing your own feed is
+        # the single biggest cost lever).
+        if day < 24 and seeds.get("WHEAT", 0) < 16:
+            market.append(["BUY_SEED", "WHEAT", min(16 - seeds.get("WHEAT", 0), 8)])
+            cash -= 10 * min(16 - seeds.get("WHEAT", 0), 8)
+        # Strawberry EARLY and steady: first yield lands +10 days, so every
+        # seed not in the ground by ~day 10 mostly decays un-harvested.
+        if 5 <= day <= 12 and seeds.get("STRAWBERRY", 0) < 12 and cash >= 1100:
+            n = min(12 - seeds.get("STRAWBERRY", 0), int((cash - 1000) // 100))
+            if n > 0 and len(market) < 10:
+                market.append(["BUY_SEED", "STRAWBERRY", n])
+                cash -= 100 * n
+        # Tomato mid-game bridge: ongoing daily yields from +8 days.
+        if 4 <= day <= 11 and seeds.get("TOMATO", 0) < 6 and cash >= 500 and len(market) < 10:
+            market.append(["BUY_SEED", "TOMATO", 6 - seeds.get("TOMATO", 0)])
+        # Melon pipeline: harvested at +10 days; plant by day 18 to finish.
+        if 3 <= day <= 16 and seeds.get("MELON", 0) < 10 and cash >= 700 and len(market) < 10:
+            market.append(["BUY_SEED", "MELON", min(10 - seeds.get("MELON", 0), 5)])
+
+    # ---- Buy wheat for feed. Buy a chunk at hour 1; top up later only
+    # when animals are actually unfed (so expansion days don't starve). ----
+    animals_now = count_animals(farm)
+    wheat = shed.get("WHEAT", 0)
+    need = max(0, int(animals_now * 1.25) - wheat)
+    if hour == 1 and need > 0 and cash >= 1 and len(market) < 10:
+        market.append(["BUY_PRODUCT", "WHEAT", min(need, 20)])
+    elif any_unfed(farm) and wheat < animals_now and cash >= 1 and len(market) < 10:
+        market.append(["BUY_PRODUCT", "WHEAT", min(need, 8)])
+
+    # ---- Hires: TAIL-FILL after buys so animals/seeds/feed are never dropped.
+    # Crew size is fib-priced per hire and carries across hours, so the crew
+    # fills in within the first hours of the day as cash allows. ----
+    fib = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+    hires_today = farm.get("hires_today", 0) or 0
+    already = sum(1 for m in market if m and m[0] == "HIRE")
+    committed = hires_today + already
+    # Day-graded crew: build to 12 for the mid-season peak, then wind down —
+    # the last week has almost no crop work, so a full crew is pure fib burn.
+    if day < 3:
+        want = 6
+    elif day < 10:
+        want = 10
+    elif day < 20:
+        want = 12
+    elif day < 24:
+        want = 8
+    else:
+        want = 6
+    if cash < 500:
+        want = min(want, 6)
+    elif cash < 1500:
+        want = min(want, 8)
+    added = 0
+    while (committed + added < want and (committed + added) < len(fib)
+           and len(market) < 9):
+        c = fib[committed + added]
+        if c > cash:
+            break
+        cash -= c
+        market.append(["HIRE"])
+        added += 1
+
+    # ---- Sells, appended LAST (see note above) ----
+    sell("MILK", int(DNA["milk_sell"]))
+    sell("WOOL", int(DNA["wool_sell"]))
+    sell("MELON", int(DNA["melon_sell"]))
+    sell("STRAWBERRY", int(DNA["strawberry_sell"]))
+    sell("TOMATO", 45)
+    sell("CARROT", 25)
+    sell("EGG", 35)
+    if shed.get("FERTILIZER", 0) > 4:
+        sell_orders.append(["SELL", "FERTILIZER", shed["FERTILIZER"] - 4])
+
+    # ---- Surplus wheat sell (keep a LARGE buffer; selling feed wheat starves
+    # animals under market pressure — winners hold 30-50 wheat) ----
+    reserve = int(DNA["feed_reserve"]) + animals_now * 2
+    if shed.get("WHEAT", 0) > reserve + 5:
+        sell_orders.append(["SELL", "WHEAT", shed["WHEAT"] - reserve])
+
+    market.extend(sell_orders)
+    return market[:10]
+
+
+# ---------------------------- labor ----------------------------------------
+def find_empty_pasture_spot(farm, pos, allow_fallback=True):
+    """Find the next corridor spot to build. Uses PASTURE_LAYOUT; only
+    falls back to a <=3-tile empty tile if allow_fallback (never on day 0,
+    where a far pasture causes an animal to starve)."""
+    for (x, y) in PASTURE_LAYOUT:
+        t = tile(farm, x, y)
+        if t is None and _quad_of(x, y) in unlocked(farm):
+            return (x, y)
+    if not allow_fallback:
+        return None
+    spots = [(x, y) for (x, y) in owned_tiles(farm)
+             if tile(farm, x, y) is None
+             and min(manhattan((x, y), s) for s in SHED_TILES) <= 3]
+    if spots:
+        spots.sort(key=lambda p: (min(manhattan(p, s) for s in SHED_TILES), manhattan(p, pos)))
+        return spots[0]
+    return None
+
+
+def count_empty_pasture_targets(farm):
+    """How many corridor pasture spots still need to be built."""
+    n = 0
+    for (x, y) in PASTURE_LAYOUT:
+        if _quad_of(x, y) in unlocked(farm):
+            t = tile(farm, x, y)
+            if t is None:
+                n += 1
+    return n
+
+
+def find_empty_pasture_for_animal(farm):
+    """Find an empty existing pasture to place an animal on, nearest shed."""
+    spots = []
+    for (x, y) in owned_tiles(farm):
+        t = tile(farm, x, y)
+        if isinstance(t, dict) and t.get("kind") == "PASTURE" and "animal" not in t:
+            spots.append((x, y))
+    spots.sort(key=lambda p: (min(manhattan(p, s) for s in SHED_TILES), p))
+    return spots[0] if spots else None
+
+
+def _quad_of(x, y):
+    if x < 5 and y < 5:
+        return "NW"
+    if x >= 5 and y < 5:
+        return "NE"
+    if x < 5 and y >= 5:
+        return "SW"
+    return "SE"
+
+
+def act_unit(pos, farm, private, obs, unit_idx, is_farmer):
+    """One action for any unit. The top bots use opportunistic feeding: every
+    hand carries wheat and feeds animals it crosses while doing crop work."""
+    day = obs.get("day", 0)
+    x, y = pos
+    here = tile(farm, x, y)
+    carrying, qty = inv_carrying(private, unit_idx)
+    seeds = private.get("seeds", {}) or {}
+    shed = private.get("shed", {}) or {}
+
+    # ---- 0. If carrying an animal (farmer/hand during opening), place it ----
+    if carrying in ANIMALS and qty > 0:
+        struct = ANIMAL_STRUCT[carrying]
+        if isinstance(here, dict) and here.get("kind") == struct and "animal" not in here:
+            return ["PLACE", carrying]
+        if here is None:
+            return ["BUILD_PASTURE"] if struct == "PASTURE" else ["BUILD_COOP"]
+        spot = find_empty_pasture_for_animal(farm) or find_empty_pasture_spot(farm, pos)
+        return move_toward(pos, spot) if spot else ["PASS"]
+
+    # ---- 1. Drop any non-wheat product at shed (so it can sell) ----
+    if carrying and carrying != "WHEAT" and carrying not in ANIMALS and qty > 0:
+        if shed_adj(pos):
+            return ["DROP"]
+        t, _ = nearest(pos, SHED_TILES)
+        return move_toward(pos, t)
+
+    # ---- 2. FEED is the top on-animal priority (prevents escapes) ----
+    if (isinstance(here, dict) and here.get("animal")
+            and not here.get("fed_today") and carrying == "WHEAT"):
+        return ["FEED"]
+
+    # ---- 3. On-tile animal care ----
+    if isinstance(here, dict) and here.get("animal"):
+        if here.get("fertilizer_available"):
+            return ["COLLECT_FERTILIZER"]
+        if not here.get("cared_today"):
+            return ["CARE"]
+        if here.get("yield_units", 0) > 0:
+            return ["HARVEST"]
+
+    # ---- 4. On-tile crop actions. Farmer is a dedicated tender and never
+    # crops. Planters only act within their assigned quadrant lane. Planters
+    # also feed opportunistically (handled in section 2). ----
+    planter = (not is_farmer) and unit_idx >= 3
+    in_my_quad = (not planter) or in_worker_quad(unit_idx, (x, y), farm)
+    if in_my_quad:
+        if isinstance(here, dict) and here.get("kind") == "PLANT":
+            if not here.get("watered_today"):
+                return ["WATER"]
+            if here.get("yield_units", 0) > 0:
+                age = day - here.get("planted_day", day)
+                if age >= CROP_FIRST_YIELD.get(here.get("crop"), 2):
+                    return ["HARVEST"]
+        if isinstance(here, dict) and here.get("kind") == "WEED":
+            return ["DIG"]
+        if here is None and day < 26:
+            crop = choose_crop(x, y, day, seeds, farm)
+            if crop:
+                return ["PLANT", crop]
+
+    # ---- 5. Building/placement (farmer + hand0 build/places animals) ----
+    if (sum(shed.get(k, 0) for k in ("COW", "SHEEP", "GOOSE")) > 0 or day <= 16) \
+            and (is_farmer or unit_idx == 1):
+        animals_waiting = sum(shed.get(k, 0) for k in ("COW", "SHEEP", "GOOSE"))
+        empty_past = find_empty_pasture_for_animal(farm)
+        # If animals wait but no empty pasture exists, build one.
+        if animals_waiting > 0 and empty_past is None and here is None:
+            spot = find_empty_pasture_spot(farm, pos)
+            if spot == tuple(pos):
+                return ["BUILD_PASTURE"]
+            if spot:
+                return move_toward(pos, spot)
+        if animals_waiting > 0 and carrying not in ANIMALS:
+            if shed_adj(pos):
+                for k in ("COW", "SHEEP", "GOOSE"):
+                    if shed.get(k, 0) > 0:
+                        return ["PICKUP", k, 1]
+            t, _ = nearest(pos, SHED_TILES)
+            return move_toward(pos, t)
+        # Proactively build planned corridor pastures (farmer).
+        if is_farmer and here is None:
+            spot = find_empty_pasture_spot(farm, pos)
+            if spot == tuple(pos):
+                return ["BUILD_PASTURE"]
+            if spot:
+                return move_toward(pos, spot)
+
+    # ---- 6. Tenders (farmer idx 0 + hands 1-2) always route to unfed
+    # animals and carry a big stack of wheat (5) so they make fewer shed
+    # trips. Planters (idx 3+) only divert when they ALREADY carry wheat
+    # AND there are more unfed animals than the 3 tenders can handle this
+    # pass — this keeps crop workers filling their lanes instead of all
+    # abandoning crops (the v6.5 fill bug). ----
+    if any_unfed(farm):
+        n_unfed = sum(1 for (xx, yy) in owned_tiles(farm)
+                      if isinstance(tile(farm, xx, yy), dict)
+                      and tile(farm, xx, yy).get("animal")
+                      and not tile(farm, xx, yy).get("fed_today"))
+        is_tender = (unit_idx <= 2)
+        # Distributed feeding (top-bot pattern): EVERY hand carries wheat
+        # whenever it leaves the shed, so animals are fed by whoever crosses
+        # them. Dedicated tenders chase stragglers; planters only change
+        # course when the backlog is bigger than the tender crew can clear.
+        if carrying == "WHEAT":
+            if is_tender or n_unfed >= 4:
+                targets = [
+                    (xx, yy) for (xx, yy) in owned_tiles(farm)
+                    if isinstance(tile(farm, xx, yy), dict)
+                    and tile(farm, xx, yy).get("animal")
+                    and not tile(farm, xx, yy).get("fed_today")
+                ]
+                tgt = _claim_target(pos, targets)
+                if tgt:
+                    return move_toward(pos, tgt)
+        elif shed.get("WHEAT", 0) > 0 and not carrying:
+            grab = 5 if is_tender else 3
+            if shed_adj(pos):
+                return ["PICKUP", "WHEAT", grab]
+            if is_tender or n_unfed >= 6:
+                t, _ = nearest(pos, SHED_TILES)
+                return move_toward(pos, t)
+        # Otherwise fall through to crop work (fill those plots!).
+
+    # ---- 7. Navigate to work ----
+    target = choose_target(pos, farm, private, obs, carrying, is_farmer, unit_idx)
+    if target:
+        return move_toward(pos, target)
+    return ["PASS"]
+
+
+def any_unfed(farm):
+    for row in farm["tiles"]:
+        for t in row:
+            if isinstance(t, dict) and t.get("animal") and not t.get("fed_today"):
+                return True
+    return False
+
+
+def choose_target(pos, farm, private, obs, carrying, is_farmer, hand_idx=0):
+    """v6.5: route-aware target picker.
+
+    For farmer/tender (hand_idx 0): pick nearest job (animals first).
+    For planters (hand_idx >= 1): prefer jobs on their assigned quadrant lane,
+    scored by route order so they sweep columns instead of all converging.
+    """
+    day = obs.get("day", 0)
+    seeds = private.get("seeds", {}) or {}
+
+    feed, ancare, water, harv, weeds, plant = [], [], [], [], [], []
+    for (x, y) in owned_tiles(farm):
+        t = tile(farm, x, y)
+        if isinstance(t, dict):
+            if t.get("animal"):
+                if not t.get("fed_today") and carrying == "WHEAT":
+                    feed.append((x, y))
+                elif t.get("fertilizer_available") or not t.get("cared_today") or t.get("yield_units", 0) > 0:
+                    ancare.append((x, y))
+            elif t.get("kind") == "PLANT":
+                if not t.get("watered_today"):
+                    water.append((x, y))
+                elif t.get("yield_units", 0) > 0 and (day - t.get("planted_day", day)) >= CROP_FIRST_YIELD.get(t.get("crop"), 2):
+                    harv.append((x, y))
+        elif t is not None and t.get("kind") == "WEED":
+            weeds.append((x, y))
+        elif t is None and day < 26 and any(seeds.get(c, 0) > 0 for c in ("WHEAT", "MELON", "STRAWBERRY")):
+            plant.append((x, y))
+
+    # Tender/farmer: nearest job, animals first.
+    if hand_idx <= 2 or is_farmer:
+        if feed and carrying != "WHEAT" and any_unfed(farm):
+            t, _ = nearest(pos, SHED_TILES)
+            return t
+        for bucket in (feed, ancare, water, harv, weeds, plant):
+            if bucket:
+                t, _ = nearest(pos, bucket)
+                return t
+        return None
+
+    # Planter: route-aware. Score each candidate by (in-quad bonus, route order).
+    def score(cand):
+        in_q = in_worker_quad(hand_idx, cand, farm)
+        ro = route_order(hand_idx, pos, cand, farm)
+        # Off-quadrant jobs heavily penalized but allowed if quad is empty.
+        return (0 if in_q else 500) + ro
+
+    # NOTE: the old "if any animal is unfed and I'm not carrying wheat, walk
+    # to the shed" redirect is gone — it made every planter abandon its lane
+    # every morning. Wheat pickup is handled in act_unit (distributed feeding).
+    # When weeds pile up they block replanting lanes — clear them first past
+    # a threshold, otherwise water ahead of weeding (crops die in 2 days dry).
+    weed_count = len(weeds)
+    if any_unfed(farm) or weed_count <= 8:
+        order = (feed, ancare, water, harv, weeds, plant)
+    else:
+        order = (feed, ancare, weeds, harv, water, plant)
+    for bucket in order:
+        if bucket:
+            cand = min(bucket, key=lambda c: score(c))
+            if score(cand) < 800:
+                return cand
+    return None
+
+
+def choose_crop(x, y, day, seeds, farm):
+    if day >= 25:
+        return None
+    # Wheat ONLY genuinely shed-adjacent (within the starting NW 5x5): the
+    # manhattan-to-any-shed-tile rule matches tiles in newly bought quadrants
+    # and carpets them in wheat before premiums get a chance (the "wheat wall").
+    if (x, y) in QUAD_TILES.get("NW", []) and seeds.get("WHEAT", 0) > 0:
+        if min(abs(x - 4) + abs(y - 4), abs(x - 5) + abs(y - 4),
+               abs(x - 4) + abs(y - 5), abs(x - 5) + abs(y - 5)) <= 1:
+            return "WHEAT"
+    # Premiums anywhere on the farm (the old d<=5 strawberry rule left
+    # 20+ seeds unplanted while lanes sat empty).
+    if day <= 16 and seeds.get("STRAWBERRY", 0) > 0:
+        return "STRAWBERRY"
+    if day <= 18 and seeds.get("MELON", 0) > 0:
+        return "MELON"
+    if day <= 14 and seeds.get("TOMATO", 0) > 0:
+        return "TOMATO"
+    if seeds.get("WHEAT", 0) > 0:
+        return "WHEAT"
+    if seeds.get("MELON", 0) > 0 and day <= 19:
+        return "MELON"
+    if seeds.get("STRAWBERRY", 0) > 0 and day <= 17:
+        return "STRAWBERRY"
+    return None
+
+
+# ---------------------------- main -----------------------------------------
+_TURN_STATE = {"claimed": set()}
+
+
+def _claim_target(pos, candidates):
+    """Pick the nearest candidate not already claimed by another unit this turn."""
+    claimed = _TURN_STATE["claimed"]
+    avail = [c for c in candidates if c not in claimed] or list(candidates)
+    if not avail:
+        return None
+    avail.sort(key=lambda c: manhattan(pos, c))
+    choice = avail[0]
+    claimed.add(choice)
+    return choice
+
+
+def agent(obs):
+    try:
+        player = obs.get("player", 0)
+        farms = obs.get("farms", []) or []
+        if not farms or player >= len(farms):
+            return {"farmer": ["PASS"], "hands": [], "market": []}
+        farm = farms[player]
+        private = obs.get("private", {}) or {}
+
+        # Reset per-turn coordination (target claiming).
+        _TURN_STATE["claimed"] = set()
+
+        market = plan_market(obs, farm, private)
+
+        farmer_pos = tuple(farm.get("farmer", [4, 4]) or [4, 4])
+        farmer_action = act_unit(farmer_pos, farm, private, obs, 0, is_farmer=True)
+
+        hand_actions = []
+        for i, hpos in enumerate(farm.get("hands") or []):
+            hand_actions.append(act_unit(tuple(hpos), farm, private, obs, i + 1, is_farmer=False))
+
+        return {
+            "farmer": farmer_action or ["PASS"],
+            "hands": hand_actions,
+            "market": market[:10],
+        }
+    except Exception:
+        return {"farmer": ["PASS"], "hands": [], "market": []}
