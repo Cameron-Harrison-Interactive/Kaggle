@@ -1,0 +1,545 @@
+"""Counter-meta offline policy v2 (Seb-derived strategy) — clean rewrite.
+
+Engine facts baked in:
+- action = {"market": [...max 10 orders], "farmer": [...], "hands": [[...],...]}
+- market orders processed every turn; HIRE/BUY_LAND atomic (hour-0 block)
+- tile["animal"] is a kind STRING; pastures FREE, hold ONE animal
+- animals bought -> delivered to SHED -> PICKUP at shed tile -> PLACE on pasture
+- shed access tiles = 4 inner corners; crops die after 2 unwatered days
+- hands fired nightly; hire cost fib(n); 10 market slots/turn
+"""
+
+HIRES = {0: 7, 1: 8, 2: 9, 3: 9, 4: 10, 5: 10, 6: 10, 7: 10, 8: 10, 9: 10,
+         10: 10, 11: 10, 12: 10, 13: 10, 14: 10, 15: 10, 16: 9, 17: 9,
+         18: 9, 19: 9, 20: 9, 21: 9, 22: 9, 23: 9, 24: 8, 25: 8,
+         26: 7, 27: 6, 28: 5, 29: 3}
+FIB = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]
+ANIMAL_TARGETS = [(0, "COW", 2), (0, "SHEEP", 2), (4, "COW", 1), (5, "SHEEP", 1),
+                  (6, "COW", 1), (7, "SHEEP", 2), (8, "COW", 1), (9, "SHEEP", 1),
+                  (10, "COW", 2), (11, "SHEEP", 2), (12, "COW", 1), (13, "SHEEP", 1),
+                  (14, "COW", 1), (15, "SHEEP", 2), (17, "SHEEP", 1)]
+CUSHION_EARLY, CUSHION_LATE = 250, 100
+LAND_MIN_DAY = {1: 6, 2: 10, 3: 14}
+LAND_CASH = {1: 1900, 2: 3400, 3: 5400}
+MELON_SLOTS = 3
+MELON_PLANT_UNTIL = 16
+WHEAT_PLANT_UNTIL = 25
+WHEAT_FEED_BUFFER = 20
+CAPMULT = 2.6
+PLANT_PER_DAY = 7
+PRODUCTS = ("WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
+            "EGG", "MILK", "WOOL", "FERTILIZER")
+
+
+def _get(d, *ks, default=None):
+    for k in ks:
+        if not isinstance(d, dict):
+            return default
+        d = d.get(k)
+        if d is None:
+            return default
+    return d
+
+
+def _dist(a, b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+
+class CounterMeta:
+    def __init__(self):
+        self.melon_tiles = set()
+        self.pasture_slots = []
+        self._pool = []
+        self.land_bought = set()
+        self._desig = False
+        self._aday = -1
+        self._assign = {}
+        self._pday = -1
+        self._planted = 0
+        self._lastverb = {}
+
+    # ---------------- designation ----------------
+    def designate(self, obs):
+        p = obs["player"]
+        farm = obs["farms"][p]
+        size = len(farm["tiles"])
+        half = size // 2
+        if not self._desig:
+            near = sorted(((x, y) for x in range(2, half) for y in range(2, half)),
+                          key=lambda t: -_dist(t, (half - 1, half - 1)))
+            self.melon_tiles = set(near[:MELON_SLOTS])
+            self._desig = True
+        quads = farm.get("unlocked_quadrants") or ["NW"]
+
+        def ring(q):
+            xs = range(0, half) if q in ("NW", "SW") else range(half, size)
+            ys = range(0, half) if q in ("NW", "NE") else range(half, size)
+            x0, x1, y0, y1 = xs[0], xs[-1], ys[0], ys[-1]
+            out = [(x, y) for y in ys for x in xs
+                   if x in (x0, x1) or y in (y0, y1)]
+            out.sort(key=lambda t: -_dist(t, (half - 0.5, half - 0.5)))
+            return out
+
+        for q in ("NW", "NE"):
+            if q in quads:
+                for t in ring(q):
+                    if (t not in self.melon_tiles and t not in self.pasture_slots
+                            and t not in self._pool):
+                        self._pool.append(t)
+        animals = sum(1 for row in farm["tiles"] for t in row
+                      if isinstance(t, dict) and "animal" in t)
+        pipeline = obs["private"]["shed"].get("COW", 0) + \
+            obs["private"]["shed"].get("SHEEP", 0) + \
+            sum(inv.get("COW", 0) + inv.get("SHEEP", 0)
+                for inv in obs["private"]["inventories"])
+        need = min(animals + pipeline + 2, 22)
+        while len(self.pasture_slots) < need and self._pool:
+            self.pasture_slots.append(self._pool.pop(0))
+
+    # ---------------- market ----------------
+    def market(self, obs, action):
+        p = obs["player"]
+        farm = obs["farms"][p]
+        priv = obs["private"]
+        day, hour = obs["day"], obs["hour"]
+        cash = farm["money"]
+        cushion = CUSHION_EARLY if day <= 5 else CUSHION_LATE
+        if day >= 28:
+            cushion = 50
+        orders = []
+
+        def spend(cost):
+            nonlocal cash
+            if cash - cost >= cushion:
+                cash -= cost
+                return True
+            return False
+
+        def tile_at(pos):
+            return farm["tiles"][pos[1]][pos[0]]
+
+        # workforce hiring matched to tending demand, spread over h0/h6/h12
+        if hour in (0, 6, 12):
+            n_pl = sum(1 for row in farm["tiles"] for t in row
+                       if isinstance(t, dict) and t.get("kind") == "PLANT")
+            n_an = sum(1 for row in farm["tiles"] for t in row
+                       if isinstance(t, dict) and "animal" in t)
+            target = min(14, 2 + n_pl // 2 + n_an // 2)
+            target = min(target, HIRES.get(day, 0))
+            current = len(farm.get("hands") or [])
+            hired = farm.get("hires_today", 0)
+            reserve = 3 if day <= 1 else 2
+            while current < target and len(orders) < 10 - reserve:
+                cost = FIB[hired] if hired < len(FIB) else 377
+                if not spend(cost):
+                    break
+                orders.append(["HIRE"]); hired += 1; current += 1
+
+        if hour == 0:
+            # land
+            idx = len(farm.get("unlocked_quadrants") or ["NW"])
+            if (idx in LAND_MIN_DAY and day >= LAND_MIN_DAY[idx]
+                    and idx not in self.land_bought and cash >= LAND_CASH[idx]
+                    and len(orders) < 10):
+                orders.append(["BUY_LAND"])
+                self.land_bought.add(idx)
+            # animals
+            tgt = {"COW": 0, "SHEEP": 0}
+            for (dd, kind, n) in ANIMAL_TARGETS:
+                if day >= dd:
+                    tgt[kind] += n
+            placed = {"COW": 0, "SHEEP": 0}
+            free_pastures = 0
+            for row in farm["tiles"]:
+                for t in row:
+                    if isinstance(t, dict):
+                        if "animal" in t:
+                            placed[t["animal"]] += 1
+                        elif t.get("kind") == "PASTURE":
+                            free_pastures += 1
+            unbuilt = sum(1 for t in self.pasture_slots if tile_at(t) is None)
+            room = free_pastures + unbuilt + 2
+            n_plants_now = sum(1 for row in farm["tiles"] for t in row
+                               if isinstance(t, dict) and t.get("kind") == "PLANT")
+            animal_cap = max(6, min(20, n_plants_now + 2))
+            total_owned = sum(placed.values()) + \
+                priv["shed"].get("COW", 0) + priv["shed"].get("SHEEP", 0) + \
+                sum(inv.get("COW", 0) + inv.get("SHEEP", 0)
+                    for inv in priv["inventories"])
+            for kind in ("COW", "SHEEP"):
+                if len(orders) >= 10:
+                    break
+                pipeline = priv["shed"].get(kind, 0) + \
+                    sum(inv.get(kind, 0) for inv in priv["inventories"])
+                need = max(0, tgt[kind] - placed[kind] - pipeline)
+                need = min(need, max(0, animal_cap - total_owned))
+                want = 0
+                cost = 400 if kind == "COW" else 500
+                animal_floor = 900 if day <= 10 else 500
+                while need > 0 and room > 0 and cash - cost >= max(cushion, animal_floor):
+                    cash -= cost
+                    want += 1
+                    need -= 1
+                    room -= 1
+                    total_owned += 1
+                if want:
+                    orders.append(["BUY_ANIMAL", kind, want])
+            # feed wheat
+            animals = sum(placed.values())
+            shed_wheat = priv["shed"].get("WHEAT", 0)
+            carried = sum(inv.get("WHEAT", 0) for inv in priv["inventories"])
+            wp = _get(obs, "market", "prices", "WHEAT", default=25)
+            if (animals and shed_wheat + carried < animals + 3 and day <= 27
+                    and wp <= 80 and len(orders) < 10):
+                orders.append(["BUY_PRODUCT", "WHEAT",
+                               min(6, animals + 3 - shed_wheat - carried)])
+            # wheat seeds (buffered)
+            dirt_free = sum(1 for row in farm["tiles"] for t in row if t is None)
+            dirt_free -= sum(1 for t in self.pasture_slots if tile_at(t) is None)
+            dirt_free -= sum(1 for t in self.melon_tiles if tile_at(t) is None)
+            seeds_w = priv["seeds"].get("WHEAT", 0)
+            if day <= WHEAT_PLANT_UNTIL and len(orders) < 10:
+                target = min(max(dirt_free + 8, 12), 28)
+                want = min(max(0, target - seeds_w), 24)
+                if want and spend(want * 10):
+                    orders.append(["BUY_SEED", "WHEAT", want])
+            # melon seeds
+            seeds_m = priv["seeds"].get("MELON", 0)
+            if len(orders) < 10:
+                want = 0
+                if day <= 2:
+                    want = max(0, MELON_SLOTS - seeds_m)
+                elif day <= MELON_PLANT_UNTIL and day % 4 == 0 and seeds_m < 2:
+                    want = 2 - seeds_m
+                if want and spend(want * 80):
+                    orders.append(["BUY_SEED", "MELON", want])
+
+        elif hour == 12:
+            animals = sum(1 for row in farm["tiles"] for t in row
+                          if isinstance(t, dict) and "animal" in t)
+            shed_wheat = priv["shed"].get("WHEAT", 0)
+            wp = _get(obs, "market", "prices", "WHEAT", default=25)
+            if (animals and shed_wheat < animals + 6 and wp <= 80 and day <= 27
+                    and len(orders) < 10):
+                orders.append(["BUY_PRODUCT", "WHEAT", min(6, animals + 6 - shed_wheat)])
+            if day <= WHEAT_PLANT_UNTIL and priv["seeds"].get("WHEAT", 0) < 6:
+                dirt_now = sum(1 for row in farm["tiles"] for t in row if t is None)
+                if dirt_now >= 2 and len(orders) < 10:
+                    want = min(18, max(8, dirt_now))
+                    if spend(want * 10):
+                        orders.append(["BUY_SEED", "WHEAT", want])
+
+        if hour in (6, 18):
+            shed = priv["shed"]
+            animals = sum(1 for row in farm["tiles"] for t in row
+                          if isinstance(t, dict) and "animal" in t)
+            if day >= 27 or (day == 26 and hour >= 12):
+                keep = min(animals, shed.get("WHEAT", 0)) if day < 29 else 0
+                for item in PRODUCTS:
+                    q = shed.get(item, 0) - (keep if item == "WHEAT" else 0)
+                    if q > 0 and len(orders) < 10:
+                        orders.append(["SELL", item, q])
+            else:
+                drip = [("FERTILIZER", 4, 1), ("MILK", 6, 4), ("WOOL", 5, 3),
+                        ("MELON", 4, 3)]
+                for item, cap, minq in drip:
+                    q = shed.get(item, 0)
+                    if q >= minq and len(orders) < 10:
+                        orders.append(["SELL", item, min(q, cap)])
+                if hour == 18:
+                    q = shed.get("WHEAT", 0)
+                    if q > WHEAT_FEED_BUFFER and day >= 3 and len(orders) < 10:
+                        orders.append(["SELL", "WHEAT", min(q - WHEAT_FEED_BUFFER, 15)])
+
+        action["market"] = orders[:10]
+        return action
+
+    # ---------------- job validity (for commitment) ----------------
+    def _valid(self, obs, verb, pos, arg, inv):
+        t = obs["farms"][obs["player"]]["tiles"][pos[1]][pos[0]]
+        if verb == "WATER":
+            return isinstance(t, dict) and t.get("kind") == "PLANT" and \
+                not t.get("watered_today")
+        if verb == "PLANT":
+            return t is None and obs["private"]["seeds"].get(arg, 0) > 0
+        if verb == "HARVEST":
+            return isinstance(t, dict) and t.get("kind") == "PLANT" and \
+                t.get("yield_units", 0) > 0
+        if verb == "DIG":
+            return isinstance(t, dict) and t.get("kind") == "WEED"
+        if verb == "FEED":
+            return isinstance(t, dict) and "animal" in t and not t.get("fed_today")
+        if verb == "CARE":
+            return isinstance(t, dict) and "animal" in t and \
+                t.get("fed_today") and not t.get("cared_today")
+        if verb == "COLLECT_FERTILIZER":
+            return isinstance(t, dict) and "animal" in t and \
+                t.get("fertilizer_available")
+        if verb == "BUILD_PASTURE":
+            return t is None
+        if verb == "PICKUP_ANIMAL":
+            return (obs["private"]["shed"].get("COW", 0) > 0 or
+                    obs["private"]["shed"].get("SHEEP", 0) > 0)
+        return False
+
+    # ---------------- units ----------------
+    def units(self, obs, action):
+        p = obs["player"]
+        farm = obs["farms"][p]
+        priv = obs["private"]
+        day = obs["day"]
+        size = len(farm["tiles"])
+        half = size // 2
+        shed_tiles = [(half - 1, half - 1), (half, half - 1),
+                      (half - 1, half), (half, half)]
+
+        positions = [farm.get("farmer")] + list(farm.get("hands") or [])
+        invs = list(priv.get("inventories") or [])
+        units = [(i, tuple(pos)) for i, pos in enumerate(positions) if pos is not None]
+        while len(invs) < len(units):
+            invs.append({})
+
+        if self._aday != day:
+            self._aday = day
+            self._assign = {}
+        if self._pday != day:
+            self._pday = day
+            self._planted = 0
+            self._lastverb = {}
+
+        # ---- scan tiles -> jobs ----
+        jobs = []
+        free_pastures = []
+        n_unfed = 0
+        n_units = len(units)
+        n_plants = 0
+        n_dry = 0
+        for row in farm["tiles"]:
+            for t in row:
+                if isinstance(t, dict) and t.get("kind") == "PLANT":
+                    n_plants += 1
+                    if not t.get("watered_today") and t.get("consecutive_unwatered", 0) >= 1:
+                        n_dry += 1
+        # v10.7-style planting governor: don't expand if watering is behind.
+        # If dry plants already exceed what hands can water today, freeze planting.
+        if n_dry > max(4, int(n_units * 1.2)):
+            plant_cap = n_plants           # hold steady, no new plants
+        else:
+            plant_cap = int(n_units * CAPMULT)
+        plant_today_max = PLANT_PER_DAY
+        waiting = priv["shed"].get("COW", 0) + priv["shed"].get("SHEEP", 0) + \
+            sum(inv.get("COW", 0) + inv.get("SHEEP", 0) for inv in invs)
+        for y, row in enumerate(farm["tiles"]):
+            for x, t in enumerate(row):
+                if isinstance(t, dict):
+                    if "animal" in t:
+                        if not t.get("fed_today"):
+                            n_unfed += 1
+                            jobs.append((1, (x, y), "FEED", None))
+                        elif not t.get("cared_today"):
+                            jobs.append((9, (x, y), "CARE", None))
+                        if t.get("fertilizer_available"):
+                            jobs.append((3.5, (x, y), "COLLECT_FERTILIZER", None))
+                    elif t.get("kind") == "PLANT":
+                        age = day - t.get("planted_day", day)
+                        crop = t.get("crop")
+                        yu = t.get("yield_units", 0)
+                        maturity = 4 if crop == "WHEAT" else 12
+                        if not t.get("watered_today"):
+                            if age == 0:
+                                # planted today: dies TONIGHT if not watered
+                                jobs.append((0.5, (x, y), "WATER", None))
+                            elif t.get("consecutive_unwatered", 0) >= 1:
+                                jobs.append((2, (x, y), "WATER", None))
+                            else:
+                                jobs.append((3, (x, y), "WATER", None))
+                        if yu > 0 and (age >= maturity or yu >= 6 or day >= 27):
+                            jobs.append((4, (x, y), "HARVEST", None))
+                    elif t.get("kind") == "WEED":
+                        jobs.append((5, (x, y), "DIG", None))
+                    elif t.get("kind") == "PASTURE" and "animal" not in t:
+                        free_pastures.append((x, y))
+                elif t is None:
+                    if n_plants >= plant_cap or self._planted >= plant_today_max:
+                        continue
+                    if (x, y) in self.melon_tiles:
+                        if priv["seeds"].get("MELON", 0) > 0 and day <= MELON_PLANT_UNTIL:
+                            jobs.append((5.5, (x, y), "PLANT", "MELON"))
+                            n_plants += 1
+                    elif (x, y) not in self.pasture_slots:
+                        if priv["seeds"].get("WHEAT", 0) > 0 and day <= WHEAT_PLANT_UNTIL:
+                            jobs.append((5.5, (x, y), "PLANT", "WHEAT"))
+                            n_plants += 1
+
+        build_slots = [t for t in self.pasture_slots
+                       if farm["tiles"][t[1]][t[0]] is None]
+        for pos in build_slots[:max(1, waiting + 1 - len(free_pastures))]:
+            jobs.append((6, pos, "BUILD_PASTURE", None))
+        # place new animals only when fed + within feed-capacity
+        placed_count = sum(1 for row in farm["tiles"] for t in row
+                           if isinstance(t, dict) and "animal" in t)
+        animal_cap_u = max(6, min(20, n_plants + 2))
+        if waiting > 0 and free_pastures and n_unfed <= 1 and placed_count < animal_cap_u:
+            n_pick = min(waiting, len(free_pastures), max(3, n_units // 3))
+            for k in range(n_pick):
+                jobs.append((4.5, shed_tiles[k % 4], "PICKUP_ANIMAL", None))
+
+        jobs.sort(key=lambda j: j[0] + _dist(j[1], (half, half)) / 30.0)
+
+        # ---- assign with commitment (committed units go first) ----
+        used = set()
+        seed_budget = dict(priv["seeds"])
+        out = [None] * len(positions)
+        pending = []
+
+        def haul_or_carry(i, pos, inv):
+            """Returns action if unit must place an animal or haul goods."""
+            if inv.get("COW", 0) or inv.get("SHEEP", 0):
+                if free_pastures:
+                    tgt = min(free_pastures, key=lambda t: _dist(pos, t))
+                    if pos == tgt:
+                        kind = "COW" if inv.get("COW", 0) else "SHEEP"
+                        free_pastures.remove(tgt)
+                        return ["PLACE", kind]
+                    return self._step(pos, tgt)
+                tgt = min(shed_tiles, key=lambda t: _dist(pos, t))
+                return ["DROP"] if pos == tgt else self._step(pos, tgt)
+            prods = sum(v for k, v in inv.items() if k in PRODUCTS)
+            if prods - inv.get("WHEAT", 0) >= 4:
+                tgt = min(shed_tiles, key=lambda t: _dist(pos, t))
+                return ["DROP"] if pos == tgt else self._step(pos, tgt)
+            return None
+
+        # pass 1: hauls + committed jobs keep their targets
+        for i, pos in units:
+            inv = invs[i] if i < len(invs) else {}
+            h = haul_or_carry(i, pos, inv)
+            if h:
+                out[i] = h
+                continue
+            prev = self._assign.get(i)
+            if prev:
+                verb, jpos, arg = prev
+                wheat_carry = inv.get("WHEAT", 0)
+                if (self._valid(obs, verb, jpos, arg, inv)
+                        and (verb, jpos) not in used
+                        and not (verb == "FEED" and wheat_carry <= 0)):
+                    used.add((verb, jpos))
+                    if pos == jpos:
+                        out[i] = self._verb(verb, arg, inv, seed_budget)
+                        self._assign.pop(i, None)
+                    else:
+                        out[i] = self._step(pos, jpos)
+                    continue
+                self._assign.pop(i, None)
+            pending.append((i, pos, inv))
+
+        # pass 2: uncommitted units take remaining jobs
+        total_wheat_carried = sum(invs[i].get("WHEAT", 0) for i, _, _ in pending
+                                  if i < len(invs))
+        shed_wheat_now = priv["shed"].get("WHEAT", 0)
+        for i, pos, inv in pending:
+            wheat_carry = inv.get("WHEAT", 0)
+            act = None
+            # feed gap: someone must fetch wheat for unfed animals
+            if (wheat_carry == 0 and n_unfed > total_wheat_carried
+                    and shed_wheat_now > 0 and day <= 28):
+                tgt = min(shed_tiles, key=lambda t: _dist(pos, t))
+                if pos == tgt:
+                    act = ["PICKUP", "WHEAT", 3]
+                    total_wheat_carried += 3
+                else:
+                    act = self._step(pos, tgt)
+                    total_wheat_carried += 3
+                out[i] = act
+                continue
+            # nearest-job-within-tier selection (kills cross-board walking)
+            best = None
+            for pri, jpos, verb, arg in jobs:
+                if (verb, jpos) in used:
+                    continue
+                if verb == "PLANT" and seed_budget.get(arg, 0) <= 0:
+                    continue
+                if verb == "FEED" and wheat_carry <= 0:
+                    continue
+                tier = 0 if pri < 3 else (1 if pri < 5 else (2 if pri < 8 else 3))
+                momentum = 12 if self._lastverb.get(i) == verb else 0
+                score = tier * 50 + _dist(pos, jpos) - momentum
+                if best is None or score < best[0]:
+                    best = (score, pri, jpos, verb, arg)
+            if best is not None:
+                _, pri, jpos, verb, arg = best
+                used.add((verb, jpos))
+                if verb == "PICKUP_ANIMAL":
+                    if pos == jpos:
+                        kind = "COW" if priv["shed"].get("COW", 0) > 0 else "SHEEP"
+                        act = ["PICKUP", kind, 1]
+                    else:
+                        act = self._step(pos, jpos)
+                        self._assign[i] = (verb, jpos, arg)
+                elif pos == jpos:
+                    act = self._verb(verb, arg, inv, seed_budget)
+                    self._lastverb[i] = verb
+                else:
+                    act = self._step(pos, jpos)
+                    self._assign[i] = (verb, jpos, arg)
+            if act is None:
+                need_feed = any(j[2] == "FEED" for j in jobs if (j[2], j[1]) not in used)
+                if need_feed and wheat_carry < 3 and \
+                        priv["shed"].get("WHEAT", 0) > 0:
+                    tgt = min(shed_tiles, key=lambda t: _dist(pos, t))
+                    if pos == tgt:
+                        act = ["PICKUP", "WHEAT", 3]
+                    else:
+                        act = self._step(pos, tgt)
+                elif waiting > 0 and free_pastures:
+                    tgt = min(shed_tiles, key=lambda t: _dist(pos, t))
+                    if pos == tgt:
+                        kind = "COW" if priv["shed"].get("COW", 0) else "SHEEP"
+                        act = ["PICKUP", kind, 1]
+                    else:
+                        act = self._step(pos, tgt)
+                else:
+                    act = ["PASS"]
+            out[i] = act
+
+        action["farmer"] = out[0] if out and out[0] else ["PASS"]
+        action["hands"] = [a if a else ["PASS"] for a in out[1:]]
+        return action
+
+    def _verb(self, verb, arg, inv, seed_budget):
+        if verb == "PLANT":
+            seed_budget[arg] = seed_budget.get(arg, 0) - 1
+            self._planted += 1
+            return ["PLANT", arg]
+        if verb == "PICKUP_ANIMAL":
+            return ["PASS"]  # resolved by fallback below
+        return [verb] if not arg else [verb, arg]
+
+    def _step(self, pos, tgt):
+        dx, dy = tgt[0] - pos[0], tgt[1] - pos[1]
+        if dx and abs(dx) >= abs(dy):
+            return ["EAST"] if dx > 0 else ["WEST"]
+        if dy:
+            return ["SOUTH"] if dy > 0 else ["NORTH"]
+        if dx:
+            return ["EAST"] if dx > 0 else ["WEST"]
+        return ["PASS"]
+
+    # ---------------- top ----------------
+    def act(self, obs, configuration):
+        action = {"market": [], "farmer": ["PASS"], "hands": []}
+        try:
+            self.designate(obs)
+            self.market(obs, action)
+            self.units(obs, action)
+        except Exception:
+            pass
+        return action
+
+
+_POLICY = CounterMeta()
+
+
+def agent(observation, configuration):
+    return _POLICY.act(observation, configuration)

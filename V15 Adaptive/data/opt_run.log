@@ -1,0 +1,33 @@
+baseline: {'income': 100293.66666666667, 'esc': 0, 'peak': 44, 'min': 96832.0} score=100,294
+r0 [-] 100,294 (inc 100,294, esc 0, pk 44) delta={'h0': 5}
+r0 [-] 91,770 (inc 91,770, esc 0, pk 43) delta={'cows': 12}
+r0 [+] 101,103 (inc 101,103, esc 0, pk 43) delta={'h2': 13}
+r1 [-] 96,063 (inc 96,063, esc 0, pk 43) delta={'h2': 14}
+r1 [-] 92,133 (inc 92,133, esc 0, pk 47) delta={'h2': 13, 'h3': 13}
+r1 [-] 96,789 (inc 96,789, esc 0, pk 42) delta={'h2': 13, 'pb_high': 1}
+r1 [-] 101,103 (inc 101,103, esc 0, pk 43) delta={'h0': 7, 'h2': 13}
+r1 [-] 96,081 (inc 96,081, esc 0, pk 51) delta={'h2': 13, 'h3': 14}
+r1 [-] 98,983 (inc 98,983, esc 0, pk 42) delta={'h2': 13, 'sheep': 4}
+r1: no improvement, random restart nudge
+r2 [-] 101,103 (inc 101,103, esc 0, pk 43) delta={'h2': 13, 'sb_cap': 50}
+r2 [-] 101,069 (inc 101,069, esc 0, pk 43) delta={'h1': 9, 'h2': 13}
+r2 [-] 100,883 (inc 100,883, esc 0, pk 43) delta={'h2': 13, 'h5': 10}
+r2 [-] 101,103 (inc 101,103, esc 0, pk 43) delta={'h0': 4, 'h2': 13}
+r2 [-] 101,103 (inc 101,103, esc 0, pk 43) delta={'h2': 13, 'pb_low': 4}
+r2 [-] 100,094 (inc 100,094, esc 0, pk 43) delta={'h2': 13, 'h4': 10}
+r2: no improvement, random restart nudge
+r3 [-] 91,713 (inc 91,713, esc 0, pk 42) delta={'h2': 13, 'sheep': 8}
+r3 [+] 103,612 (inc 103,612, esc 0, pk 43) delta={'h2': 13, 'h4': 12}
+r4 [-] 103,578 (inc 103,578, esc 0, pk 43) delta={'h1': 9, 'h2': 13, 'h4': 12}
+r4 [-] 103,612 (inc 103,612, esc 0, pk 43) delta={'h0': 8, 'h2': 13, 'h4': 12}
+r4 [+] 104,326 (inc 104,326, esc 0, pk 44) delta={'h2': 13, 'h4': 12, 'sw': 10}
+r5 [-] 93,838 (inc 93,838, esc 0, pk 56) delta={'h2': 13, 'h4': 12, 'ne': 6, 'sw': 10}
+r5 [-] 103,368 (inc 103,368, esc 0, pk 45) delta={'h2': 10, 'h4': 12, 'sw': 10}
+r5 [-] 104,326 (inc 104,326, esc 0, pk 44) delta={'h0': 8, 'h2': 13, 'h4': 12, 'sw': 10}
+r5 [-] 104,326 (inc 104,326, esc 0, pk 44) delta={'h2': 13, 'h4': 12, 'sw': 10, 'sb_cap': 50}
+r5 [-] 104,059 (inc 104,059, esc 0, pk 44) delta={'h2': 13, 'h4': 12, 'h5': 10, 'sw': 10}
+r5 [-] 103,762 (inc 103,762, esc 0, pk 44) delta={'h2': 13, 'sw': 10}
+r5: no improvement, random restart nudge
+
+BEST: score=104,326
+params={'h0': 6, 'h1': 8, 'h2': 13, 'h3': 12, 'h4': 12, 'h5': 8, 'cows': 8, 'sheep': 6, 'ne': 7, 'sw': 10, 'sb_cap': 44, 'pb_low': 3, 'pb_high': 2}

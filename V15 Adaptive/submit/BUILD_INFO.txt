@@ -1,0 +1,9 @@
+version: HI_AgriBot_v15_AdaptivePortfolio
+built: 2026-08-09 20:48:04
+source: agent/main.py
+smoke_score_p0: skipped
+tarball: HI_AgriBot_v15_AdaptivePortfolio.tar.gz (25202 bytes)
+sha256: b39474e5bdda32de4c295a7f84b88275b4b4d0c027f1867a6ede34601d251ce6
+
+Submit with:
+  kaggle competitions submit kaggriculture -f submit/HI_AgriBot_v15_AdaptivePortfolio.tar.gz -m "HI_AgriBot_v15_AdaptivePortfolio"
