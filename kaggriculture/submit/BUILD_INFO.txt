@@ -1,9 +1,0 @@
-version: HI_AgriBot_v9.1_FieldMarshalII
-built: 2026-08-09 00:20:57
-source: agent/main.py
-smoke_score_p0: 101634
-tarball: HI_AgriBot_v9.1_FieldMarshalII.tar.gz (14322 bytes)
-sha256: 07671b7081d9cb09aa3d854214a3d978d66b73291a269538536ffe5dfae3327c
-
-Submit with:
-  kaggle competitions submit kaggriculture -f submit/HI_AgriBot_v9.1_FieldMarshalII.tar.gz -m "HI_AgriBot_v9.1_FieldMarshalII"
