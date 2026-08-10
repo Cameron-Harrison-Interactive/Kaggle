@@ -1,0 +1,9 @@
+version: HI_AgriBot_v18_Adapt2Survive
+built: 2026-08-10 02:38:34
+source: agent/main.py
+smoke_score_p0: 136485
+tarball: HI_AgriBot_v18_Adapt2Survive.tar.gz (26142 bytes)
+sha256: f3f2716236e072f826dabc2e51e2f634e1e1aa67feacbe24fa67d752768f631a
+
+Submit with:
+  kaggle competitions submit kaggriculture -f submit/HI_AgriBot_v18_Adapt2Survive.tar.gz -m "HI_AgriBot_v18_Adapt2Survive"

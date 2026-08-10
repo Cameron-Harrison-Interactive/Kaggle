@@ -1,0 +1,57 @@
+{
+  "team_id": 16672202,
+  "team": "HealthStone",
+  "top_sub": 55341106,
+  "picked": [
+    {
+      "eid": 90927489,
+      "hs_reward": 154931,
+      "hs_seat": 1,
+      "hs_sub": 55342943,
+      "opp_reward": 38009,
+      "opp_sub": 55342537,
+      "opp_team": "pooja sandali",
+      "create": "2026-08-08 06:15:47.681000"
+    },
+    {
+      "eid": 90972620,
+      "hs_reward": 152270,
+      "hs_seat": 0,
+      "hs_sub": 55342943,
+      "opp_reward": 141933,
+      "opp_sub": 55343123,
+      "opp_team": "OceanMix",
+      "create": "2026-08-08 09:51:53.807000"
+    },
+    {
+      "eid": 90909860,
+      "hs_reward": 151412,
+      "hs_seat": 0,
+      "hs_sub": 55341106,
+      "opp_reward": 66058,
+      "opp_sub": 55290647,
+      "opp_team": "Axit",
+      "create": "2026-08-08 04:51:51.943000"
+    },
+    {
+      "eid": 90942713,
+      "hs_reward": 140853,
+      "hs_seat": 0,
+      "hs_sub": 55341106,
+      "opp_reward": 137973,
+      "opp_sub": 55340360,
+      "opp_team": "Auxileon",
+      "create": "2026-08-08 07:27:47.778000"
+    },
+    {
+      "eid": 91456308,
+      "hs_reward": 140596,
+      "hs_seat": 1,
+      "hs_sub": 55341106,
+      "opp_reward": 139954,
+      "opp_sub": 55380380,
+      "opp_team": "Elzandi Irfan Zikra",
+      "create": "2026-08-09 22:32:12.617000"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "team_id": 16630516,
+  "team": "Seb",
+  "picked": [
+    {
+      "eid": 90442423,
+      "reward": 183082,
+      "seat": 1,
+      "sub": 55299100,
+      "opp_reward": 28916,
+      "opp_team": "Shijian Wen",
+      "opp_sub": 55295001
+    },
+    {
+      "eid": 90699383,
+      "reward": 165822,
+      "seat": 0,
+      "sub": 55323652,
+      "opp_reward": 85577,
+      "opp_team": "Quy\u1ec1n Th\u1ecbnh",
+      "opp_sub": 55296402
+    },
+    {
+      "eid": 90701764,
+      "reward": 160874,
+      "seat": 0,
+      "sub": 55323652,
+      "opp_reward": 133700,
+      "opp_team": "Jeff Horon",
+      "opp_sub": 55169107
+    },
+    {
+      "eid": 90700185,
+      "reward": 159789,
+      "seat": 0,
+      "sub": 55323652,
+      "opp_reward": 82278,
+      "opp_team": "`",
+      "opp_sub": 55203743
+    },
+    {
+      "eid": 90698587,
+      "reward": 159170,
+      "seat": 1,
+      "sub": 55323652,
+      "opp_reward": 31587,
+      "opp_team": "Kendamarron",
+      "opp_sub": 55133012
+    }
+  ],
+  "subs": [
+    55323652,
+    55299100
+  ]
+}
