@@ -1,0 +1,14 @@
+{"name": "s0+f0+e8", "key": "8aa2b29b85c8ac3a", "gate_avg": 838.75, "gate_wins": 2, "gate_games": 4, "reward_p0": 167884.0, "max_crops": 62, "weeds_d15": 1, "missed_water": 0, "keep": true, "time_s": 33.8}
+{"name": "s0+f4+e0", "key": "9e7a532e2b9572fe", "gate_avg": -61249.75, "gate_wins": 0, "gate_games": 4, "reward_p0": 948.0, "max_crops": 13, "weeds_d15": 16, "missed_water": 0, "keep": false, "time_s": 28.9}
+{"name": "s0+f0+e0", "key": "bf21a9e8fbc5a384", "gate_avg": 838.75, "gate_wins": 2, "gate_games": 4, "reward_p0": 167978.0, "max_crops": 62, "weeds_d15": 1, "missed_water": 0, "keep": true, "time_s": 34.5}
+{"name": "s0+f0+e4", "key": "201d892026f24947", "gate_avg": 838.75, "gate_wins": 2, "gate_games": 4, "reward_p0": 167884.0, "max_crops": 62, "weeds_d15": 1, "missed_water": 0, "keep": true, "time_s": 33.6}
+{"name": "s0+f4+e4", "key": "e37404f7894e605d", "gate_avg": -61249.75, "gate_wins": 0, "gate_games": 4, "reward_p0": 948.0, "max_crops": 13, "weeds_d15": 16, "missed_water": 0, "keep": false, "time_s": 28.0}
+{"name": "s0+f4+e8", "key": "c125228ebc279311", "gate_avg": -61249.75, "gate_wins": 0, "gate_games": 4, "reward_p0": 948.0, "max_crops": 13, "weeds_d15": 16, "missed_water": 0, "keep": false, "time_s": 27.2}
+{"name": "s0+f8+e0", "key": "9195ee4b54fc23bf", "gate_avg": -94205.75, "gate_wins": 0, "gate_games": 4, "reward_p0": 57049.0, "max_crops": 33, "weeds_d15": 12, "missed_water": 0, "keep": false, "time_s": 29.3}
+{"name": "s0+f8+e4", "key": "02c221368330dcd5", "gate_avg": -94205.75, "gate_wins": 0, "gate_games": 4, "reward_p0": 57049.0, "max_crops": 33, "weeds_d15": 12, "missed_water": 0, "keep": false, "time_s": 27.7}
+{"name": "s0+f8+e8", "key": "871df074e3322180", "gate_avg": -94205.75, "gate_wins": 0, "gate_games": 4, "reward_p0": 57049.0, "max_crops": 33, "weeds_d15": 12, "missed_water": 0, "keep": false, "time_s": 27.8}
+{"name": "s-6+f0+e0", "key": "e22ef8c7d47d56ba", "gate_avg": -155263.0, "gate_wins": 0, "gate_games": 4, "reward_p0": 15135.0, "max_crops": 15, "weeds_d15": 8, "missed_water": 0, "keep": false, "time_s": 24.6}
+{"name": "s-6+f0+e4", "key": "6ee336b88bcadc03", "gate_avg": -155263.0, "gate_wins": 0, "gate_games": 4, "reward_p0": 11.0, "max_crops": 10, "weeds_d15": 15, "missed_water": 0, "keep": false, "time_s": 24.7}
+{"name": "s-6+f0+e8", "key": "50acfa8c225b4cbd", "gate_avg": -155263.0, "gate_wins": 0, "gate_games": 4, "reward_p0": 11.0, "max_crops": 10, "weeds_d15": 15, "missed_water": 0, "keep": false, "time_s": 24.1}
+{"name": "s-6+f4+e0", "key": "15bdbf2eb8dc5737", "gate_avg": -151758.25, "gate_wins": 0, "gate_games": 4, "reward_p0": 6799.0, "max_crops": 12, "weeds_d15": 15, "missed_water": 0, "keep": false, "time_s": 36.5}
+{"name": "s-6+f4+e4", "key": "f6a4f7b7153c0bdd", "gate_avg": -151758.25, "gate_wins": 0, "gate_games": 4, "reward_p0": 6799.0, "max_crops": 12, "weeds_d15": 15, "missed_water": 0, "keep": false, "time_s": 36.1}
