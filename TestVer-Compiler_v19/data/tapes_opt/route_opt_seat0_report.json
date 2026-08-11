@@ -1,0 +1,8 @@
+{
+ "seat": 0,
+ "base_score": -1583.0,
+ "best_score": -1583.0,
+ "n_water_patches": 10,
+ "n_plant_patches": 17,
+ "out": "/home/user/kaggriculture/data/tapes_opt/route_opt_seat0.json"
+}
