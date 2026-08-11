@@ -1,0 +1,117 @@
+{
+ "champion": "BASE",
+ "suite": [
+  "v14.5",
+  "v15",
+  "v18",
+  "v18.5mt",
+  "v18.6",
+  "v18.7",
+  "v18.8"
+ ],
+ "seeds": [
+  1,
+  2,
+  3
+ ],
+ "scores": {
+  "v14.5": {
+   "wins": 5,
+   "games": 6,
+   "avg": 3223.0
+  },
+  "v15": {
+   "wins": 5,
+   "games": 6,
+   "avg": 3223.0
+  },
+  "v18": {
+   "wins": 1,
+   "games": 6,
+   "avg": -346.0
+  },
+  "v18.5mt": {
+   "wins": 1,
+   "games": 6,
+   "avg": -340.0
+  },
+  "v18.6": {
+   "wins": 1,
+   "games": 6,
+   "avg": -346.0
+  },
+  "v18.7": {
+   "wins": 5,
+   "games": 6,
+   "avg": 3223.0
+  },
+  "v18.8": {
+   "wins": 1,
+   "games": 6,
+   "avg": -346.0
+  }
+ },
+ "summary": {
+  "worst_opp_avg": -345.6666666666667,
+  "total_wins": 19,
+  "total_games": 42,
+  "losses": 23
+ },
+ "sell_ledger": {
+  "FERTILIZER": {
+   "total": 245,
+   "first_step": 48,
+   "last_step": 716,
+   "batches": 52,
+   "avg_batch": 4.7,
+   "first_day": 2,
+   "last_day": 29
+  },
+  "WHEAT": {
+   "total": 459,
+   "first_step": 120,
+   "last_step": 718,
+   "batches": 40,
+   "avg_batch": 11.5,
+   "first_day": 5,
+   "last_day": 29
+  },
+  "WOOL": {
+   "total": 132,
+   "first_step": 160,
+   "last_step": 672,
+   "batches": 13,
+   "avg_batch": 10.2,
+   "first_day": 6,
+   "last_day": 28
+  },
+  "MILK": {
+   "total": 218,
+   "first_step": 216,
+   "last_step": 715,
+   "batches": 32,
+   "avg_batch": 6.8,
+   "first_day": 9,
+   "last_day": 29
+  },
+  "MELON": {
+   "total": 114,
+   "first_step": 252,
+   "last_step": 528,
+   "batches": 17,
+   "avg_batch": 6.7,
+   "first_day": 10,
+   "last_day": 22
+  },
+  "STRAWBERRY": {
+   "total": 285,
+   "first_step": 336,
+   "last_step": 648,
+   "batches": 17,
+   "avg_batch": 16.8,
+   "first_day": 14,
+   "last_day": 27
+  }
+ },
+ "beats_all_no_sweat": false
+}
