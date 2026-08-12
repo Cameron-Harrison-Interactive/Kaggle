@@ -1,0 +1,75 @@
+{
+ "champion": "s0+e8",
+ "beats_all_no_sweat": false,
+ "scores": {
+  "v18": {
+   "wins": 1,
+   "games": 2,
+   "avg": 654.0
+  }
+ },
+ "worst_avg": 654.0,
+ "losses": 1,
+ "sell_ledger": {
+  "FERTILIZER": {
+   "total": 245,
+   "first_step": 48,
+   "last_step": 716,
+   "batches": 52,
+   "avg_batch": 4.7,
+   "first_day": 2,
+   "last_day": 29
+  },
+  "WHEAT": {
+   "total": 459,
+   "first_step": 120,
+   "last_step": 718,
+   "batches": 40,
+   "avg_batch": 11.5,
+   "first_day": 5,
+   "last_day": 29
+  },
+  "WOOL": {
+   "total": 132,
+   "first_step": 160,
+   "last_step": 672,
+   "batches": 13,
+   "avg_batch": 10.2,
+   "first_day": 6,
+   "last_day": 28
+  },
+  "MILK": {
+   "total": 218,
+   "first_step": 216,
+   "last_step": 715,
+   "batches": 32,
+   "avg_batch": 6.8,
+   "first_day": 9,
+   "last_day": 29
+  },
+  "MELON": {
+   "total": 114,
+   "first_step": 252,
+   "last_step": 528,
+   "batches": 17,
+   "avg_batch": 6.7,
+   "first_day": 10,
+   "last_day": 22
+  },
+  "STRAWBERRY": {
+   "total": 285,
+   "first_step": 336,
+   "last_step": 648,
+   "batches": 17,
+   "avg_batch": 16.8,
+   "first_day": 14,
+   "last_day": 27
+  }
+ },
+ "reward_p0": 167978.0,
+ "max_crops": 62,
+ "missed_water": 0,
+ "grid_size": 4,
+ "finalists": 2,
+ "variants_per_hour": 171
+}
