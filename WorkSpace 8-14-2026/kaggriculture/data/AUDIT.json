@@ -1,0 +1,1097 @@
+[
+  {
+    "eid": 91480578,
+    "seat": 1,
+    "us": 149747.0,
+    "opp": 87889.0,
+    "margin": 61858.0,
+    "sells": {
+      "FERTILIZER": 254,
+      "WHEAT": 446,
+      "WOOL": 147,
+      "MILK": 223,
+      "MELON": 102,
+      "STRAWBERRY": 284
+    },
+    "plants": {
+      "MELON": 17,
+      "WHEAT": 146,
+      "STRAWBERRY": 38
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 147,
+      "MELON": 19,
+      "STRAWBERRY": 39
+    },
+    "hires": 279,
+    "peak_weeds": 9,
+    "peak_unwatered": 34,
+    "weeds_d15": 8,
+    "weeds_d24": 9,
+    "crops_d15": 53,
+    "money_d10": 5688.0,
+    "money_d15": 20241.0,
+    "money_d20": 66332.0,
+    "money_d25": 114576.0,
+    "opp_straw_d10": 9,
+    "opp_straw_d15": 24,
+    "straw_price_d15": 224.0,
+    "straw_price_d20": 228.0,
+    "straw_price_d25": 229.0,
+    "melon_price_d15": 243.0,
+    "milk_price_d20": 242.0,
+    "low_straw_sells": 0,
+    "low_melon_sells": 0,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 2,
+      "18": 32,
+      "19": 8,
+      "20": 34,
+      "21": 20,
+      "22": 52,
+      "23": 28,
+      "24": 20,
+      "25": 28,
+      "26": 8,
+      "27": 28,
+      "28": 4
+    },
+    "end_shed": {},
+    "fert_sold": 254,
+    "shed_mid": [
+      [
+        15,
+        {
+          "FERTILIZER": 24,
+          "SHEEP": 2,
+          "WHEAT": 5
+        }
+      ],
+      [
+        20,
+        {
+          "FERTILIZER": 18,
+          "SHEEP": 1,
+          "WHEAT": 13
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 28,
+          "WHEAT": 9
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 9,
+          "WHEAT": 7
+        }
+      ]
+    ],
+    "straw_sold": 284,
+    "melon_sold": 102,
+    "milk_sold": 223,
+    "wheat_sold": 446,
+    "wheat_bought": 257
+  },
+  {
+    "eid": 91478765,
+    "seat": 1,
+    "us": 141311.0,
+    "opp": 56674.0,
+    "margin": 84637.0,
+    "sells": {
+      "FERTILIZER": 251,
+      "WHEAT": 446,
+      "WOOL": 147,
+      "MILK": 223,
+      "MELON": 102,
+      "STRAWBERRY": 284
+    },
+    "plants": {
+      "MELON": 17,
+      "WHEAT": 146,
+      "STRAWBERRY": 38
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 147,
+      "MELON": 19,
+      "STRAWBERRY": 39
+    },
+    "hires": 279,
+    "peak_weeds": 9,
+    "peak_unwatered": 35,
+    "weeds_d15": 8,
+    "weeds_d24": 9,
+    "crops_d15": 54,
+    "money_d10": 7017.0,
+    "money_d15": 22494.0,
+    "money_d20": 64771.0,
+    "money_d25": 110759.0,
+    "opp_straw_d10": 3,
+    "opp_straw_d15": 36,
+    "straw_price_d15": 217.0,
+    "straw_price_d20": 225.0,
+    "straw_price_d25": 216.0,
+    "melon_price_d15": 195.0,
+    "milk_price_d20": 242.0,
+    "low_straw_sells": 0,
+    "low_melon_sells": 24,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 2,
+      "18": 32,
+      "19": 8,
+      "20": 34,
+      "21": 20,
+      "22": 52,
+      "23": 28,
+      "24": 20,
+      "25": 28,
+      "26": 8,
+      "27": 28,
+      "28": 4
+    },
+    "end_shed": {},
+    "fert_sold": 251,
+    "shed_mid": [
+      [
+        15,
+        {
+          "FERTILIZER": 24,
+          "SHEEP": 2,
+          "WHEAT": 5
+        }
+      ],
+      [
+        20,
+        {
+          "FERTILIZER": 17,
+          "SHEEP": 1,
+          "WHEAT": 13
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 25,
+          "WHEAT": 9
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 6,
+          "WHEAT": 7
+        }
+      ]
+    ],
+    "straw_sold": 284,
+    "melon_sold": 102,
+    "milk_sold": 223,
+    "wheat_sold": 446,
+    "wheat_bought": 257
+  },
+  {
+    "eid": 91477855,
+    "seat": 1,
+    "us": 141264.0,
+    "opp": 19871.0,
+    "margin": 121393.0,
+    "sells": {
+      "FERTILIZER": 251,
+      "WHEAT": 446,
+      "WOOL": 147,
+      "MILK": 223,
+      "MELON": 102,
+      "STRAWBERRY": 284
+    },
+    "plants": {
+      "MELON": 17,
+      "WHEAT": 146,
+      "STRAWBERRY": 38
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 147,
+      "MELON": 19,
+      "STRAWBERRY": 39
+    },
+    "hires": 279,
+    "peak_weeds": 9,
+    "peak_unwatered": 35,
+    "weeds_d15": 8,
+    "weeds_d24": 9,
+    "crops_d15": 54,
+    "money_d10": 7878.0,
+    "money_d15": 23964.0,
+    "money_d20": 60610.0,
+    "money_d25": 105734.0,
+    "opp_straw_d10": 0,
+    "opp_straw_d15": 0,
+    "straw_price_d15": 224.0,
+    "straw_price_d20": 226.0,
+    "straw_price_d25": 219.0,
+    "melon_price_d15": 76.0,
+    "milk_price_d20": 221.0,
+    "low_straw_sells": 0,
+    "low_melon_sells": 54,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 2,
+      "18": 32,
+      "19": 8,
+      "20": 34,
+      "21": 20,
+      "22": 52,
+      "23": 28,
+      "24": 20,
+      "25": 28,
+      "26": 8,
+      "27": 28,
+      "28": 4
+    },
+    "end_shed": {},
+    "fert_sold": 251,
+    "shed_mid": [
+      [
+        15,
+        {
+          "FERTILIZER": 24,
+          "SHEEP": 2,
+          "WHEAT": 5
+        }
+      ],
+      [
+        20,
+        {
+          "FERTILIZER": 17,
+          "SHEEP": 1,
+          "WHEAT": 13
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 25,
+          "WHEAT": 9
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 6,
+          "WHEAT": 7
+        }
+      ]
+    ],
+    "straw_sold": 284,
+    "melon_sold": 102,
+    "milk_sold": 223,
+    "wheat_sold": 446,
+    "wheat_bought": 257
+  },
+  {
+    "eid": 91485115,
+    "seat": 0,
+    "us": 137148.0,
+    "opp": 118520.0,
+    "margin": 18628.0,
+    "sells": {
+      "FERTILIZER": 245,
+      "WHEAT": 459,
+      "WOOL": 132,
+      "MILK": 218,
+      "MELON": 114,
+      "STRAWBERRY": 285
+    },
+    "plants": {
+      "MELON": 19,
+      "WHEAT": 146,
+      "STRAWBERRY": 37
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 146,
+      "MELON": 19,
+      "STRAWBERRY": 38
+    },
+    "hires": 266,
+    "peak_weeds": 7,
+    "peak_unwatered": 42,
+    "weeds_d15": 0,
+    "weeds_d24": 7,
+    "crops_d15": 63,
+    "money_d10": 6272.0,
+    "money_d15": 17437.0,
+    "money_d20": 60792.0,
+    "money_d25": 107711.0,
+    "opp_straw_d10": 21,
+    "opp_straw_d15": 40,
+    "straw_price_d15": 245.0,
+    "straw_price_d20": 246.0,
+    "straw_price_d25": 206.0,
+    "melon_price_d15": 195.0,
+    "milk_price_d20": 211.0,
+    "low_straw_sells": 0,
+    "low_melon_sells": 12,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 12,
+      "17": 4,
+      "18": 28,
+      "19": 12,
+      "20": 34,
+      "21": 20,
+      "22": 46,
+      "23": 33,
+      "24": 36,
+      "25": 16,
+      "26": 6,
+      "27": 32
+    },
+    "end_shed": {},
+    "fert_sold": 245,
+    "shed_mid": [
+      [
+        15,
+        {
+          "COW": 1,
+          "FERTILIZER": 24,
+          "WHEAT": 6
+        }
+      ],
+      [
+        20,
+        {
+          "COW": 2,
+          "FERTILIZER": 12,
+          "WHEAT": 12
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 16,
+          "WHEAT": 5
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 1,
+          "WHEAT": 10
+        }
+      ]
+    ],
+    "straw_sold": 285,
+    "melon_sold": 114,
+    "milk_sold": 218,
+    "wheat_sold": 459,
+    "wheat_bought": 234
+  },
+  {
+    "eid": 91484221,
+    "seat": 0,
+    "us": 104744.0,
+    "opp": 78175.0,
+    "margin": 26569.0,
+    "sells": {
+      "FERTILIZER": 245,
+      "WHEAT": 459,
+      "WOOL": 132,
+      "MILK": 218,
+      "MELON": 114,
+      "STRAWBERRY": 285
+    },
+    "plants": {
+      "MELON": 19,
+      "WHEAT": 146,
+      "STRAWBERRY": 37
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 146,
+      "MELON": 19,
+      "STRAWBERRY": 38
+    },
+    "hires": 266,
+    "peak_weeds": 7,
+    "peak_unwatered": 42,
+    "weeds_d15": 0,
+    "weeds_d24": 7,
+    "crops_d15": 63,
+    "money_d10": 6190.0,
+    "money_d15": 16815.0,
+    "money_d20": 55015.0,
+    "money_d25": 86069.0,
+    "opp_straw_d10": 21,
+    "opp_straw_d15": 40,
+    "straw_price_d15": 211.0,
+    "straw_price_d20": 196.0,
+    "straw_price_d25": 37.0,
+    "melon_price_d15": 195.0,
+    "milk_price_d20": 156.0,
+    "low_straw_sells": 62,
+    "low_melon_sells": 12,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 12,
+      "17": 4,
+      "18": 28,
+      "19": 12,
+      "20": 34,
+      "21": 20,
+      "22": 46,
+      "23": 33,
+      "24": 36,
+      "25": 16,
+      "26": 6,
+      "27": 32
+    },
+    "end_shed": {},
+    "fert_sold": 245,
+    "shed_mid": [
+      [
+        15,
+        {
+          "COW": 1,
+          "FERTILIZER": 24,
+          "WHEAT": 6
+        }
+      ],
+      [
+        20,
+        {
+          "COW": 2,
+          "FERTILIZER": 12,
+          "WHEAT": 12
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 16,
+          "WHEAT": 5
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 1,
+          "WHEAT": 10
+        }
+      ]
+    ],
+    "straw_sold": 285,
+    "melon_sold": 114,
+    "milk_sold": 218,
+    "wheat_sold": 459,
+    "wheat_bought": 234
+  },
+  {
+    "eid": 91483319,
+    "seat": 1,
+    "us": 98119.0,
+    "opp": 88359.0,
+    "margin": 9760.0,
+    "sells": {
+      "FERTILIZER": 251,
+      "WHEAT": 446,
+      "WOOL": 147,
+      "MILK": 223,
+      "MELON": 102,
+      "STRAWBERRY": 284
+    },
+    "plants": {
+      "MELON": 17,
+      "WHEAT": 146,
+      "STRAWBERRY": 38
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 147,
+      "MELON": 19,
+      "STRAWBERRY": 39
+    },
+    "hires": 279,
+    "peak_weeds": 9,
+    "peak_unwatered": 35,
+    "weeds_d15": 8,
+    "weeds_d24": 9,
+    "crops_d15": 54,
+    "money_d10": 7599.0,
+    "money_d15": 21800.0,
+    "money_d20": 57469.0,
+    "money_d25": 83475.0,
+    "opp_straw_d10": 21,
+    "opp_straw_d15": 40,
+    "straw_price_d15": 218.0,
+    "straw_price_d20": 196.0,
+    "straw_price_d25": 12.0,
+    "melon_price_d15": 195.0,
+    "milk_price_d20": 70.0,
+    "low_straw_sells": 68,
+    "low_melon_sells": 6,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 2,
+      "18": 32,
+      "19": 8,
+      "20": 34,
+      "21": 20,
+      "22": 52,
+      "23": 28,
+      "24": 20,
+      "25": 28,
+      "26": 8,
+      "27": 28,
+      "28": 4
+    },
+    "end_shed": {},
+    "fert_sold": 251,
+    "shed_mid": [
+      [
+        15,
+        {
+          "FERTILIZER": 24,
+          "SHEEP": 2,
+          "WHEAT": 5
+        }
+      ],
+      [
+        20,
+        {
+          "FERTILIZER": 17,
+          "SHEEP": 1,
+          "WHEAT": 13
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 25,
+          "WHEAT": 9
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 6,
+          "WHEAT": 7
+        }
+      ]
+    ],
+    "straw_sold": 284,
+    "melon_sold": 102,
+    "milk_sold": 223,
+    "wheat_sold": 446,
+    "wheat_bought": 257
+  },
+  {
+    "eid": 91479665,
+    "seat": 1,
+    "us": 92038.0,
+    "opp": 22513.0,
+    "margin": 69525.0,
+    "sells": {
+      "FERTILIZER": 251,
+      "WHEAT": 446,
+      "WOOL": 147,
+      "MILK": 223,
+      "MELON": 102,
+      "STRAWBERRY": 284
+    },
+    "plants": {
+      "MELON": 17,
+      "WHEAT": 146,
+      "STRAWBERRY": 38
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 147,
+      "MELON": 19,
+      "STRAWBERRY": 39
+    },
+    "hires": 279,
+    "peak_weeds": 9,
+    "peak_unwatered": 35,
+    "weeds_d15": 8,
+    "weeds_d24": 9,
+    "crops_d15": 54,
+    "money_d10": 7402.0,
+    "money_d15": 19387.0,
+    "money_d20": 49121.0,
+    "money_d25": 75409.0,
+    "opp_straw_d10": 5,
+    "opp_straw_d15": 25,
+    "straw_price_d15": 184.0,
+    "straw_price_d20": 175.0,
+    "straw_price_d25": 36.0,
+    "melon_price_d15": 228.0,
+    "milk_price_d20": 11.0,
+    "low_straw_sells": 40,
+    "low_melon_sells": 0,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 2,
+      "18": 32,
+      "19": 8,
+      "20": 34,
+      "21": 20,
+      "22": 52,
+      "23": 28,
+      "24": 20,
+      "25": 28,
+      "26": 8,
+      "27": 28,
+      "28": 4
+    },
+    "end_shed": {},
+    "fert_sold": 251,
+    "shed_mid": [
+      [
+        15,
+        {
+          "FERTILIZER": 24,
+          "SHEEP": 2,
+          "WHEAT": 5
+        }
+      ],
+      [
+        20,
+        {
+          "FERTILIZER": 17,
+          "SHEEP": 1,
+          "WHEAT": 13
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 25,
+          "WHEAT": 9
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 6,
+          "WHEAT": 7
+        }
+      ]
+    ],
+    "straw_sold": 284,
+    "melon_sold": 102,
+    "milk_sold": 223,
+    "wheat_sold": 446,
+    "wheat_bought": 257
+  },
+  {
+    "eid": 91486028,
+    "seat": 1,
+    "us": 85176.0,
+    "opp": 77742.0,
+    "margin": 7434.0,
+    "sells": {
+      "FERTILIZER": 253,
+      "WHEAT": 446,
+      "WOOL": 147,
+      "MILK": 223,
+      "MELON": 102,
+      "STRAWBERRY": 284
+    },
+    "plants": {
+      "MELON": 17,
+      "WHEAT": 146,
+      "STRAWBERRY": 38
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 147,
+      "MELON": 19,
+      "STRAWBERRY": 39
+    },
+    "hires": 279,
+    "peak_weeds": 9,
+    "peak_unwatered": 35,
+    "weeds_d15": 8,
+    "weeds_d24": 9,
+    "crops_d15": 53,
+    "money_d10": 5642.0,
+    "money_d15": 14325.0,
+    "money_d20": 42635.0,
+    "money_d25": 68074.0,
+    "opp_straw_d10": 21,
+    "opp_straw_d15": 40,
+    "straw_price_d15": 219.0,
+    "straw_price_d20": 219.0,
+    "straw_price_d25": 182.0,
+    "melon_price_d15": 195.0,
+    "milk_price_d20": 26.0,
+    "low_straw_sells": 0,
+    "low_melon_sells": 6,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 2,
+      "18": 32,
+      "19": 8,
+      "20": 34,
+      "21": 20,
+      "22": 52,
+      "23": 28,
+      "24": 20,
+      "25": 28,
+      "26": 8,
+      "27": 28,
+      "28": 4
+    },
+    "end_shed": {},
+    "fert_sold": 253,
+    "shed_mid": [
+      [
+        15,
+        {
+          "FERTILIZER": 24,
+          "SHEEP": 2,
+          "WHEAT": 5
+        }
+      ],
+      [
+        20,
+        {
+          "FERTILIZER": 18,
+          "SHEEP": 1,
+          "WHEAT": 13
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 27,
+          "WHEAT": 9
+        }
+      ],
+      [
+        28,
+        {
+          "FERTILIZER": 8,
+          "WHEAT": 7
+        }
+      ]
+    ],
+    "straw_sold": 284,
+    "melon_sold": 102,
+    "milk_sold": 223,
+    "wheat_sold": 446,
+    "wheat_bought": 257
+  },
+  {
+    "eid": 91481479,
+    "seat": 0,
+    "us": 78819.0,
+    "opp": 65761.0,
+    "margin": 13058.0,
+    "sells": {
+      "FERTILIZER": 245,
+      "WHEAT": 472,
+      "WOOL": 132,
+      "MILK": 218,
+      "MELON": 114,
+      "STRAWBERRY": 285
+    },
+    "plants": {
+      "MELON": 19,
+      "WHEAT": 146,
+      "STRAWBERRY": 37
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 146,
+      "MELON": 19,
+      "STRAWBERRY": 38
+    },
+    "hires": 266,
+    "peak_weeds": 7,
+    "peak_unwatered": 42,
+    "weeds_d15": 0,
+    "weeds_d24": 7,
+    "crops_d15": 60,
+    "money_d10": 4735.0,
+    "money_d15": 13168.0,
+    "money_d20": 42949.0,
+    "money_d25": 63597.0,
+    "opp_straw_d10": 25,
+    "opp_straw_d15": 47,
+    "straw_price_d15": 201.0,
+    "straw_price_d20": 165.0,
+    "straw_price_d25": 24.0,
+    "melon_price_d15": 219.0,
+    "milk_price_d20": 1.0,
+    "low_straw_sells": 123,
+    "low_melon_sells": 12,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 12,
+      "17": 4,
+      "18": 28,
+      "19": 12,
+      "20": 34,
+      "21": 20,
+      "22": 46,
+      "23": 33,
+      "24": 36,
+      "25": 16,
+      "26": 6,
+      "27": 32
+    },
+    "end_shed": {},
+    "fert_sold": 245,
+    "shed_mid": [
+      [
+        15,
+        {
+          "COW": 1,
+          "FERTILIZER": 18,
+          "WHEAT": 5
+        }
+      ],
+      [
+        20,
+        {
+          "COW": 2,
+          "FERTILIZER": 5,
+          "WHEAT": 17
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 6,
+          "WHEAT": 15
+        }
+      ],
+      [
+        28,
+        {
+          "WHEAT": 23
+        }
+      ]
+    ],
+    "straw_sold": 285,
+    "melon_sold": 114,
+    "milk_sold": 218,
+    "wheat_sold": 472,
+    "wheat_bought": 234
+  },
+  {
+    "eid": 91476373,
+    "seat": 1,
+    "us": 54065.0,
+    "opp": 54912.0,
+    "margin": -847.0,
+    "sells": {
+      "FERTILIZER": 248,
+      "WHEAT": 457,
+      "WOOL": 147,
+      "MILK": 223,
+      "MELON": 102,
+      "STRAWBERRY": 284
+    },
+    "plants": {
+      "MELON": 17,
+      "WHEAT": 146,
+      "STRAWBERRY": 38
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "WHEAT": 147,
+      "MELON": 19,
+      "STRAWBERRY": 39
+    },
+    "hires": 279,
+    "peak_weeds": 5,
+    "peak_unwatered": 33,
+    "weeds_d15": 2,
+    "weeds_d24": 5,
+    "crops_d15": 51,
+    "money_d10": 5492.0,
+    "money_d15": 13378.0,
+    "money_d20": 35327.0,
+    "money_d25": 43876.0,
+    "opp_straw_d10": 29,
+    "opp_straw_d15": 29,
+    "straw_price_d15": 193.0,
+    "straw_price_d20": 150.0,
+    "straw_price_d25": 47.0,
+    "melon_price_d15": 231.0,
+    "milk_price_d20": 7.0,
+    "low_straw_sells": 146,
+    "low_melon_sells": 0,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 2,
+      "18": 32,
+      "19": 8,
+      "20": 34,
+      "21": 20,
+      "22": 52,
+      "23": 28,
+      "24": 20,
+      "25": 28,
+      "26": 8,
+      "27": 28,
+      "28": 4
+    },
+    "end_shed": {},
+    "fert_sold": 248,
+    "shed_mid": [
+      [
+        15,
+        {
+          "FERTILIZER": 20,
+          "SHEEP": 2,
+          "WHEAT": 7
+        }
+      ],
+      [
+        20,
+        {
+          "FERTILIZER": 7,
+          "SHEEP": 1,
+          "WHEAT": 15
+        }
+      ],
+      [
+        25,
+        {
+          "FERTILIZER": 17,
+          "WHEAT": 11
+        }
+      ],
+      [
+        28,
+        {
+          "WHEAT": 16
+        }
+      ]
+    ],
+    "straw_sold": 284,
+    "melon_sold": 102,
+    "milk_sold": 223,
+    "wheat_sold": 457,
+    "wheat_bought": 257
+  },
+  {
+    "eid": 91482398,
+    "seat": 1,
+    "us": 39936.0,
+    "opp": 82018.0,
+    "margin": -42082.0,
+    "sells": {
+      "WHEAT": 506,
+      "FERTILIZER": 240,
+      "WOOL": 156,
+      "MILK": 182,
+      "MELON": 96,
+      "STRAWBERRY": 263
+    },
+    "plants": {
+      "MELON": 19,
+      "WHEAT": 37,
+      "STRAWBERRY": 41
+    },
+    "tomato_plants": 0,
+    "buys_seed": {
+      "MELON": 19,
+      "WHEAT": 37,
+      "STRAWBERRY": 41
+    },
+    "hires": 303,
+    "peak_weeds": 3,
+    "peak_unwatered": 28,
+    "weeds_d15": 0,
+    "weeds_d24": 1,
+    "crops_d15": 55,
+    "money_d10": 1792.0,
+    "money_d15": 7227.0,
+    "money_d20": 21895.0,
+    "money_d25": 31291.0,
+    "opp_straw_d10": 35,
+    "opp_straw_d15": 35,
+    "straw_price_d15": 209.0,
+    "straw_price_d20": 188.0,
+    "straw_price_d25": 128.0,
+    "melon_price_d15": 231.0,
+    "milk_price_d20": 3.0,
+    "low_straw_sells": 0,
+    "low_melon_sells": 36,
+    "straw_sell_by_day": {
+      "14": 6,
+      "16": 14,
+      "17": 18,
+      "18": 14,
+      "19": 10,
+      "20": 14,
+      "21": 17,
+      "22": 16,
+      "23": 24,
+      "24": 14,
+      "25": 9,
+      "26": 31,
+      "27": 8,
+      "28": 36,
+      "29": 32
+    },
+    "end_shed": {},
+    "fert_sold": 240,
+    "shed_mid": [
+      [
+        15,
+        {
+          "WHEAT": 28,
+          "WOOL": 14
+        }
+      ],
+      [
+        20,
+        {
+          "MILK": 3,
+          "WHEAT": 31,
+          "WOOL": 11
+        }
+      ],
+      [
+        25,
+        {
+          "MILK": 3,
+          "WHEAT": 28,
+          "WOOL": 7
+        }
+      ],
+      [
+        28,
+        {
+          "WHEAT": 22
+        }
+      ]
+    ],
+    "straw_sold": 263,
+    "melon_sold": 96,
+    "milk_sold": 182,
+    "wheat_sold": 506,
+    "wheat_bought": 716
+  }
+]

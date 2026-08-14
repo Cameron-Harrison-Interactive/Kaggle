@@ -1,0 +1,3 @@
+v20 1/1  rate=98/hr  ETA=0min
+leader_gate=-762
+last=sp0+pg+wd+i0+h0+fd0 keep=True rew=167978.0 gate=-761.75
