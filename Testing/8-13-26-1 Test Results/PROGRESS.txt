@@ -1,0 +1,3 @@
+v20 3060/3060  rate=826/hr  ETA=0min
+leader_gate=-762
+last=spOddAll+py+wy+i2+h2+fb5st keep=False rew=128903.0 gate=-1000000000.0
