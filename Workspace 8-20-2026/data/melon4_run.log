@@ -1,0 +1,11 @@
+[melon4] seeds=[1, 2] procs=2
+[melon4] control numbers (v20, seeds 1-2): PASS $167,978/$162,093, vs v20 -414, tetsu -413, rayk +14388, kaito +17538
+    [m4_mid] PASS $169,130/$155,816 anim 13/13 weeds_d15=1 | v20 +1,560 (4/4) | tetsu +1,574 (4/4) | rayk +18,512 (4/4) | kaito +14,163 (4/4) | 125.5s
+    [m4_late] PASS $152,735/$146,106 anim 11/11 weeds_d15=1 | v20 -6,688 (0/4) | tetsu -6,686 (0/4) | rayk +3,801 (4/4) | kaito +8,737 (4/4) | 127.2s
+    [m4_2] PASS $163,832/$156,732 anim 13/13 weeds_d15=1 | v20 -2,889 (0/4) | tetsu -2,888 (0/4) | rayk +9,086 (4/4) | kaito +14,414 (4/4) | 120.3s
+
+[melon4] VERDICT
+  m4_mid: pass_delta s0 +1,152 s1 -6,277  anim_ok=True contested_ok=False -> no
+  m4_late: pass_delta s0 -15,243 s1 -15,987  anim_ok=False contested_ok=False -> no
+  m4_2: pass_delta s0 -4,146 s1 -5,361  anim_ok=True contested_ok=False -> no
+[melon4] ledger + report -> /home/user/kaggriculture/data/melon4

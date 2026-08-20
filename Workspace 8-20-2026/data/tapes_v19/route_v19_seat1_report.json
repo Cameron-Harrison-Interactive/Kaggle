@@ -1,0 +1,159 @@
+{
+ "seed": 1,
+ "seat": 1,
+ "ref_reward": 155650.0,
+ "plants": 62,
+ "anchors": 2904,
+ "days": [
+  {
+   "day": 0,
+   "water_done": 10,
+   "water_missed": 0
+  },
+  {
+   "day": 1,
+   "water_done": 10,
+   "water_missed": 0
+  },
+  {
+   "day": 2,
+   "water_done": 8,
+   "water_missed": 2
+  },
+  {
+   "day": 3,
+   "water_done": 12,
+   "water_missed": 2
+  },
+  {
+   "day": 4,
+   "water_done": 7,
+   "water_missed": 7
+  },
+  {
+   "day": 5,
+   "water_done": 12,
+   "water_missed": 7
+  },
+  {
+   "day": 6,
+   "water_done": 4,
+   "water_missed": 17
+  },
+  {
+   "day": 7,
+   "water_done": 8,
+   "water_missed": 25
+  },
+  {
+   "day": 8,
+   "water_done": 10,
+   "water_missed": 28
+  },
+  {
+   "day": 9,
+   "water_done": 23,
+   "water_missed": 15
+  },
+  {
+   "day": 10,
+   "water_done": 25,
+   "water_missed": 34
+  },
+  {
+   "day": 11,
+   "water_done": 29,
+   "water_missed": 32
+  },
+  {
+   "day": 12,
+   "water_done": 28,
+   "water_missed": 33
+  },
+  {
+   "day": 13,
+   "water_done": 26,
+   "water_missed": 35
+  },
+  {
+   "day": 14,
+   "water_done": 29,
+   "water_missed": 32
+  },
+  {
+   "day": 15,
+   "water_done": 16,
+   "water_missed": 45
+  },
+  {
+   "day": 16,
+   "water_done": 30,
+   "water_missed": 31
+  },
+  {
+   "day": 17,
+   "water_done": 8,
+   "water_missed": 52
+  },
+  {
+   "day": 18,
+   "water_done": 22,
+   "water_missed": 38
+  },
+  {
+   "day": 19,
+   "water_done": 21,
+   "water_missed": 39
+  },
+  {
+   "day": 20,
+   "water_done": 11,
+   "water_missed": 49
+  },
+  {
+   "day": 21,
+   "water_done": 21,
+   "water_missed": 38
+  },
+  {
+   "day": 22,
+   "water_done": 16,
+   "water_missed": 43
+  },
+  {
+   "day": 23,
+   "water_done": 12,
+   "water_missed": 48
+  },
+  {
+   "day": 24,
+   "water_done": 14,
+   "water_missed": 46
+  },
+  {
+   "day": 25,
+   "water_done": 21,
+   "water_missed": 39
+  },
+  {
+   "day": 26,
+   "water_done": 18,
+   "water_missed": 43
+  },
+  {
+   "day": 27,
+   "water_done": 10,
+   "water_missed": 51
+  },
+  {
+   "day": 28,
+   "water_done": 7,
+   "water_missed": 42
+  },
+  {
+   "day": 29,
+   "water_done": 6,
+   "water_missed": 26
+  }
+ ]
+}

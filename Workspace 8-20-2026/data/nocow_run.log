@@ -1,0 +1,9 @@
+[nocow] seeds=[1, 2] procs=2
+[nocow] control (v20): PASS $167,978  vs v20 -414 tetsu -413 rayk +14388 kaito +17538  escapes=1
+    [nocow] PASS $177,584/$166,811 anim 13/13 escapes=0 | v20 -786 (2/4) | tetsu -789 (2/4) | rayk +20,952 (4/4) | kaito +16,455 (4/4) | 129.6s
+    [feed74] PASS $163,108/$157,280 anim 13/13 escapes=1 | v20 -1,807 (0/4) | tetsu -1,805 (0/4) | rayk +10,104 (4/4) | kaito +15,884 (4/4) | 137.2s
+
+[nocow] VERDICT
+  nocow: PASS 177,584/166,811 anim 13/13 escapes=0 -> no
+  feed74: PASS 163,108/157,280 anim 13/13 escapes=1 -> no
+[nocow] report -> /home/user/kaggriculture/data/nocow

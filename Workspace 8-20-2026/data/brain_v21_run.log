@@ -1,0 +1,17 @@
+[brain_v21] seeds=[1] procs=2
+[brain_v21] base = v20. Layers: LaborRepair / KaitoNet / MarketBrain.
+    [labor       ] PASS $167,978/$162,093 anim 13/13 | v20 -818 (0/2) | kaito +24,016 (2/2) | tetsu -816 (0/2) | rayk +20,855 (2/2) | 72.7s
+    [ctrl        ] PASS $167,978/$162,093 anim 13/13 | v20 -828 (0/2) | kaito +24,180 (2/2) | tetsu -826 (0/2) | rayk +20,855 (2/2) | 72.9s
+    [labor+kaito ] PASS $167,978/$162,093 anim 13/13 | v20 -8,316 (0/2) | kaito +17,904 (2/2) | tetsu -8,310 (0/2) | rayk +13,097 (2/2) | 72.9s
+    [kaito       ] PASS $167,978/$162,093 anim 13/13 | v20 -8,498 (0/2) | kaito +17,764 (2/2) | tetsu -8,493 (0/2) | rayk +13,097 (2/2) | 73.4s
+    [hold        ] PASS $119,341/$117,531 anim 5/3 | v20 -76,139 (0/2) | kaito -44,035 (0/2) | tetsu -76,110 (0/2) | rayk -45,241 (0/2) | 72.0s
+    [brain       ] PASS $119,341/$117,531 anim 5/3 | v20 -72,013 (0/2) | kaito -39,176 (0/2) | tetsu -71,984 (0/2) | rayk -40,694 (0/2) | 72.1s
+
+[brain_v21] VERDICT
+  control: PASS $167,978/$162,093
+  labor        PASS_ok=True anim_ok=True kaito +24,016 (ctrl +24,180) reject
+  labor+kaito  PASS_ok=True anim_ok=True kaito +17,904 (ctrl +24,180) reject
+  kaito        PASS_ok=True anim_ok=True kaito +17,764 (ctrl +24,180) reject
+  hold         PASS_ok=False anim_ok=False kaito -44,035 (ctrl +24,180) reject
+  brain        PASS_ok=False anim_ok=False kaito -39,176 (ctrl +24,180) reject
+[brain_v21] ledger + report -> /home/user/kaggriculture/data/brain_v21

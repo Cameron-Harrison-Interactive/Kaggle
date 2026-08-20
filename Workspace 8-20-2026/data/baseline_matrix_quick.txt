@@ -1,0 +1,38 @@
+loaded: v14.5_keepgate
+loaded: v15_backup
+loaded: kaito_THUNDER#1
+loaded: rayk_main
+loaded: tetsu_main
+loaded: opp_seb
+loaded: opp_healthstone
+loaded: opp_cowbot
+
+=== v18 vs opponents, seeds [1] ===
+opponent               seat  seeds W-L-T      our_avg    opp_avg  avg_delta   time
+----------------------------------------------------------------------------------
+v14.5_keepgate         0     1     1-0-0      102,734     97,299     +5,435     7s
+v14.5_keepgate         1     1     0-1-0       97,632    102,844     -5,212     7s
+v15_backup             0     1     1-0-0      102,734     97,299     +5,435     7s
+v15_backup             1     1     0-1-0       97,632    102,844     -5,212     7s
+kaito_THUNDER#1        0     1     1-0-0      123,490     98,395    +25,095     7s
+kaito_THUNDER#1        1     1     1-0-0      141,651    116,764    +24,887     7s
+rayk_main              0     1     1-0-0      108,337     90,723    +17,614     7s
+rayk_main              1     1     1-0-0      120,105     99,535    +20,570     7s
+tetsu_main             0     1     1-0-0      104,228    102,767     +1,461     7s
+tetsu_main             1     1     0-1-0       97,506    102,581     -5,075     7s
+opp_seb                0     1     1-0-0      158,345      1,196   +157,149     5s
+opp_seb                1     1     1-0-0      149,226      8,768   +140,458     6s
+opp_healthstone        0     1     1-0-0      147,966     78,264    +69,702     7s
+opp_healthstone        1     1     1-0-0      137,417     65,491    +71,926     6s
+opp_cowbot             0     1     1-0-0      127,949      1,642   +126,307     5s
+opp_cowbot             1     1     1-0-0      123,363      1,973   +121,390     5s
+
+=== combined (both seats) ===
+kaito_THUNDER#1        W-L-T 2-0-0  our_avg $132,570  opp_avg $107,580  delta $+24,991
+rayk_main              W-L-T 2-0-0  our_avg $114,221  opp_avg $95,129  delta $+19,092
+opp_seb                W-L-T 2-0-0  our_avg $153,786  opp_avg $4,982  delta $+148,804
+opp_healthstone        W-L-T 2-0-0  our_avg $142,692  opp_avg $71,878  delta $+70,814
+opp_cowbot             W-L-T 2-0-0  our_avg $125,656  opp_avg $1,808  delta $+123,848
+v14.5_keepgate         W-L-T 1-1-0  our_avg $100,183  opp_avg $100,072  delta $+112
+v15_backup             W-L-T 1-1-0  our_avg $100,183  opp_avg $100,072  delta $+112
+tetsu_main             W-L-T 1-1-0  our_avg $100,867  opp_avg $102,674  delta $-1,807

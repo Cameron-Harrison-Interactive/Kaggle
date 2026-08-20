@@ -1,0 +1,14 @@
+Version: HI_AgriBot_v30_AdaptiveVoter
+Base: v25 Wheat16 (qty-16 wheat opening)
+Enhancements:
+  - Terminal sweep boost (d28+ full liquidation)
+  - Wheat-arb opponent detection (Kawashigi-style)
+  - Extended animal-skip logic
+  - Enhanced opponent classification
+Test Results:
+  vs PASS seeds 1-3: identical to v25 ($146,573 avg)
+  vs self-mirror: identical to v25
+  vs cowbot: +$157,628 avg margin
+  vs healthstone: +$41,610 avg margin  
+  vs seb: +$155,997 avg margin
+  vs indarkarhana selector: -$14,360 (same as v25 — needs tape-level fix)

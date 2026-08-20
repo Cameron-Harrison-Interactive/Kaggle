@@ -1,0 +1,52 @@
+{"t": "A", "seed": 6, "seat": 0, "variant": "merge312", "low": 128456.0, "us": 128456.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 0, "variant": "base", "low": 128456.0, "us": 128456.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 0, "variant": "shift311", "low": 128456.0, "us": 128456.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 0, "variant": "shift313", "low": 128456.0, "us": 128460.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 0, "variant": "drop", "low": 128456.0, "us": 128255.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 1, "variant": "base", "low": 128456.0, "us": 128456.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 1, "variant": "merge312", "low": 128456.0, "us": 128456.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 1, "variant": "shift311", "low": 128456.0, "us": 128456.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 1, "variant": "drop", "low": 128456.0, "us": 128255.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 6, "seat": 1, "variant": "shift313", "low": 128456.0, "us": 128460.0, "shops": ["YARN_STORE", "YARN_STORE"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 0, "variant": "merge312", "low": 123748.0, "us": 123748.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 0, "variant": "base", "low": 123748.0, "us": 123748.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 0, "variant": "shift311", "low": 123748.0, "us": 123748.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 0, "variant": "shift313", "low": 123748.0, "us": 123751.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 0, "variant": "drop", "low": 123748.0, "us": 123652.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 1, "variant": "base", "low": 123748.0, "us": 123748.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 1, "variant": "merge312", "low": 123748.0, "us": 123748.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 1, "variant": "shift311", "low": 123748.0, "us": 123748.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 1, "variant": "shift313", "low": 123748.0, "us": 123751.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 8, "seat": 1, "variant": "drop", "low": 123748.0, "us": 123652.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 0, "variant": "base", "low": 142051.0, "us": 142051.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 0, "variant": "merge312", "low": 142051.0, "us": 142051.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 0, "variant": "shift311", "low": 142051.0, "us": 142051.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 0, "variant": "shift313", "low": 142051.0, "us": 142056.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 0, "variant": "drop", "low": 142051.0, "us": 141937.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 1, "variant": "base", "low": 142051.0, "us": 142051.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 1, "variant": "merge312", "low": 142051.0, "us": 142051.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 1, "variant": "shift311", "low": 142051.0, "us": 142051.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 1, "variant": "shift313", "low": 142051.0, "us": 142056.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "A", "seed": 19, "seat": 1, "variant": "drop", "low": 142051.0, "us": 141937.0, "shops": ["YARN_STORE", "BAKERY"], "esc": 0}
+{"t": "B", "seed": 1, "seat": 0, "low": 145359.0, "us": 145359.0, "shops": ["SMOOTHIE_SHOP", "PIZZA_SHOP"], "esc": 0, "diff": 0.0}
+{"t": "B", "seed": 1, "seat": 1, "low": 165155.0, "us": 165155.0, "shops": ["SMOOTHIE_SHOP", "PIZZA_SHOP"], "esc": 0, "diff": 0.0}
+{"t": "B", "seed": 2, "seat": 0, "low": 154100.0, "us": 154100.0, "shops": ["PIZZA_SHOP", "ICE_CREAM_SHOP"], "esc": 0, "diff": 0.0}
+{"t": "B", "seed": 2, "seat": 1, "low": 154100.0, "us": 154100.0, "shops": ["PIZZA_SHOP", "ICE_CREAM_SHOP"], "esc": 0, "diff": 0.0}
+{"t": "B", "seed": 9, "seat": 0, "low": 162010.0, "us": 162010.0, "shops": ["PIZZA_SHOP", "SMOOTHIE_SHOP"], "esc": 0, "diff": 0.0}
+{"t": "B", "seed": 9, "seat": 1, "low": 168405.0, "us": 168405.0, "shops": ["PIZZA_SHOP", "SMOOTHIE_SHOP"], "esc": 0, "diff": 0.0}
+{"t": "C", "seed": 6, "name": "v20", "seat": 0, "which": "v27", "us": 132726.0, "them": 122673.0, "esc": 0}
+{"t": "C", "seed": 6, "name": "v20", "seat": 0, "which": "v25", "us": 132726.0, "them": 122673.0, "esc": 0}
+{"t": "C", "seed": 6, "name": "v20", "seat": 1, "which": "v27", "us": 132726.0, "them": 122673.0, "esc": 1}
+{"t": "C", "seed": 6, "name": "v20", "seat": 1, "which": "v25", "us": 132726.0, "them": 122673.0, "esc": 1}
+{"t": "C", "seed": 6, "name": "kaito", "seat": 0, "which": "v27", "us": 131220.0, "them": 121134.0, "esc": 0}
+{"t": "C", "seed": 6, "name": "kaito", "seat": 0, "which": "v25", "us": 131220.0, "them": 121134.0, "esc": 0}
+{"t": "C", "seed": 6, "name": "kaito", "seat": 1, "which": "v27", "us": 131220.0, "them": 121134.0, "esc": 1}
+{"t": "C", "seed": 6, "name": "kaito", "seat": 1, "which": "v25", "us": 131220.0, "them": 121134.0, "esc": 1}
+{"t": "C", "seed": 8, "name": "v20", "seat": 0, "which": "v27", "us": 136837.0, "them": 110780.0, "esc": 0}
+{"t": "C", "seed": 8, "name": "v20", "seat": 0, "which": "v25", "us": 136837.0, "them": 110780.0, "esc": 0}
+{"t": "C", "seed": 8, "name": "v20", "seat": 1, "which": "v27", "us": 136837.0, "them": 110780.0, "esc": 1}
+{"t": "C", "seed": 8, "name": "v20", "seat": 1, "which": "v25", "us": 136837.0, "them": 110780.0, "esc": 1}
+{"t": "C", "seed": 8, "name": "kaito", "seat": 0, "which": "v27", "us": 118838.0, "them": 94193.0, "esc": 0}
+{"t": "C", "seed": 8, "name": "kaito", "seat": 0, "which": "v25", "us": 118838.0, "them": 94193.0, "esc": 0}
+{"t": "C", "seed": 8, "name": "kaito", "seat": 1, "which": "v27", "us": 118838.0, "them": 94193.0, "esc": 1}
+{"t": "C", "seed": 8, "name": "kaito", "seat": 1, "which": "v25", "us": 118838.0, "them": 94193.0, "esc": 1}

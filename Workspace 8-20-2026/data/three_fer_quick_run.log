@@ -1,0 +1,135 @@
+[three-fer] procs=2 seeds=[1, 2, 3] gate_seeds=[1, 2, 3] quick=True
+[three-fer] base = v20. leftover walker + tetsu farm-keyed counter + equivalent-length path rewrite + straw-preempt + (7,4) feeder.
+[three-fer] ship gate: seat0 PASS>=$167,978  seat1 PASS>=$162,093  animals>=13  0 losses vs v18 AND v20. Keep v18/v20 live unless SHIP=YES.
+[three-fer] pre-warming base records...
+========================================================================
+[three-fer] DIAGNOSE
+========================================================================
+
+[leftover] seat0 vs PASS ref $167,978  33 one-time plants still alive d29
+    (0, 3)  WHEAT        planted d5  alive->29  visits=73
+    (0, 4)  WHEAT        planted d5  alive->29  visits=55
+    (0, 5)  WHEAT        planted d10  alive->29  visits=53
+    (0, 6)  WHEAT        planted d10  alive->29  visits=45
+    (0, 7)  WHEAT        planted d10  alive->29  visits=50
+    (0, 8)  WHEAT        planted d10  alive->29  visits=40
+    (0, 9)  WHEAT        planted d10  alive->29  visits=32
+    (1, 0)  WHEAT        planted d0  alive->29  visits=106
+    (1, 3)  WHEAT        planted d5  alive->29  visits=94
+    (1, 4)  WHEAT        planted d5  alive->29  visits=90
+    (1, 6)  WHEAT        planted d11  alive->29  visits=51
+    (1, 7)  WHEAT        planted d10  alive->29  visits=52
+    (1, 8)  WHEAT        planted d10  alive->29  visits=42
+    (1, 9)  WHEAT        planted d10  alive->29  visits=38
+    (2, 0)  WHEAT        planted d0  alive->29  visits=102
+    (2, 1)  WHEAT        planted d0  alive->29  visits=89
+    (2, 3)  WHEAT        planted d5  alive->29  visits=87
+    (2, 6)  WHEAT        planted d11  alive->29  visits=57
+    (2, 7)  WHEAT        planted d10  alive->29  visits=55
+    (2, 8)  WHEAT        planted d10  alive->29  visits=46
+    (2, 9)  WHEAT        planted d10  alive->29  visits=41
+    (3, 7)  WHEAT        planted d10  alive->29  visits=48
+    (3, 8)  WHEAT        planted d10  alive->29  visits=50
+    (3, 9)  WHEAT        planted d10  alive->29  visits=41
+    (4, 6)  WHEAT        planted d10  alive->29  visits=70
+    (4, 7)  WHEAT        planted d10  alive->29  visits=55
+    (4, 8)  WHEAT        planted d10  alive->29  visits=45
+    (4, 9)  WHEAT        planted d10  alive->29  visits=40
+    (6, 0)  WHEAT        planted d6  alive->29  visits=65
+    (6, 1)  WHEAT        planted d7  alive->29  visits=76
+    (8, 2)  WHEAT        planted d7  alive->29  visits=59
+    (8, 3)  WHEAT        planted d8  alive->29  visits=54
+    (9, 3)  WHEAT        planted d21  alive->29  visits=54
+    PASS-score d27-29 (higher = better walker): w10:-46, w9:-48, w3:-58, w6:-58, w7:-61, w2:-74
+    our d4: crops=14 anim=5 quads=('NW',) plants=14 mix={'WHEAT': 6, 'MELON': 5, 'STRAWBERRY': 3}
+    our d8: crops=33 anim=10 quads=('NE', 'NW') plants=33 mix={'WHEAT': 10, 'STRAWBERRY': 18, 'MELON': 5}
+    our d12: crops=62 anim=12 quads=('NE', 'NW', 'SW') plants=62 mix={'WHEAT': 12, 'STRAWBERRY': 36, 'MELON': 14}
+    our d16: crops=62 anim=12 quads=('NE', 'NW', 'SW') plants=62 mix={'WHEAT': 12, 'STRAWBERRY': 36, 'MELON': 14}
+    END one-time still on field: [{'tile': [0, 8], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [1, 8], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [0, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [1, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [2, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [3, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [4, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}]
+
+[leftover] seat1 vs PASS ref $162,093  33 one-time plants still alive d29
+    (0, 3)  WHEAT        planted d5  alive->29  visits=73
+    (0, 4)  WHEAT        planted d5  alive->29  visits=55
+    (0, 5)  WHEAT        planted d10  alive->29  visits=53
+    (0, 6)  WHEAT        planted d10  alive->29  visits=45
+    (0, 7)  WHEAT        planted d10  alive->29  visits=50
+    (0, 8)  WHEAT        planted d10  alive->29  visits=40
+    (0, 9)  WHEAT        planted d10  alive->29  visits=32
+    (1, 0)  WHEAT        planted d0  alive->29  visits=106
+    (1, 3)  WHEAT        planted d5  alive->29  visits=94
+    (1, 4)  WHEAT        planted d5  alive->29  visits=90
+    (1, 6)  WHEAT        planted d11  alive->29  visits=51
+    (1, 7)  WHEAT        planted d10  alive->29  visits=52
+    (1, 8)  WHEAT        planted d10  alive->29  visits=42
+    (1, 9)  WHEAT        planted d10  alive->29  visits=38
+    (2, 0)  WHEAT        planted d0  alive->29  visits=102
+    (2, 1)  WHEAT        planted d0  alive->29  visits=89
+    (2, 3)  WHEAT        planted d5  alive->29  visits=87
+    (2, 6)  WHEAT        planted d11  alive->29  visits=57
+    (2, 7)  WHEAT        planted d10  alive->29  visits=55
+    (2, 8)  WHEAT        planted d10  alive->29  visits=46
+    (2, 9)  WHEAT        planted d10  alive->29  visits=41
+    (3, 7)  WHEAT        planted d10  alive->29  visits=48
+    (3, 8)  WHEAT        planted d10  alive->29  visits=50
+    (3, 9)  WHEAT        planted d10  alive->29  visits=41
+    (4, 6)  WHEAT        planted d10  alive->29  visits=70
+    (4, 7)  WHEAT        planted d10  alive->29  visits=55
+    (4, 8)  WHEAT        planted d10  alive->29  visits=45
+    (4, 9)  WHEAT        planted d10  alive->29  visits=40
+    (6, 0)  WHEAT        planted d6  alive->29  visits=65
+    (6, 1)  WHEAT        planted d7  alive->29  visits=76
+    (8, 2)  WHEAT        planted d7  alive->29  visits=59
+    (8, 3)  WHEAT        planted d8  alive->29  visits=54
+    (9, 3)  WHEAT        planted d8  alive->29  visits=54
+    PASS-score d27-29 (higher = better walker): w10:-46, w9:-48, w3:-58, w6:-58, w7:-61, w2:-74
+    our d4: crops=14 anim=5 quads=('NW',) plants=14 mix={'WHEAT': 6, 'MELON': 5, 'STRAWBERRY': 3}
+    our d8: crops=33 anim=10 quads=('NE', 'NW') plants=33 mix={'WHEAT': 10, 'STRAWBERRY': 18, 'MELON': 5}
+    our d12: crops=63 anim=12 quads=('NE', 'NW', 'SW') plants=63 mix={'WHEAT': 13, 'STRAWBERRY': 36, 'MELON': 14}
+    our d16: crops=63 anim=12 quads=('NE', 'NW', 'SW') plants=63 mix={'WHEAT': 13, 'STRAWBERRY': 36, 'MELON': 14}
+    END one-time still on field: [{'tile': [0, 8], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [1, 8], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [0, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [1, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [2, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [3, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}, {'tile': [4, 9], 'crop': 'WHEAT', 'yield': 2, 'age': 3, 'planted_day': 26}]
+
+[tetsu] farm fingerprint vs us (seed 1, both seats)
+    seat0: us $102,351  tetsu $103,138  LOSS  delta -787
+      d00 us c=0   a=0  q=NW       mix={}
+           tet c=0   a=0  q=NW       mix={} jac=1.00 score=0 []
+      d02 us c=10  a=5  q=NW       mix={'WHEAT': 5, 'MELON': 5}
+           tet c=10  a=5  q=NW       mix={'WHEAT': 5, 'MELON': 5} jac=1.00 score=0 []
+      d04 us c=14  a=5  q=NW       mix={'WHEAT': 6, 'MELON': 5, 'STRAWBERRY': 3}
+           tet c=14  a=5  q=NW       mix={'WHEAT': 6, 'MELON': 5, 'STRAWBERRY': 3} jac=1.00 score=0 []
+      d08 us c=33  a=10 q=NENW     mix={'WHEAT': 10, 'STRAWBERRY': 18, 'MELON': 5}
+           tet c=32  a=10 q=NENW     mix={'WHEAT': 10, 'STRAWBERRY': 17, 'MELON': 5} jac=0.97 score=-2 ['crops28', 'mirror0.97']
+      d12 us c=52  a=12 q=NENWSW   mix={'WHEAT': 12, 'STRAWBERRY': 29, 'MELON': 11}
+           tet c=52  a=12 q=NENWSW   mix={'WHEAT': 13, 'STRAWBERRY': 28, 'MELON': 11} jac=0.96 score=7 ['crops40', '3quad', 'animBand', 'wheat']
+      d16 us c=52  a=12 q=NENWSW   mix={'WHEAT': 12, 'STRAWBERRY': 29, 'MELON': 11}
+           tet c=52  a=12 q=NENWSW   mix={'WHEAT': 13, 'STRAWBERRY': 28, 'MELON': 11} jac=0.96 score=7 ['crops40', '3quad', 'animBand', 'wheat']
+      d20 us c=52  a=11 q=NENWSW   mix={'WHEAT': 15, 'STRAWBERRY': 26, 'MELON': 11}
+           tet c=52  a=12 q=NENWSW   mix={'WHEAT': 16, 'STRAWBERRY': 25, 'MELON': 11} jac=0.96 score=7 ['crops40', '3quad', 'animBand', 'wheat']
+      d29 us c=33  a=13 q=NENWSW   mix={'WHEAT': 33}
+           tet c=33  a=13 q=NENWSW   mix={'WHEAT': 33} jac=1.00 score=9 ['crops28', '3quad', 'animBand', 'wheat', 'jac0.51']
+    seat1: us $115,802  tetsu $116,667  LOSS  delta -865
+      d00 us c=0   a=0  q=NW       mix={}
+           tet c=0   a=0  q=NW       mix={} jac=1.00 score=0 []
+      d02 us c=10  a=5  q=NW       mix={'WHEAT': 5, 'MELON': 5}
+           tet c=10  a=5  q=NW       mix={'WHEAT': 5, 'MELON': 5} jac=1.00 score=0 []
+      d04 us c=14  a=5  q=NW       mix={'WHEAT': 6, 'MELON': 5, 'STRAWBERRY': 3}
+           tet c=14  a=5  q=NW       mix={'WHEAT': 6, 'MELON': 5, 'STRAWBERRY': 3} jac=1.00 score=0 []
+      d08 us c=32  a=10 q=NENW     mix={'WHEAT': 10, 'STRAWBERRY': 17, 'MELON': 5}
+           tet c=33  a=10 q=NENW     mix={'WHEAT': 10, 'STRAWBERRY': 18, 'MELON': 5} jac=0.97 score=-2 ['crops28', 'mirror1.00']
+      d12 us c=53  a=12 q=NENWSW   mix={'WHEAT': 13, 'STRAWBERRY': 29, 'MELON': 11}
+           tet c=53  a=12 q=NENWSW   mix={'WHEAT': 13, 'STRAWBERRY': 29, 'MELON': 11} jac=0.96 score=7 ['crops40', '3quad', 'animBand', 'wheat']
+      d16 us c=53  a=12 q=NENWSW   mix={'WHEAT': 13, 'STRAWBERRY': 29, 'MELON': 11}
+           tet c=53  a=12 q=NENWSW   mix={'WHEAT': 13, 'STRAWBERRY': 29, 'MELON': 11} jac=0.96 score=7 ['crops40', '3quad', 'animBand', 'wheat']
+      d20 us c=53  a=12 q=NENWSW   mix={'WHEAT': 16, 'STRAWBERRY': 26, 'MELON': 11}
+           tet c=53  a=12 q=NENWSW   mix={'WHEAT': 16, 'STRAWBERRY': 26, 'MELON': 11} jac=0.96 score=7 ['crops40', '3quad', 'animBand', 'wheat']
+      d29 us c=33  a=13 q=NENWSW   mix={'WHEAT': 33}
+           tet c=33  a=13 q=NENWSW   mix={'WHEAT': 33} jac=1.00 score=9 ['crops28', '3quad', 'animBand', 'wheat', 'jac0.52']
+
+[three-fer] diagnose -> /home/user/kaggriculture/data/three_fer/diagnose.json
+
+[three-fer] catalog=4 candidates
+    BASE
+    px
+    esp
+    px+esp
+    [no  ] px                           PASS $167,978/$162,093 left=7u14 anim=13 | v18 +263 (2/6) v20 -574 (0/6) | tetsu -552 W 0/6 | 139.7s
+    [no  ] BASE                         PASS $167,978/$162,093 left=7u14 anim=13 | v18 +263 (2/6) v20 -574 (0/6) | tetsu -552 W 0/6 | 139.8s

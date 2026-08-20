@@ -1,0 +1,63 @@
+52 jobs
+[1] A seed 6 seat 0 merge312 : 128,456 (d       +0) esc=0
+[2] A seed 6 seat 0 base     : 128,456 (d       +0) esc=0
+[3] A seed 6 seat 0 shift311 : 128,456 (d       +0) esc=0
+[4] A seed 6 seat 0 shift313 : 128,460 (d       +4) esc=0
+[5] A seed 6 seat 0 drop     : 128,255 (d     -201) esc=0
+[6] A seed 6 seat 1 base     : 128,456 (d       +0) esc=0
+[7] A seed 6 seat 1 merge312 : 128,456 (d       +0) esc=0
+[8] A seed 6 seat 1 shift311 : 128,456 (d       +0) esc=0
+[9] A seed 6 seat 1 drop     : 128,255 (d     -201) esc=0
+[10] A seed 6 seat 1 shift313 : 128,460 (d       +4) esc=0
+[11] A seed 8 seat 0 merge312 : 123,748 (d       +0) esc=0
+[12] A seed 8 seat 0 base     : 123,748 (d       +0) esc=0
+[13] A seed 8 seat 0 shift311 : 123,748 (d       +0) esc=0
+[14] A seed 8 seat 0 shift313 : 123,751 (d       +3) esc=0
+[15] A seed 8 seat 0 drop     : 123,652 (d      -96) esc=0
+[16] A seed 8 seat 1 base     : 123,748 (d       +0) esc=0
+[17] A seed 8 seat 1 merge312 : 123,748 (d       +0) esc=0
+[18] A seed 8 seat 1 shift311 : 123,748 (d       +0) esc=0
+[19] A seed 8 seat 1 shift313 : 123,751 (d       +3) esc=0
+[20] A seed 8 seat 1 drop     : 123,652 (d      -96) esc=0
+[21] A seed 19 seat 0 base     : 142,051 (d       +0) esc=0
+[22] A seed 19 seat 0 merge312 : 142,051 (d       +0) esc=0
+[23] A seed 19 seat 0 shift311 : 142,051 (d       +0) esc=0
+[24] A seed 19 seat 0 shift313 : 142,056 (d       +5) esc=0
+[25] A seed 19 seat 0 drop     : 141,937 (d     -114) esc=0
+[26] A seed 19 seat 1 base     : 142,051 (d       +0) esc=0
+[27] A seed 19 seat 1 merge312 : 142,051 (d       +0) esc=0
+[28] A seed 19 seat 1 shift311 : 142,051 (d       +0) esc=0
+[29] A seed 19 seat 1 shift313 : 142,056 (d       +5) esc=0
+[30] A seed 19 seat 1 drop     : 141,937 (d     -114) esc=0
+[31] B seed 1 seat 0: diff=+0 (must be 0)
+[32] B seed 1 seat 1: diff=+0 (must be 0)
+[33] B seed 2 seat 0: diff=+0 (must be 0)
+[34] B seed 2 seat 1: diff=+0 (must be 0)
+[35] B seed 9 seat 0: diff=+0 (must be 0)
+[36] B seed 9 seat 1: diff=+0 (must be 0)
+[37] C seed 6 v20 seat 0 v27: 132,726 vs 122,673
+[38] C seed 6 v20 seat 0 v25: 132,726 vs 122,673
+[39] C seed 6 v20 seat 1 v27: 132,726 vs 122,673
+[40] C seed 6 v20 seat 1 v25: 132,726 vs 122,673
+[41] C seed 6 kaito seat 0 v27: 131,220 vs 121,134
+[42] C seed 6 kaito seat 0 v25: 131,220 vs 121,134
+[43] C seed 6 kaito seat 1 v27: 131,220 vs 121,134
+[44] C seed 6 kaito seat 1 v25: 131,220 vs 121,134
+[45] C seed 8 v20 seat 0 v27: 136,837 vs 110,780
+[46] C seed 8 v20 seat 0 v25: 136,837 vs 110,780
+[47] C seed 8 v20 seat 1 v27: 136,837 vs 110,780
+[48] C seed 8 v20 seat 1 v25: 136,837 vs 110,780
+[49] C seed 8 kaito seat 0 v27: 118,838 vs 94,193
+[50] C seed 8 kaito seat 0 v25: 118,838 vs 94,193
+[51] C seed 8 kaito seat 1 v27: 118,838 vs 94,193
+[52] C seed 8 kaito seat 1 v25: 118,838 vs 94,193
+
+=== A: variant mean delta (YARN seeds, both seats) ===
+  base     : n=6 mean=       +0 deltas=['+0', '+0', '+0', '+0', '+0', '+0']
+  merge312 : n=6 mean=       +0 deltas=['+0', '+0', '+0', '+0', '+0', '+0']
+  shift311 : n=6 mean=       +0 deltas=['+0', '+0', '+0', '+0', '+0', '+0']
+  shift313 : n=6 mean=       +4 deltas=['+4', '+4', '+3', '+3', '+5', '+5']
+  drop     : n=6 mean=     -137 deltas=['-201', '-201', '-96', '-96', '-114', '-114']
+
+mirror seed 6: 126,387 vs 126,387
+done

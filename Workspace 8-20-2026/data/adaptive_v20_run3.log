@@ -1,0 +1,53 @@
+[adaptive_v20] seeds=[1, 2, 3] procs=2 quick=False melon4=False
+[adaptive_v20] base = v19 compiled routes (62 crops). Ship gate: PASS >= v19 baseline, animals >= 13, finals better than v19ctrl.
+[adaptive_v20] catalog=6
+    v19ctrl
+    race
+    s0s1
+    s0s1+race
+    s1sp
+    s1sp_w
+    [v19ctrl               ] PASS $167,978/$155,325 anim 13/14 | v19 +0 W3/6 | tetsu -807 W1/6 | 105.5s
+    [race                  ] PASS $167,978/$155,325 anim 13/14 | v19 +0 W3/6 | tetsu -807 W1/6 | 106.6s
+    [s0s1                  ] PASS $167,978/$162,093 anim 13/13 | v19 +266 W2/6 | tetsu -616 W0/6 | 105.7s
+    [s0s1+race             ] PASS $167,978/$162,093 anim 13/13 | v19 +266 W2/6 | tetsu -616 W0/6 | 108.1s
+    [s1sp                  ] PASS $167,978/$155,330 anim 13/14 | v19 -0 W3/6 | tetsu -807 W1/6 | 104.4s
+    [s1sp_w                ] PASS $167,978/$144,109 anim 13/13 | v19 -3221 W1/6 | tetsu -4020 W0/6 | 104.0s
+
+[adaptive_v20] FINALS for s0s1:
+      vs v14.5          W 4/6  avg +1,565  (s0 +3,746 / s1 -616)
+      vs v15            W 4/6  avg +1,565  (s0 +3,746 / s1 -616)
+      vs v18            W 1/6  avg -220  (s0 +262 / s1 -703)
+      vs kaito_TT       W 6/6  avg +14,330  (s0 +13,925 / s1 +14,735)
+      vs rayk           W 6/6  avg +13,836  (s0 +11,991 / s1 +15,682)
+      vs tetsu          W 0/6  avg -616  (s0 -548 / s1 -683)
+      vs seb            W 6/6  avg +133,518  (s0 +138,660 / s1 +128,377)
+      vs healthstone    W 6/6  avg +50,298  (s0 +48,140 / s1 +52,457)
+      vs cowbot         W 6/6  avg +153,752  (s0 +153,848 / s1 +153,655)
+
+[adaptive_v20] FINALS for s0s1+race:
+      vs v14.5          W 4/6  avg +1,565  (s0 +3,746 / s1 -616)
+      vs v15            W 4/6  avg +1,565  (s0 +3,746 / s1 -616)
+      vs v18            W 1/6  avg -220  (s0 +262 / s1 -703)
+      vs kaito_TT       W 6/6  avg +14,330  (s0 +13,925 / s1 +14,735)
+      vs rayk           W 6/6  avg +13,836  (s0 +11,991 / s1 +15,682)
+      vs tetsu          W 0/6  avg -616  (s0 -548 / s1 -683)
+      vs seb            W 6/6  avg +133,518  (s0 +138,660 / s1 +128,377)
+      vs healthstone    W 6/6  avg +50,298  (s0 +48,140 / s1 +52,457)
+      vs cowbot         W 6/6  avg +153,752  (s0 +153,848 / s1 +153,655)
+
+[adaptive_v20] FINALS for v19ctrl:
+      vs v14.5          W 4/6  avg +1,388  (s0 +3,746 / s1 -971)
+      vs v15            W 4/6  avg +1,388  (s0 +3,746 / s1 -971)
+      vs v18            W 2/6  avg -404  (s0 +262 / s1 -1,070)
+      vs kaito_TT       W 6/6  avg +13,432  (s0 +13,925 / s1 +12,938)
+      vs rayk           W 6/6  avg +10,546  (s0 +11,991 / s1 +9,102)
+      vs tetsu          W 1/6  avg -807  (s0 -548 / s1 -1,065)
+      vs seb            W 6/6  avg +130,977  (s0 +138,660 / s1 +123,294)
+      vs healthstone    W 6/6  avg +54,001  (s0 +48,140 / s1 +59,863)
+      vs cowbot         W 6/6  avg +150,188  (s0 +153,848 / s1 +146,529)
+
+======================================================================
+[adaptive_v20] VERDICT
+  SHIP=YES  s0s1  finals_sum +368,028 vs control +360,709
+[adaptive_v20] ledger + report -> /home/user/kaggriculture/data/adaptive_v20

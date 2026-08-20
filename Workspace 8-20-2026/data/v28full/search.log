@@ -1,0 +1,18 @@
+record cache wiped
+=== v28-full variant search on the v25 tape ===
+base PASS (v25 tape):
+  seed 1: s0 145,013 s1 164,678 (missed 0/0, animals 13/13)
+  seed 2: s0 153,548 s1 153,548 (missed 0/0, animals 13/13)
+  seed 3: s0 140,678 s1 118,787 (missed 0/0, animals 13/13)
+  F_lh1        recompile=False pass_ok=True keep 3/8 avg      +120 keep_ok=False
+  F_lh3        recompile=False pass_ok=True keep 3/8 avg      +120 keep_ok=False
+  F_split      recompile=False pass_ok=False keep 0/8 avg   -22,162 keep_ok=False
+  F_lh1split   recompile=False pass_ok=False keep 0/8 avg   -22,162 keep_ok=False
+  F_idle       recompile=False pass_ok=True keep 3/8 avg      +120 keep_ok=False
+  R_early4     recompile=True pass_ok=False keep 0/8 avg   -50,455 keep_ok=False
+  R_early6     recompile=True pass_ok=False keep 0/8 avg   -50,270 keep_ok=False
+  R_early4lh   recompile=True pass_ok=False keep 0/8 avg   -50,455 keep_ok=False
+  R_all        recompile=True pass_ok=False keep 0/8 avg   -38,922 keep_ok=False
+  R_fill2      recompile=True pass_ok=True keep 3/8 avg      +120 keep_ok=False
+
+=== 0 survivors: []

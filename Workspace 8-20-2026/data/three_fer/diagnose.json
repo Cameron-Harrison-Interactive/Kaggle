@@ -1,0 +1,2785 @@
+{
+  "our_plant_refs": {
+    "0": {
+      "d4": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "d8": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "d12": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ]
+      ],
+      "d16": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ]
+      ]
+    },
+    "1": {
+      "d4": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "d8": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "d12": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ]
+      ],
+      "d16": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ]
+      ]
+    }
+  },
+  "leftovers": {
+    "0": {
+      "planned": [
+        {
+          "tile": [
+            0,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 73
+        },
+        {
+          "tile": [
+            0,
+            4
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 55
+        },
+        {
+          "tile": [
+            0,
+            5
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 53
+        },
+        {
+          "tile": [
+            0,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 45
+        },
+        {
+          "tile": [
+            0,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 50
+        },
+        {
+          "tile": [
+            0,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 40
+        },
+        {
+          "tile": [
+            0,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 32
+        },
+        {
+          "tile": [
+            1,
+            0
+          ],
+          "crop": "WHEAT",
+          "planted_day": 0,
+          "last_alive_day": 29,
+          "visits": 106
+        },
+        {
+          "tile": [
+            1,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 94
+        },
+        {
+          "tile": [
+            1,
+            4
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 90
+        },
+        {
+          "tile": [
+            1,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 11,
+          "last_alive_day": 29,
+          "visits": 51
+        },
+        {
+          "tile": [
+            1,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 52
+        },
+        {
+          "tile": [
+            1,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 42
+        },
+        {
+          "tile": [
+            1,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 38
+        },
+        {
+          "tile": [
+            2,
+            0
+          ],
+          "crop": "WHEAT",
+          "planted_day": 0,
+          "last_alive_day": 29,
+          "visits": 102
+        },
+        {
+          "tile": [
+            2,
+            1
+          ],
+          "crop": "WHEAT",
+          "planted_day": 0,
+          "last_alive_day": 29,
+          "visits": 89
+        },
+        {
+          "tile": [
+            2,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 87
+        },
+        {
+          "tile": [
+            2,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 11,
+          "last_alive_day": 29,
+          "visits": 57
+        },
+        {
+          "tile": [
+            2,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 55
+        },
+        {
+          "tile": [
+            2,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 46
+        },
+        {
+          "tile": [
+            2,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 41
+        },
+        {
+          "tile": [
+            3,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 48
+        },
+        {
+          "tile": [
+            3,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 50
+        },
+        {
+          "tile": [
+            3,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 41
+        },
+        {
+          "tile": [
+            4,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 70
+        },
+        {
+          "tile": [
+            4,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 55
+        },
+        {
+          "tile": [
+            4,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 45
+        },
+        {
+          "tile": [
+            4,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 40
+        },
+        {
+          "tile": [
+            6,
+            0
+          ],
+          "crop": "WHEAT",
+          "planted_day": 6,
+          "last_alive_day": 29,
+          "visits": 65
+        },
+        {
+          "tile": [
+            6,
+            1
+          ],
+          "crop": "WHEAT",
+          "planted_day": 7,
+          "last_alive_day": 29,
+          "visits": 76
+        },
+        {
+          "tile": [
+            8,
+            2
+          ],
+          "crop": "WHEAT",
+          "planted_day": 7,
+          "last_alive_day": 29,
+          "visits": 59
+        },
+        {
+          "tile": [
+            8,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 8,
+          "last_alive_day": 29,
+          "visits": 54
+        },
+        {
+          "tile": [
+            9,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 21,
+          "last_alive_day": 29,
+          "visits": 54
+        }
+      ],
+      "end": [
+        {
+          "tile": [
+            0,
+            8
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            1,
+            8
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            0,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            1,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            2,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            3,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            4,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        }
+      ],
+      "reward": 167978.0
+    },
+    "1": {
+      "planned": [
+        {
+          "tile": [
+            0,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 73
+        },
+        {
+          "tile": [
+            0,
+            4
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 55
+        },
+        {
+          "tile": [
+            0,
+            5
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 53
+        },
+        {
+          "tile": [
+            0,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 45
+        },
+        {
+          "tile": [
+            0,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 50
+        },
+        {
+          "tile": [
+            0,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 40
+        },
+        {
+          "tile": [
+            0,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 32
+        },
+        {
+          "tile": [
+            1,
+            0
+          ],
+          "crop": "WHEAT",
+          "planted_day": 0,
+          "last_alive_day": 29,
+          "visits": 106
+        },
+        {
+          "tile": [
+            1,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 94
+        },
+        {
+          "tile": [
+            1,
+            4
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 90
+        },
+        {
+          "tile": [
+            1,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 11,
+          "last_alive_day": 29,
+          "visits": 51
+        },
+        {
+          "tile": [
+            1,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 52
+        },
+        {
+          "tile": [
+            1,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 42
+        },
+        {
+          "tile": [
+            1,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 38
+        },
+        {
+          "tile": [
+            2,
+            0
+          ],
+          "crop": "WHEAT",
+          "planted_day": 0,
+          "last_alive_day": 29,
+          "visits": 102
+        },
+        {
+          "tile": [
+            2,
+            1
+          ],
+          "crop": "WHEAT",
+          "planted_day": 0,
+          "last_alive_day": 29,
+          "visits": 89
+        },
+        {
+          "tile": [
+            2,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 5,
+          "last_alive_day": 29,
+          "visits": 87
+        },
+        {
+          "tile": [
+            2,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 11,
+          "last_alive_day": 29,
+          "visits": 57
+        },
+        {
+          "tile": [
+            2,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 55
+        },
+        {
+          "tile": [
+            2,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 46
+        },
+        {
+          "tile": [
+            2,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 41
+        },
+        {
+          "tile": [
+            3,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 48
+        },
+        {
+          "tile": [
+            3,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 50
+        },
+        {
+          "tile": [
+            3,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 41
+        },
+        {
+          "tile": [
+            4,
+            6
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 70
+        },
+        {
+          "tile": [
+            4,
+            7
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 55
+        },
+        {
+          "tile": [
+            4,
+            8
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 45
+        },
+        {
+          "tile": [
+            4,
+            9
+          ],
+          "crop": "WHEAT",
+          "planted_day": 10,
+          "last_alive_day": 29,
+          "visits": 40
+        },
+        {
+          "tile": [
+            6,
+            0
+          ],
+          "crop": "WHEAT",
+          "planted_day": 6,
+          "last_alive_day": 29,
+          "visits": 65
+        },
+        {
+          "tile": [
+            6,
+            1
+          ],
+          "crop": "WHEAT",
+          "planted_day": 7,
+          "last_alive_day": 29,
+          "visits": 76
+        },
+        {
+          "tile": [
+            8,
+            2
+          ],
+          "crop": "WHEAT",
+          "planted_day": 7,
+          "last_alive_day": 29,
+          "visits": 59
+        },
+        {
+          "tile": [
+            8,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 8,
+          "last_alive_day": 29,
+          "visits": 54
+        },
+        {
+          "tile": [
+            9,
+            3
+          ],
+          "crop": "WHEAT",
+          "planted_day": 8,
+          "last_alive_day": 29,
+          "visits": 54
+        }
+      ],
+      "end": [
+        {
+          "tile": [
+            0,
+            8
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            1,
+            8
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            0,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            1,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            2,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            3,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        },
+        {
+          "tile": [
+            4,
+            9
+          ],
+          "crop": "WHEAT",
+          "yield": 2,
+          "age": 3,
+          "planted_day": 26
+        }
+      ],
+      "reward": 162093.0
+    }
+  },
+  "tetsu": {
+    "0": {
+      "us": 102351.0,
+      "tetsu": 103138.0,
+      "delta": -787.0,
+      "days": {
+        "0": {
+          "us": {
+            "n_crops": 0,
+            "n_animals": 0,
+            "quads": [
+              "NW"
+            ],
+            "crops": {},
+            "money": 3000.0
+          },
+          "tetsu": {
+            "n_crops": 0,
+            "n_animals": 0,
+            "quads": [
+              "NW"
+            ],
+            "crops": {},
+            "money": 3000.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 0,
+          "reasons": []
+        },
+        "2": {
+          "us": {
+            "n_crops": 10,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 5,
+              "MELON": 5
+            },
+            "money": 6.0
+          },
+          "tetsu": {
+            "n_crops": 10,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 5,
+              "MELON": 5
+            },
+            "money": 6.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 0,
+          "reasons": []
+        },
+        "4": {
+          "us": {
+            "n_crops": 14,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 6,
+              "MELON": 5,
+              "STRAWBERRY": 3
+            },
+            "money": 186.0
+          },
+          "tetsu": {
+            "n_crops": 14,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 6,
+              "MELON": 5,
+              "STRAWBERRY": 3
+            },
+            "money": 186.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 0,
+          "reasons": []
+        },
+        "8": {
+          "us": {
+            "n_crops": 33,
+            "n_animals": 10,
+            "quads": [
+              "NE",
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 10,
+              "STRAWBERRY": 18,
+              "MELON": 5
+            },
+            "money": 715.0
+          },
+          "tetsu": {
+            "n_crops": 32,
+            "n_animals": 10,
+            "quads": [
+              "NE",
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 10,
+              "STRAWBERRY": 17,
+              "MELON": 5
+            },
+            "money": 715.0
+          },
+          "jaccard": 0.9696969696969697,
+          "detect_score": -2,
+          "reasons": [
+            "crops28",
+            "mirror0.97"
+          ]
+        },
+        "12": {
+          "us": {
+            "n_crops": 52,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 12,
+              "STRAWBERRY": 29,
+              "MELON": 11
+            },
+            "money": 6112.0
+          },
+          "tetsu": {
+            "n_crops": 52,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 13,
+              "STRAWBERRY": 28,
+              "MELON": 11
+            },
+            "money": 6112.0
+          },
+          "jaccard": 0.9622641509433962,
+          "detect_score": 7,
+          "reasons": [
+            "crops40",
+            "3quad",
+            "animBand",
+            "wheat"
+          ]
+        },
+        "16": {
+          "us": {
+            "n_crops": 52,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 12,
+              "STRAWBERRY": 29,
+              "MELON": 11
+            },
+            "money": 17156.0
+          },
+          "tetsu": {
+            "n_crops": 52,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 13,
+              "STRAWBERRY": 28,
+              "MELON": 11
+            },
+            "money": 17156.0
+          },
+          "jaccard": 0.9622641509433962,
+          "detect_score": 7,
+          "reasons": [
+            "crops40",
+            "3quad",
+            "animBand",
+            "wheat"
+          ]
+        },
+        "20": {
+          "us": {
+            "n_crops": 52,
+            "n_animals": 11,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 15,
+              "STRAWBERRY": 26,
+              "MELON": 11
+            },
+            "money": 40045.0
+          },
+          "tetsu": {
+            "n_crops": 52,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 16,
+              "STRAWBERRY": 25,
+              "MELON": 11
+            },
+            "money": 40866.0
+          },
+          "jaccard": 0.9622641509433962,
+          "detect_score": 7,
+          "reasons": [
+            "crops40",
+            "3quad",
+            "animBand",
+            "wheat"
+          ]
+        },
+        "29": {
+          "us": {
+            "n_crops": 33,
+            "n_animals": 13,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 33
+            },
+            "money": 87344.0
+          },
+          "tetsu": {
+            "n_crops": 33,
+            "n_animals": 13,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 33
+            },
+            "money": 88170.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 9,
+          "reasons": [
+            "crops28",
+            "3quad",
+            "animBand",
+            "wheat",
+            "jac0.51"
+          ]
+        }
+      }
+    },
+    "1": {
+      "us": 115802.0,
+      "tetsu": 116667.0,
+      "delta": -865.0,
+      "days": {
+        "0": {
+          "us": {
+            "n_crops": 0,
+            "n_animals": 0,
+            "quads": [
+              "NW"
+            ],
+            "crops": {},
+            "money": 3000.0
+          },
+          "tetsu": {
+            "n_crops": 0,
+            "n_animals": 0,
+            "quads": [
+              "NW"
+            ],
+            "crops": {},
+            "money": 3000.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 0,
+          "reasons": []
+        },
+        "2": {
+          "us": {
+            "n_crops": 10,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 5,
+              "MELON": 5
+            },
+            "money": 6.0
+          },
+          "tetsu": {
+            "n_crops": 10,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 5,
+              "MELON": 5
+            },
+            "money": 6.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 0,
+          "reasons": []
+        },
+        "4": {
+          "us": {
+            "n_crops": 14,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 6,
+              "MELON": 5,
+              "STRAWBERRY": 3
+            },
+            "money": 186.0
+          },
+          "tetsu": {
+            "n_crops": 14,
+            "n_animals": 5,
+            "quads": [
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 6,
+              "MELON": 5,
+              "STRAWBERRY": 3
+            },
+            "money": 186.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 0,
+          "reasons": []
+        },
+        "8": {
+          "us": {
+            "n_crops": 32,
+            "n_animals": 10,
+            "quads": [
+              "NE",
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 10,
+              "STRAWBERRY": 17,
+              "MELON": 5
+            },
+            "money": 715.0
+          },
+          "tetsu": {
+            "n_crops": 33,
+            "n_animals": 10,
+            "quads": [
+              "NE",
+              "NW"
+            ],
+            "crops": {
+              "WHEAT": 10,
+              "STRAWBERRY": 18,
+              "MELON": 5
+            },
+            "money": 715.0
+          },
+          "jaccard": 0.9696969696969697,
+          "detect_score": -2,
+          "reasons": [
+            "crops28",
+            "mirror1.00"
+          ]
+        },
+        "12": {
+          "us": {
+            "n_crops": 53,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 13,
+              "STRAWBERRY": 29,
+              "MELON": 11
+            },
+            "money": 6112.0
+          },
+          "tetsu": {
+            "n_crops": 53,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 13,
+              "STRAWBERRY": 29,
+              "MELON": 11
+            },
+            "money": 6112.0
+          },
+          "jaccard": 0.9629629629629629,
+          "detect_score": 7,
+          "reasons": [
+            "crops40",
+            "3quad",
+            "animBand",
+            "wheat"
+          ]
+        },
+        "16": {
+          "us": {
+            "n_crops": 53,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 13,
+              "STRAWBERRY": 29,
+              "MELON": 11
+            },
+            "money": 17475.0
+          },
+          "tetsu": {
+            "n_crops": 53,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 13,
+              "STRAWBERRY": 29,
+              "MELON": 11
+            },
+            "money": 17475.0
+          },
+          "jaccard": 0.9629629629629629,
+          "detect_score": 7,
+          "reasons": [
+            "crops40",
+            "3quad",
+            "animBand",
+            "wheat"
+          ]
+        },
+        "20": {
+          "us": {
+            "n_crops": 53,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 16,
+              "STRAWBERRY": 26,
+              "MELON": 11
+            },
+            "money": 45480.0
+          },
+          "tetsu": {
+            "n_crops": 53,
+            "n_animals": 12,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 16,
+              "STRAWBERRY": 26,
+              "MELON": 11
+            },
+            "money": 46193.0
+          },
+          "jaccard": 0.9629629629629629,
+          "detect_score": 7,
+          "reasons": [
+            "crops40",
+            "3quad",
+            "animBand",
+            "wheat"
+          ]
+        },
+        "29": {
+          "us": {
+            "n_crops": 33,
+            "n_animals": 13,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 33
+            },
+            "money": 100782.0
+          },
+          "tetsu": {
+            "n_crops": 33,
+            "n_animals": 13,
+            "quads": [
+              "NE",
+              "NW",
+              "SW"
+            ],
+            "crops": {
+              "WHEAT": 33
+            },
+            "money": 101647.0
+          },
+          "jaccard": 1.0,
+          "detect_score": 9,
+          "reasons": [
+            "crops28",
+            "3quad",
+            "animBand",
+            "wheat",
+            "jac0.52"
+          ]
+        }
+      }
+    }
+  },
+  "seed": 1
+}

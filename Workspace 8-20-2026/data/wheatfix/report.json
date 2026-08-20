@@ -1,0 +1,221 @@
+{
+  "results": [
+    {
+      "name": "nocow",
+      "pass_s1": {
+        "reward": 177930.0,
+        "escapes": 0,
+        "fails": 24,
+        "max_crops": 63,
+        "crops_d10": 38,
+        "crops_d11": 61,
+        "crops_d12": 63
+      },
+      "pass_live": {
+        "reward": 143397.0,
+        "escapes": 0,
+        "fails": 24,
+        "max_crops": 62,
+        "crops_d10": 37,
+        "crops_d11": 60,
+        "crops_d12": 62
+      },
+      "vs": {
+        "v20": {
+          "wins": 2,
+          "games": 4,
+          "avg": -786.0
+        },
+        "tetsu": {
+          "wins": 2,
+          "games": 4,
+          "avg": -789.0
+        },
+        "rayk": {
+          "wins": 4,
+          "games": 4,
+          "avg": 20952.5
+        },
+        "kaito": {
+          "wins": 4,
+          "games": 4,
+          "avg": 16455.0
+        }
+      },
+      "live_mirror": {
+        "reward": 91097.0,
+        "escapes": 0,
+        "fails": 25,
+        "max_crops": 61,
+        "crops_d10": 37,
+        "crops_d11": 57,
+        "crops_d12": 58
+      },
+      "time_s": 133.9,
+      "verdict": "no"
+    },
+    {
+      "name": "wheat_open",
+      "pass_s1": {
+        "reward": 170033.0,
+        "escapes": 1,
+        "fails": 24,
+        "max_crops": 63,
+        "crops_d10": 38,
+        "crops_d11": 61,
+        "crops_d12": 63
+      },
+      "pass_live": {
+        "reward": 98713.0,
+        "escapes": 1,
+        "fails": 24,
+        "max_crops": 62,
+        "crops_d10": 37,
+        "crops_d11": 60,
+        "crops_d12": 62
+      },
+      "vs": {
+        "v20": {
+          "wins": 4,
+          "games": 4,
+          "avg": 19853.5
+        },
+        "tetsu": {
+          "wins": 4,
+          "games": 4,
+          "avg": 20565.0
+        },
+        "rayk": {
+          "wins": 4,
+          "games": 4,
+          "avg": 19217.25
+        },
+        "kaito": {
+          "wins": 4,
+          "games": 4,
+          "avg": 14926.0
+        }
+      },
+      "live_mirror": {
+        "reward": 75054.0,
+        "escapes": 1,
+        "fails": 30,
+        "max_crops": 61,
+        "crops_d10": 37,
+        "crops_d11": 53,
+        "crops_d12": 55
+      },
+      "time_s": 134.0,
+      "verdict": "no"
+    },
+    {
+      "name": "alvaro_mkt",
+      "pass_s1": {
+        "reward": 145449.0,
+        "escapes": 4,
+        "fails": 21,
+        "max_crops": 58,
+        "crops_d10": 38,
+        "crops_d11": 54,
+        "crops_d12": 56
+      },
+      "pass_live": {
+        "reward": 139862.0,
+        "escapes": 4,
+        "fails": 21,
+        "max_crops": 58,
+        "crops_d10": 37,
+        "crops_d11": 53,
+        "crops_d12": 55
+      },
+      "vs": {
+        "v20": {
+          "wins": 0,
+          "games": 4,
+          "avg": -4563.0
+        },
+        "tetsu": {
+          "wins": 0,
+          "games": 4,
+          "avg": -3815.0
+        },
+        "rayk": {
+          "wins": 0,
+          "games": 4,
+          "avg": -4395.5
+        },
+        "kaito": {
+          "wins": 0,
+          "games": 4,
+          "avg": -2591.75
+        }
+      },
+      "live_mirror": {
+        "reward": 88586.0,
+        "escapes": 4,
+        "fails": 25,
+        "max_crops": 58,
+        "crops_d10": 37,
+        "crops_d11": 50,
+        "crops_d12": 50
+      },
+      "time_s": 130.8,
+      "verdict": "no"
+    },
+    {
+      "name": "stack",
+      "pass_s1": {
+        "reward": 155869.0,
+        "escapes": 4,
+        "fails": 21,
+        "max_crops": 58,
+        "crops_d10": 38,
+        "crops_d11": 54,
+        "crops_d12": 56
+      },
+      "pass_live": {
+        "reward": 147466.0,
+        "escapes": 4,
+        "fails": 21,
+        "max_crops": 58,
+        "crops_d10": 37,
+        "crops_d11": 53,
+        "crops_d12": 55
+      },
+      "vs": {
+        "v20": {
+          "wins": 1,
+          "games": 4,
+          "avg": -553.75
+        },
+        "tetsu": {
+          "wins": 3,
+          "games": 4,
+          "avg": 163.75
+        },
+        "rayk": {
+          "wins": 1,
+          "games": 4,
+          "avg": -662.5
+        },
+        "kaito": {
+          "wins": 2,
+          "games": 4,
+          "avg": 3466.75
+        }
+      },
+      "live_mirror": {
+        "reward": 73711.0,
+        "escapes": 4,
+        "fails": 25,
+        "max_crops": 58,
+        "crops_d10": 37,
+        "crops_d11": 50,
+        "crops_d12": 50
+      },
+      "time_s": 132.6,
+      "verdict": "no"
+    }
+  ],
+  "shippable": null
+}

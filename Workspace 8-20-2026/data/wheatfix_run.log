@@ -1,0 +1,13 @@
+[wheatfix] seeds=[1, 2] procs=2
+[wheatfix] control v20: PASS s1 $167,978 (esc 1, 24 fails), live-seed mirror crops 61
+    [nocow     ] PASS s1 $177,930 (esc 0, fails 24, crops d10-12 38/61/63) | PASS live $143,397 (esc 0) | v20 -786 | tetsu -789 | rayk +20,952 | kaito +16,455 | liveMirror crops d10-12 37/57/58 $91,097 | 133.9s
+    [wheat_open] PASS s1 $170,033 (esc 1, fails 24, crops d10-12 38/61/63) | PASS live $98,713 (esc 1) | v20 +19,854 | tetsu +20,565 | rayk +19,217 | kaito +14,926 | liveMirror crops d10-12 37/53/55 $75,054 | 134.0s
+    [alvaro_mkt] PASS s1 $145,449 (esc 4, fails 21, crops d10-12 38/54/56) | PASS live $139,862 (esc 4) | v20 -4,563 | tetsu -3,815 | rayk -4,396 | kaito -2,592 | liveMirror crops d10-12 37/50/50 $88,586 | 130.8s
+    [stack     ] PASS s1 $155,869 (esc 4, fails 21, crops d10-12 38/54/56) | PASS live $147,466 (esc 4) | v20 -554 | tetsu +164 | rayk -662 | kaito +3,467 | liveMirror crops d10-12 37/50/50 $73,711 | 132.6s
+
+[wheatfix] VERDICT
+  nocow     : PASS $177,930 esc=0 live-mirror-crops-d12=58 pass=True esc=True crops=True vs=False -> no
+  wheat_open: PASS $170,033 esc=1 live-mirror-crops-d12=55 pass=True esc=False crops=False vs=False -> no
+  alvaro_mkt: PASS $145,449 esc=4 live-mirror-crops-d12=50 pass=False esc=False crops=False vs=False -> no
+  stack     : PASS $155,869 esc=4 live-mirror-crops-d12=50 pass=False esc=False crops=False vs=False -> no
+[wheatfix] report -> /home/user/kaggriculture/data/wheatfix

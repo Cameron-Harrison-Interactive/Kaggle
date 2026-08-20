@@ -1,0 +1,187 @@
+{
+  "control": {
+    "pass0": 167978,
+    "pass1": 162093,
+    "vs": {
+      "v20": {
+        "avg": -414
+      },
+      "tetsu": {
+        "avg": -413
+      },
+      "rayk": {
+        "avg": 14388
+      },
+      "kaito": {
+        "avg": 17538
+      }
+    }
+  },
+  "results": [
+    {
+      "name": "m4_mid",
+      "patch": {
+        "swaps": [
+          [
+            209,
+            8,
+            208
+          ],
+          [
+            206,
+            8,
+            205
+          ],
+          [
+            190,
+            7,
+            189
+          ],
+          [
+            186,
+            7,
+            185
+          ]
+        ],
+        "first_swap_day": 7,
+        "sell_bumps": 24
+      },
+      "pass0": 169130.0,
+      "pass1": 155816.0,
+      "animals0": 13,
+      "animals1": 13,
+      "weeds_d15": 1,
+      "vs": {
+        "v20": {
+          "wins": 4,
+          "games": 4,
+          "avg": 1560.0
+        },
+        "tetsu": {
+          "wins": 4,
+          "games": 4,
+          "avg": 1574.0
+        },
+        "rayk": {
+          "wins": 4,
+          "games": 4,
+          "avg": 18511.5
+        },
+        "kaito": {
+          "wins": 4,
+          "games": 4,
+          "avg": 14163.25
+        }
+      },
+      "time_s": 125.5,
+      "verdict": "no"
+    },
+    {
+      "name": "m4_late",
+      "patch": {
+        "swaps": [
+          [
+            262,
+            10,
+            261
+          ],
+          [
+            259,
+            10,
+            258
+          ],
+          [
+            259,
+            10,
+            258
+          ],
+          [
+            258,
+            10,
+            257
+          ]
+        ],
+        "first_swap_day": 10,
+        "sell_bumps": 24
+      },
+      "pass0": 152735.0,
+      "pass1": 146106.0,
+      "animals0": 11,
+      "animals1": 11,
+      "weeds_d15": 1,
+      "vs": {
+        "v20": {
+          "wins": 0,
+          "games": 4,
+          "avg": -6688.0
+        },
+        "tetsu": {
+          "wins": 0,
+          "games": 4,
+          "avg": -6686.0
+        },
+        "rayk": {
+          "wins": 4,
+          "games": 4,
+          "avg": 3801.25
+        },
+        "kaito": {
+          "wins": 4,
+          "games": 4,
+          "avg": 8736.75
+        }
+      },
+      "time_s": 127.2,
+      "verdict": "no"
+    },
+    {
+      "name": "m4_2",
+      "patch": {
+        "swaps": [
+          [
+            262,
+            10,
+            261
+          ],
+          [
+            259,
+            10,
+            258
+          ]
+        ],
+        "first_swap_day": 10,
+        "sell_bumps": 12
+      },
+      "pass0": 163832.0,
+      "pass1": 156732.0,
+      "animals0": 13,
+      "animals1": 13,
+      "weeds_d15": 1,
+      "vs": {
+        "v20": {
+          "wins": 0,
+          "games": 4,
+          "avg": -2889.0
+        },
+        "tetsu": {
+          "wins": 0,
+          "games": 4,
+          "avg": -2887.5
+        },
+        "rayk": {
+          "wins": 4,
+          "games": 4,
+          "avg": 9086.25
+        },
+        "kaito": {
+          "wins": 4,
+          "games": 4,
+          "avg": 14414.0
+        }
+      },
+      "time_s": 120.3,
+      "verdict": "no"
+    }
+  ],
+  "shippable": null
+}

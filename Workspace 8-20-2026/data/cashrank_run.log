@@ -1,0 +1,13 @@
+[brain_v21] seeds=[1, 2] procs=2
+[brain_v21] base = v20. Layers: LaborRepair / KaitoNet / MarketBrain.
+    [labor       ] PASS $167,978/$162,093 anim 13/13 | v20 -409 (0/4) | kaito +17,456 (4/4) | tetsu -408 (0/4) | rayk +14,388 (4/4) | 129.8s
+    [ctrl        ] PASS $167,978/$162,093 anim 13/13 | v20 -414 (0/4) | kaito +17,538 (4/4) | tetsu -413 (0/4) | rayk +14,388 (4/4) | 130.5s
+    [cashrank    ] PASS $167,978/$162,093 anim 13/13 | v20 -414 (0/4) | kaito +17,538 (4/4) | tetsu -413 (0/4) | rayk +14,388 (4/4) | 131.7s
+    [labor+cashrank] PASS $167,978/$162,093 anim 13/13 | v20 -409 (0/4) | kaito +17,456 (4/4) | tetsu -408 (0/4) | rayk +14,388 (4/4) | 131.2s
+
+[brain_v21] VERDICT
+  control: PASS $167,978/$162,093
+  labor        PASS_ok=True anim_ok=True contested_ok=True -> KEEP
+  cashrank     PASS_ok=True anim_ok=True contested_ok=True -> KEEP
+  labor+cashrank PASS_ok=True anim_ok=True contested_ok=True -> KEEP
+[brain_v21] ledger + report -> /home/user/kaggriculture/data/brain_v21

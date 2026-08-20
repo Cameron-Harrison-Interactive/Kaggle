@@ -1,0 +1,32 @@
+[adaptive_v20] seeds=[1, 2, 3] procs=2 quick=False melon4=False
+[adaptive_v20] base = v19 compiled routes (62 crops). Ship gate: PASS >= v19 baseline, animals >= 13, finals better than v19ctrl.
+[adaptive_v20] catalog=5
+    v19ctrl
+    race
+    s0s1
+    s0s1+race
+    s0s1+race+th
+    [race                  ] PASS $167,978/$155,325 anim 13/14 | v19 +178 W2/6 | tetsu -548 W0/6 | 106.3s
+    [v19ctrl               ] PASS $167,978/$155,325 anim 13/14 | v19 +178 W2/6 | tetsu -548 W0/6 | 106.5s
+    [s0s1                  ] PASS $167,978/$162,093 anim 13/13 | v19 +178 W2/6 | tetsu -548 W0/6 | 105.0s
+    [s0s1+race             ] PASS $167,978/$162,093 anim 13/13 | v19 +178 W2/6 | tetsu -548 W0/6 | 106.8s
+    [s0s1+race+th          ] PASS $167,978/$162,093 anim 13/13 | v19 -12392 W0/6 | tetsu -13532 W0/6 | 102.5s
+
+[adaptive_v20] FINALS for race:
+      vs v14.5          W 6/6  avg +3,746
+      vs v15            W 6/6  avg +3,746
+      vs v18            W 2/6  avg +262
+      vs kaito_TT       W 6/6  avg +13,925
+      vs rayk           W 6/6  avg +11,991
+      vs tetsu          W 0/6  avg -548
+      vs seb            W 6/6  avg +138,660
+      vs healthstone    W 6/6  avg +48,140
+      vs cowbot         W 6/6  avg +153,848
+
+[adaptive_v20] FINALS for s0s1:
+      vs v14.5          W 6/6  avg +3,746
+      vs v15            W 6/6  avg +3,746
+      vs v18            W 2/6  avg +262
+      vs kaito_TT       W 6/6  avg +13,925
+      vs rayk           W 6/6  avg +11,991
+      vs tetsu          W 0/6  avg -548

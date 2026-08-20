@@ -1,0 +1,21 @@
+prize probe: full-Kawashigi route vs our v25, by trigger state
+seed seat                            shops       v25       KAW     delta
+   1    0  ['SMOOTHIE_SHOP', 'PIZZA_SHOP']   145,359   172,817   +27,458
+   1    1  ['SMOOTHIE_SHOP', 'PIZZA_SHOP']   165,155   142,276   -22,879
+   2    0 ['PIZZA_SHOP', 'ICE_CREAM_SHOP']   154,100   187,126   +33,026
+   2    1 ['PIZZA_SHOP', 'ICE_CREAM_SHOP']   154,100   199,013   +44,913
+   3    0 ['PIZZA_SHOP', 'FARMERS_MARKET']   141,420   192,787   +51,367
+   3    1     ['PIZZA_SHOP', 'PIZZA_SHOP']   119,303   188,123   +68,820
+   4    0    ['BRUNCH_SPOT', 'YARN_STORE']   165,444   169,871    +4,427
+   4    1    ['BRUNCH_SPOT', 'YARN_STORE']   165,444   169,871    +4,427
+   5    0           ['PET_CAFE', 'BAKERY']   135,813   102,127   -33,686
+   5    1       ['PET_CAFE', 'YARN_STORE']    88,450   107,187   +18,737
+   6    0     ['YARN_STORE', 'YARN_STORE']   128,456   144,686   +16,230
+   6    1     ['YARN_STORE', 'YARN_STORE']   128,456   148,855   +20,399
+   7    0 ['FARMERS_MARKET', 'YARN_STORE']   146,564   105,950   -40,614
+   7    1 ['FARMERS_MARKET', 'YARN_STORE']   146,564   105,512   -41,052
+   8    0         ['YARN_STORE', 'BAKERY']   123,748   141,759   +18,011
+   8    1         ['YARN_STORE', 'BAKERY']   123,748   141,759   +18,011
+   9    0  ['PIZZA_SHOP', 'SMOOTHIE_SHOP']   162,010   143,685   -18,325
+   9    1  ['PIZZA_SHOP', 'SMOOTHIE_SHOP']   168,405   134,057   -34,348
+  10    0 ['YARN_STORE', 'FARMERS_MARKET']   149,134   132,206   -16,928

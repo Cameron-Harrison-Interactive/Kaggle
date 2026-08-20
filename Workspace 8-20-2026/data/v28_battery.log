@@ -1,0 +1,53 @@
+41 jobs
+[1] A seed 1 seat 0 mult 1.25: 138,142 esc=1
+[2] A seed 1 seat 0 mult 1.0: 145,359 esc=0
+[3] A seed 1 seat 0 mult 1.5: 146,714 esc=0
+[4] A seed 1 seat 0 mult 1.75: 146,648 esc=0
+[5] A seed 1 seat 0 mult 2.0: 147,164 esc=0
+[6] A seed 1 seat 1 mult 1.0: 165,155 esc=0
+[7] A seed 1 seat 1 mult 1.25: 158,452 esc=0
+[8] A seed 1 seat 1 mult 1.5: 162,853 esc=0
+[9] A seed 1 seat 1 mult 2.0: 158,877 esc=0
+[10] A seed 1 seat 1 mult 1.75: 160,368 esc=0
+[11] A seed 2 seat 0 mult 1.0: 154,100 esc=0
+[12] A seed 2 seat 0 mult 1.25: 147,840 esc=1
+[13] A seed 2 seat 0 mult 1.5: 153,013 esc=0
+[14] A seed 2 seat 0 mult 1.75: 151,234 esc=0
+[15] A seed 2 seat 0 mult 2.0: 150,398 esc=0
+[16] A seed 2 seat 1 mult 1.0: 154,100 esc=0
+[17] A seed 2 seat 1 mult 1.25: 147,840 esc=0
+[18] A seed 2 seat 1 mult 1.5: 153,013 esc=0
+[19] A seed 2 seat 1 mult 1.75: 151,234 esc=0
+[20] A seed 2 seat 1 mult 2.0: 150,398 esc=0
+[21] A seed 3 seat 0 mult 1.0: 141,420 esc=0
+[22] A seed 3 seat 0 mult 1.25: 136,711 esc=1
+[23] A seed 3 seat 0 mult 1.5: 141,714 esc=0
+[24] A seed 3 seat 0 mult 1.75: 140,911 esc=0
+[25] A seed 3 seat 0 mult 2.0: 140,749 esc=0
+[26] A seed 3 seat 1 mult 1.0: 119,303 esc=0
+[27] A seed 3 seat 1 mult 1.25: 114,185 esc=0
+[28] A seed 3 seat 1 mult 1.5: 119,280 esc=0
+[29] A seed 3 seat 1 mult 1.75: 118,344 esc=0
+[30] A seed 3 seat 1 mult 2.0: 118,507 esc=0
+[31] B seed 1 v20 seat 0: d28=   -6,957 (v28 63,671/57,897 | v25 97,141/84,410) esc=0
+[32] B seed 1 v20 seat 1: d28=   -7,208 (v28 63,117/58,658 | v25 96,871/85,204) esc=1
+[33] B seed 1 kaito seat 1: d28=   -9,195 (v28 75,369/66,950 | v25 90,658/73,044) esc=1
+[34] B seed 1 kaito seat 0: d28=   -8,627 (v28 76,135/65,989 | v25 91,014/72,241) esc=0
+[35] B seed 2 v20 seat 0: d28=   -4,468 (v28 61,112/58,050 | v25 71,455/63,925) esc=0
+[36] B seed 2 v20 seat 1: d28=   -4,185 (v28 61,232/57,929 | v25 70,862/63,374) esc=1
+[37] B seed 2 kaito seat 0: d28=   -1,039 (v28 43,462/37,001 | v25 40,757/33,257) esc=0
+[38] B seed 2 kaito seat 1: d28=   -1,037 (v28 43,464/37,001 | v25 40,757/33,257) esc=1
+[39] C replay 93065463: v28 88,022 vs v25 179,374 (d -91,352)
+[40] C replay 93061726: v28 42,610 vs v25 139,701 (d -97,091)
+[41] C replay 93059081: v28 42,608 vs v25 146,470 (d -103,862)
+
+=== A: PASS per mult (mean over 6 games) ===
+  mult 1.0: mean=       +0 esc_total=0 deltas=['+0', '+0', '+0', '+0', '+0', '+0']
+  mult 1.25: mean=   -6,044 esc_total=3 deltas=['-7,217', '-6,703', '-6,260', '-6,260', '-4,709', '-5,118']
+  mult 1.5: mean=     -475 esc_total=0 deltas=['+1,355', '-2,302', '-1,087', '-1,087', '+294', '-23']
+  mult 1.75: mean=   -1,783 esc_total=0 deltas=['+1,289', '-4,787', '-2,866', '-2,866', '-509', '-959']
+  mult 2.0: mean=   -2,224 esc_total=0 deltas=['+1,805', '-6,278', '-3,702', '-3,702', '-671', '-796']
+
+=== mirror seed 1 (mult 1.5) ===
+  106,275 vs 106,275
+done

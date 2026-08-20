@@ -1,0 +1,189 @@
+[
+ {
+  "d": 13,
+  "w_start": 43,
+  "tot_start": 79,
+  "buys": 12,
+  "sells": 25,
+  "w_end": 23,
+  "tot_end": 66,
+  "money": 8964.0,
+  "px": 35
+ },
+ {
+  "d": 14,
+  "w_start": 23,
+  "tot_start": 66,
+  "buys": 14,
+  "sells": 6,
+  "w_end": 20,
+  "tot_end": 55,
+  "money": 11543.0,
+  "px": 35
+ },
+ {
+  "d": 15,
+  "w_start": 20,
+  "tot_start": 55,
+  "buys": 5,
+  "sells": 0,
+  "w_end": 31,
+  "tot_end": 94,
+  "money": 14821.0,
+  "px": 35
+ },
+ {
+  "d": 16,
+  "w_start": 31,
+  "tot_start": 94,
+  "buys": 5,
+  "sells": 10,
+  "w_end": 47,
+  "tot_end": 78,
+  "money": 20613.0,
+  "px": 36
+ },
+ {
+  "d": 17,
+  "w_start": 47,
+  "tot_start": 78,
+  "buys": 12,
+  "sells": 25,
+  "w_end": 27,
+  "tot_end": 88,
+  "money": 28441.0,
+  "px": 36
+ },
+ {
+  "d": 18,
+  "w_start": 27,
+  "tot_start": 88,
+  "buys": 24,
+  "sells": 16,
+  "w_end": 24,
+  "tot_end": 77,
+  "money": 32656.0,
+  "px": 36
+ },
+ {
+  "d": 19,
+  "w_start": 24,
+  "tot_start": 77,
+  "buys": 7,
+  "sells": 0,
+  "w_end": 37,
+  "tot_end": 85,
+  "money": 41885.0,
+  "px": 37
+ },
+ {
+  "d": 20,
+  "w_start": 37,
+  "tot_start": 85,
+  "buys": 12,
+  "sells": 13,
+  "w_end": 45,
+  "tot_end": 88,
+  "money": 51056.0,
+  "px": 38
+ },
+ {
+  "d": 21,
+  "w_start": 45,
+  "tot_start": 88,
+  "buys": 11,
+  "sells": 20,
+  "w_end": 27,
+  "tot_end": 89,
+  "money": 72057.0,
+  "px": 38
+ },
+ {
+  "d": 22,
+  "w_start": 27,
+  "tot_start": 89,
+  "buys": 15,
+  "sells": 2,
+  "w_end": 27,
+  "tot_end": 95,
+  "money": 84733.0,
+  "px": 38
+ },
+ {
+  "d": 23,
+  "w_start": 27,
+  "tot_start": 95,
+  "buys": 5,
+  "sells": 1,
+  "w_end": 46,
+  "tot_end": 81,
+  "money": 92354.0,
+  "px": 39
+ },
+ {
+  "d": 24,
+  "w_start": 46,
+  "tot_start": 81,
+  "buys": 1,
+  "sells": 34,
+  "w_end": 54,
+  "tot_end": 96,
+  "money": 99956.0,
+  "px": 40
+ },
+ {
+  "d": 25,
+  "w_start": 54,
+  "tot_start": 96,
+  "buys": 5,
+  "sells": 28,
+  "w_end": 52,
+  "tot_end": 80,
+  "money": 106850.0,
+  "px": 39
+ },
+ {
+  "d": 26,
+  "w_start": 52,
+  "tot_start": 80,
+  "buys": 8,
+  "sells": 26,
+  "w_end": 29,
+  "tot_end": 80,
+  "money": 113477.0,
+  "px": 39
+ },
+ {
+  "d": 27,
+  "w_start": 29,
+  "tot_start": 80,
+  "buys": 5,
+  "sells": 3,
+  "w_end": 77,
+  "tot_end": 94,
+  "money": 116162.0,
+  "px": 38
+ },
+ {
+  "d": 28,
+  "w_start": 77,
+  "tot_start": 94,
+  "buys": 1,
+  "sells": 51,
+  "w_end": 73,
+  "tot_end": 83,
+  "money": 124376.0,
+  "px": 39
+ },
+ {
+  "d": 29,
+  "w_start": 73,
+  "tot_start": 83,
+  "buys": 0,
+  "sells": 191,
+  "w_end": 0,
+  "tot_end": 0,
+  "money": 131210.0,
+  "px": 38
+ }
+]
