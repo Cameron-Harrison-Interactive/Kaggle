@@ -1,0 +1,2138 @@
+[
+ {
+  "repo": "gytdrop/KaggricultureAgent",
+  "stars": 2,
+  "size": 2957,
+  "pushed": "2026-08-12T19:45:38Z",
+  "desc": "The ai agent that trains on itself (RL) to score higher. The aim is to score 2 lakhs and win the points",
+  "owner": "gytdrop"
+ },
+ {
+  "repo": "rooklift/krobus",
+  "stars": 3,
+  "size": 198,
+  "pushed": "2026-08-15T22:02:36Z",
+  "desc": "Kaggriculture replay viewer",
+  "owner": "rooklift"
+ },
+ {
+  "repo": "diffmap/kaggicultureRL",
+  "stars": 3,
+  "size": 401,
+  "pushed": "2026-08-20T02:20:44Z",
+  "desc": "Open-source Kaggriculture policy system",
+  "owner": "diffmap"
+ },
+ {
+  "repo": "bravefe/Kaggriculture",
+  "stars": 2,
+  "size": 6993,
+  "pushed": "2026-08-20T03:06:19Z",
+  "desc": null,
+  "owner": "bravefe"
+ },
+ {
+  "repo": "GrigoriiIurev/Kaggriculture",
+  "stars": 0,
+  "size": 1910,
+  "pushed": "2026-08-25T21:02:35Z",
+  "desc": "Kaggriculture",
+  "owner": "GrigoriiIurev"
+ },
+ {
+  "repo": "Hidenori24/Kaggle_kaggriculture",
+  "stars": 0,
+  "size": 825,
+  "pushed": "2026-08-24T02:02:26Z",
+  "desc": "kaggriculture",
+  "owner": "Hidenori24"
+ },
+ {
+  "repo": "stevefindjob/karrigriculture",
+  "stars": 0,
+  "size": 89,
+  "pushed": "2026-08-03T04:33:12Z",
+  "desc": "Kaggriculture agent",
+  "owner": "stevefindjob"
+ },
+ {
+  "repo": "kennedy-ikeka/farmsim",
+  "stars": 0,
+  "size": 11640,
+  "pushed": "2026-08-17T14:42:52Z",
+  "desc": "A kaggriculture competition",
+  "owner": "kennedy-ikeka"
+ },
+ {
+  "repo": "jqyinny/kaggriculture",
+  "stars": 0,
+  "size": 94,
+  "pushed": "2026-08-14T03:22:27Z",
+  "desc": "submission for kaggriculture",
+  "owner": "jqyinny"
+ },
+ {
+  "repo": "Srini-5303/Kaggriculture",
+  "stars": 0,
+  "size": 213,
+  "pushed": "2026-08-23T05:29:41Z",
+  "desc": null,
+  "owner": "Srini-5303"
+ },
+ {
+  "repo": "Elliotkim2/kaggricultureAgent",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-05T19:02:21Z",
+  "desc": null,
+  "owner": "Elliotkim2"
+ },
+ {
+  "repo": "alkom1/kaggriculture",
+  "stars": 0,
+  "size": 18,
+  "pushed": "2026-08-05T22:35:39Z",
+  "desc": "My attempt at PvPing in Kaggle's farming sim",
+  "owner": "alkom1"
+ },
+ {
+  "repo": "MennaAllahSamy/kaggriculture",
+  "stars": 0,
+  "size": 46,
+  "pushed": "2026-08-15T15:05:14Z",
+  "desc": "Create an agent to play in this farming simulation and compete with others to maximize your income",
+  "owner": "MennaAllahSamy"
+ },
+ {
+  "repo": "vitalclick/Kaggriculture",
+  "stars": 0,
+  "size": 11770,
+  "pushed": "2026-08-20T13:51:01Z",
+  "desc": null,
+  "owner": "vitalclick"
+ },
+ {
+  "repo": "andreluizpedroso/Kaggriculture",
+  "stars": 0,
+  "size": 50,
+  "pushed": "2026-08-09T20:18:12Z",
+  "desc": null,
+  "owner": "andreluizpedroso"
+ },
+ {
+  "repo": "Beiciccc/Kaggriculture",
+  "stars": 0,
+  "size": 159,
+  "pushed": "2026-08-09T06:38:18Z",
+  "desc": "Public project notes and experiment results for the Kaggriculture farming simulation competition.",
+  "owner": "Beiciccc"
+ },
+ {
+  "repo": "rupam378/Kaggriculture",
+  "stars": 0,
+  "size": 40,
+  "pushed": "2026-08-12T13:54:40Z",
+  "desc": null,
+  "owner": "rupam378"
+ },
+ {
+  "repo": "Ar-Srivas/kaggriculture",
+  "stars": 0,
+  "size": 285,
+  "pushed": "2026-08-16T03:37:22Z",
+  "desc": null,
+  "owner": "Ar-Srivas"
+ },
+ {
+  "repo": "pomagrenate/kaggriculture",
+  "stars": 0,
+  "size": 77,
+  "pushed": "2026-08-24T05:13:03Z",
+  "desc": "Model-Based Autonomous Decision & Receding-Horizon Control System for Kaggle's Kaggriculture Simulation Competition.",
+  "owner": "pomagrenate"
+ },
+ {
+  "repo": "sidhulyalkar/kaggriculture",
+  "stars": 1,
+  "size": 633,
+  "pushed": "2026-08-23T04:05:31Z",
+  "desc": "autonomous AI agent to manage a virtual farm, navigate a dynamic economy",
+  "owner": "sidhulyalkar"
+ },
+ {
+  "repo": "TaruneshM/Kaggriculture",
+  "stars": 0,
+  "size": 10682,
+  "pushed": "2026-08-08T16:56:59Z",
+  "desc": null,
+  "owner": "TaruneshM"
+ },
+ {
+  "repo": "SriRamkunamsetty/Kaggriculture",
+  "stars": 0,
+  "size": 137,
+  "pushed": "2026-06-26T04:30:54Z",
+  "desc": "Put your new vibecoding skills to the test in our all-new capstone challenge: Kaggriculture. In this farming simulation game, you'll design, build, and deploy a fully autonomous AI agent to manage a virtual farm. Your agent will make strategic decisions to navigate a shifting in-game economy, compete for limited resources, and outmaneuver other age",
+  "owner": "SriRamkunamsetty"
+ },
+ {
+  "repo": "gnr8trAI-stack/kaggriculture",
+  "stars": 1,
+  "size": 1351,
+  "pushed": "2026-08-13T15:15:48Z",
+  "desc": "kaggle agriculture hackathon agent ecosystem ",
+  "owner": "gnr8trAI-stack"
+ },
+ {
+  "repo": "priteshvirat24/Kaggriculture",
+  "stars": 0,
+  "size": 12,
+  "pushed": "2026-08-05T21:17:24Z",
+  "desc": null,
+  "owner": "priteshvirat24"
+ },
+ {
+  "repo": "ThivagarK/kaggriculture",
+  "stars": 0,
+  "size": 5,
+  "pushed": "2026-08-12T18:35:32Z",
+  "desc": null,
+  "owner": "ThivagarK"
+ },
+ {
+  "repo": "sutesute0000/Kaggriculture",
+  "stars": 0,
+  "size": 510,
+  "pushed": "2026-08-22T01:14:06Z",
+  "desc": null,
+  "owner": "sutesute0000"
+ },
+ {
+  "repo": "HyIsNoob/Kaggriculture",
+  "stars": 0,
+  "size": 66,
+  "pushed": "2026-08-19T15:13:45Z",
+  "desc": null,
+  "owner": "HyIsNoob"
+ },
+ {
+  "repo": "N9uyen3n/Kaggriculture",
+  "stars": 0,
+  "size": 97,
+  "pushed": "2026-08-06T12:05:49Z",
+  "desc": "Kaggriculture copmetition on Kaggle",
+  "owner": "N9uyen3n"
+ },
+ {
+  "repo": "parnika0110/kaggriculture2k26",
+  "stars": 0,
+  "size": 11,
+  "pushed": "2026-08-18T06:02:15Z",
+  "desc": null,
+  "owner": "parnika0110"
+ },
+ {
+  "repo": "basavarajbaboji/kaggriculture",
+  "stars": 0,
+  "size": 11362,
+  "pushed": "2026-08-04T06:32:46Z",
+  "desc": null,
+  "owner": "basavarajbaboji"
+ },
+ {
+  "repo": "tktk1130mk-dotcom/Kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-13T13:22:11Z",
+  "desc": null,
+  "owner": "tktk1130mk-dotcom"
+ },
+ {
+  "repo": "ram1o1/kaggriculture",
+  "stars": 0,
+  "size": 2625,
+  "pushed": "2026-08-21T06:18:49Z",
+  "desc": null,
+  "owner": "ram1o1"
+ },
+ {
+  "repo": "Karthic-44/Kaggriculture",
+  "stars": 0,
+  "size": 25,
+  "pushed": "2026-08-24T14:29:45Z",
+  "desc": null,
+  "owner": "Karthic-44"
+ },
+ {
+  "repo": "COK-ZhangZiliang/Kaggriculture",
+  "stars": 0,
+  "size": 646,
+  "pushed": "2026-08-27T11:38:26Z",
+  "desc": "Deterministic baseline agent and reproducible tooling for the Kaggle Kaggriculture competition.",
+  "owner": "COK-ZhangZiliang"
+ },
+ {
+  "repo": "Ryan-Hancock/Kaggriculture",
+  "stars": 0,
+  "size": 11768,
+  "pushed": "2026-08-08T11:28:28Z",
+  "desc": "This simulation competition is a turn-based farming game where two players compete on separate farms to see who can earn the most profit by the end of a 30-day season (720 turns).",
+  "owner": "Ryan-Hancock"
+ },
+ {
+  "repo": "niits/kaggriculture",
+  "stars": 0,
+  "size": 288,
+  "pushed": "2026-08-24T04:38:49Z",
+  "desc": null,
+  "owner": "niits"
+ },
+ {
+  "repo": "tdtu98/kaggriculture",
+  "stars": 0,
+  "size": 29282,
+  "pushed": "2026-08-26T01:22:22Z",
+  "desc": null,
+  "owner": "tdtu98"
+ },
+ {
+  "repo": "raxhim/Kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-15T10:05:54Z",
+  "desc": null,
+  "owner": "raxhim"
+ },
+ {
+  "repo": "ian-turner/kaggriculture",
+  "stars": 0,
+  "size": 281,
+  "pushed": "2026-08-17T19:08:44Z",
+  "desc": null,
+  "owner": "ian-turner"
+ },
+ {
+  "repo": "Darunesh1/Kaggriculture",
+  "stars": 0,
+  "size": 44,
+  "pushed": "2026-08-23T07:15:58Z",
+  "desc": null,
+  "owner": "Darunesh1"
+ },
+ {
+  "repo": "shabnam311/kaggriculture",
+  "stars": 0,
+  "size": 209,
+  "pushed": "2026-08-23T16:35:40Z",
+  "desc": null,
+  "owner": "shabnam311"
+ },
+ {
+  "repo": "SudoKuder/kaggriculture",
+  "stars": 0,
+  "size": 4369,
+  "pushed": "2026-08-26T15:05:06Z",
+  "desc": null,
+  "owner": "SudoKuder"
+ },
+ {
+  "repo": "de-scientist/Kaggriculture",
+  "stars": 0,
+  "size": 17895,
+  "pushed": "2026-08-13T15:01:00Z",
+  "desc": null,
+  "owner": "de-scientist"
+ },
+ {
+  "repo": "amerob/kaggriculture",
+  "stars": 0,
+  "size": 45,
+  "pushed": "2026-08-13T21:21:55Z",
+  "desc": "Kaggriculture market analysis and agent experiments with a verified price model and game harness. Shows performance is supply- and labor-constrained, not price-constrained.",
+  "owner": "amerob"
+ },
+ {
+  "repo": "sota1111/kaggriculture-claude",
+  "stars": 0,
+  "size": 348,
+  "pushed": "2026-08-04T13:14:18Z",
+  "desc": "Kaggle kaggriculture claude submission agent",
+  "owner": "sota1111"
+ },
+ {
+  "repo": "Kapish196258/Kaggriculture",
+  "stars": 0,
+  "size": 12,
+  "pushed": "2026-08-04T11:02:05Z",
+  "desc": "AI Agent for the Kaggle Kaggriculture Competition",
+  "owner": "Kapish196258"
+ },
+ {
+  "repo": "lucian-student/kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-17T13:05:38Z",
+  "desc": null,
+  "owner": "lucian-student"
+ },
+ {
+  "repo": "veeda241/Kaggriculture",
+  "stars": 0,
+  "size": 5,
+  "pushed": "2026-08-19T03:14:11Z",
+  "desc": "Farm your way to market dominance! Players harvest produce and animal products to sell in a dynamic market.",
+  "owner": "veeda241"
+ },
+ {
+  "repo": "ronelmaamoc/kaggriculture",
+  "stars": 0,
+  "size": 1194,
+  "pushed": "2026-08-24T05:27:19Z",
+  "desc": null,
+  "owner": "ronelmaamoc"
+ },
+ {
+  "repo": "Eclipse-Dirol/Kaggriculture",
+  "stars": 0,
+  "size": 4,
+  "pushed": "2026-08-04T11:16:05Z",
+  "desc": null,
+  "owner": "Eclipse-Dirol"
+ },
+ {
+  "repo": "natn2014/kaggriculture",
+  "stars": 0,
+  "size": 12,
+  "pushed": "2026-08-12T15:44:51Z",
+  "desc": null,
+  "owner": "natn2014"
+ },
+ {
+  "repo": "Algio-Nightly/Kaggriculture",
+  "stars": 0,
+  "size": 60828,
+  "pushed": "2026-08-27T09:15:46Z",
+  "desc": null,
+  "owner": "Algio-Nightly"
+ },
+ {
+  "repo": "Rufus1507/Kaggriculture",
+  "stars": 0,
+  "size": 1055,
+  "pushed": "2026-08-27T10:18:00Z",
+  "desc": null,
+  "owner": "Rufus1507"
+ },
+ {
+  "repo": "errordube/Kaggriculture",
+  "stars": 0,
+  "size": 31,
+  "pushed": "2026-08-06T01:46:39Z",
+  "desc": null,
+  "owner": "errordube"
+ },
+ {
+  "repo": "gkuwanto/kaggriculture",
+  "stars": 0,
+  "size": 106,
+  "pushed": "2026-08-09T00:38:58Z",
+  "desc": null,
+  "owner": "gkuwanto"
+ },
+ {
+  "repo": "yusif-v/Kaggriculture",
+  "stars": 0,
+  "size": 33,
+  "pushed": "2026-08-08T16:04:54Z",
+  "desc": "Kaggle Kaggriculture sim agent (CERES strategy). Build an autonomous farm bot that wins a 720-turn season.",
+  "owner": "yusif-v"
+ },
+ {
+  "repo": "GzmCR/Kaggriculture",
+  "stars": 0,
+  "size": 33156,
+  "pushed": "2026-08-17T13:05:33Z",
+  "desc": null,
+  "owner": "GzmCR"
+ },
+ {
+  "repo": "mjudi/Kaggriculture",
+  "stars": 0,
+  "size": 405,
+  "pushed": "2026-08-24T03:20:26Z",
+  "desc": "Create an agent to play in this farming simulation and compete with others to maximize your income",
+  "owner": "mjudi"
+ },
+ {
+  "repo": "CDrookieDc/kaggriculture",
+  "stars": 1,
+  "size": 7848,
+  "pushed": "2026-08-21T15:53:27Z",
+  "desc": "Kaggle Kaggriculture competition agent: wheat + melon + goose economy (sector-owner controller)",
+  "owner": "CDrookieDc"
+ },
+ {
+  "repo": "collectivewinca/kaggriculture",
+  "stars": 0,
+  "size": 564,
+  "pushed": "2026-08-11T06:52:18Z",
+  "desc": null,
+  "owner": "collectivewinca"
+ },
+ {
+  "repo": "dominictedrow/kaggriculture",
+  "stars": 0,
+  "size": 343,
+  "pushed": "2026-08-22T03:49:37Z",
+  "desc": null,
+  "owner": "dominictedrow"
+ },
+ {
+  "repo": "ergousha/kaggriculture",
+  "stars": 0,
+  "size": 2604,
+  "pushed": "2026-08-23T12:46:52Z",
+  "desc": "Kaggle featured simulation competition",
+  "owner": "ergousha"
+ },
+ {
+  "repo": "Aer-3888/kaggriculture",
+  "stars": 0,
+  "size": 1,
+  "pushed": "2026-08-05T00:46:44Z",
+  "desc": null,
+  "owner": "Aer-3888"
+ },
+ {
+  "repo": "Chirantan02/Kaggriculture",
+  "stars": 0,
+  "size": 10945,
+  "pushed": "2026-08-08T05:23:53Z",
+  "desc": null,
+  "owner": "Chirantan02"
+ },
+ {
+  "repo": "George-Kalash/Kaggriculture",
+  "stars": 0,
+  "size": 1,
+  "pushed": "2026-08-09T01:43:55Z",
+  "desc": null,
+  "owner": "George-Kalash"
+ },
+ {
+  "repo": "taruchit/Kaggriculture",
+  "stars": 0,
+  "size": 10,
+  "pushed": "2026-08-15T17:52:24Z",
+  "desc": null,
+  "owner": "taruchit"
+ },
+ {
+  "repo": "homeshwarnelakurthi/Kaggriculture",
+  "stars": 0,
+  "size": 2029,
+  "pushed": "2026-08-10T23:56:45Z",
+  "desc": "agent to play in this farming simulation",
+  "owner": "homeshwarnelakurthi"
+ },
+ {
+  "repo": "jamesc91/Kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-11T03:44:20Z",
+  "desc": "Repo for tracking Kaggle Kaggriculture entry",
+  "owner": "jamesc91"
+ },
+ {
+  "repo": "Seyamalam/Kaggriculture",
+  "stars": 0,
+  "size": 1422,
+  "pushed": "2026-08-05T12:59:10Z",
+  "desc": "Autonomous agent research and reproducible evaluation for Kaggle's Kaggriculture simulation",
+  "owner": "Seyamalam"
+ },
+ {
+  "repo": "5thDimension-Sean/kaggriculture",
+  "stars": 0,
+  "size": 414800,
+  "pushed": "2026-08-23T19:20:18Z",
+  "desc": "Kaggle project",
+  "owner": "5thDimension-Sean"
+ },
+ {
+  "repo": "nfagundo/kaggriculture",
+  "stars": 0,
+  "size": 19,
+  "pushed": "2026-08-15T19:50:22Z",
+  "desc": null,
+  "owner": "nfagundo"
+ },
+ {
+  "repo": "Loofy147/Kaggriculture",
+  "stars": 0,
+  "size": 2549,
+  "pushed": "2026-08-24T19:10:24Z",
+  "desc": null,
+  "owner": "Loofy147"
+ },
+ {
+  "repo": "Hiroto-X/Kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-04T06:01:14Z",
+  "desc": null,
+  "owner": "Hiroto-X"
+ },
+ {
+  "repo": "AlvinMorogo/kaggriculture",
+  "stars": 0,
+  "size": 33,
+  "pushed": "2026-08-05T12:24:35Z",
+  "desc": "description",
+  "owner": "AlvinMorogo"
+ },
+ {
+  "repo": "excel432/kaggriculture",
+  "stars": 0,
+  "size": 3,
+  "pushed": "2026-08-08T22:03:23Z",
+  "desc": null,
+  "owner": "excel432"
+ },
+ {
+  "repo": "brytesika-AI/Kaggriculture",
+  "stars": 0,
+  "size": 2633,
+  "pushed": "2026-06-23T17:45:58Z",
+  "desc": null,
+  "owner": "brytesika-AI"
+ },
+ {
+  "repo": "JustinMai042/Kaggriculture",
+  "stars": 0,
+  "size": 10746,
+  "pushed": "2026-08-14T01:50:43Z",
+  "desc": null,
+  "owner": "JustinMai042"
+ },
+ {
+  "repo": "atsushi11o7/kaggriculture",
+  "stars": 0,
+  "size": 5,
+  "pushed": "2026-08-21T15:38:25Z",
+  "desc": null,
+  "owner": "atsushi11o7"
+ },
+ {
+  "repo": "LeEmperor/kaggriculture",
+  "stars": 0,
+  "size": 623,
+  "pushed": "2026-08-22T18:18:52Z",
+  "desc": "OCaml-based DSL for SW/HW agnostic statemachines and mass hardware-based simulation speedup measurements",
+  "owner": "LeEmperor"
+ },
+ {
+  "repo": "okami001/Kaggriculture",
+  "stars": 0,
+  "size": 26,
+  "pushed": "2026-08-07T02:25:58Z",
+  "desc": null,
+  "owner": "okami001"
+ },
+ {
+  "repo": "lonespear/kaggriculture",
+  "stars": 0,
+  "size": 617,
+  "pushed": "2026-08-07T02:35:36Z",
+  "desc": "Kaggle competition compendium",
+  "owner": "lonespear"
+ },
+ {
+  "repo": "Volterve/kaggriculture",
+  "stars": 0,
+  "size": 22,
+  "pushed": "2026-08-09T17:23:13Z",
+  "desc": "submission for kaggriculture competition",
+  "owner": "Volterve"
+ },
+ {
+  "repo": "Rishikoli/Kaggriculture",
+  "stars": 0,
+  "size": 32,
+  "pushed": "2026-08-07T09:37:23Z",
+  "desc": null,
+  "owner": "Rishikoli"
+ },
+ {
+  "repo": "OneTrickDragon/Kaggriculture-",
+  "stars": 0,
+  "size": 3,
+  "pushed": "2026-08-12T18:13:08Z",
+  "desc": null,
+  "owner": "OneTrickDragon"
+ },
+ {
+  "repo": "kemomi/Kaggriculture",
+  "stars": 0,
+  "size": 17,
+  "pushed": "2026-08-05T02:58:07Z",
+  "desc": null,
+  "owner": "kemomi"
+ },
+ {
+  "repo": "alpeshkumar9/kaggriculture",
+  "stars": 0,
+  "size": 44976,
+  "pushed": "2026-08-08T08:19:27Z",
+  "desc": "Agent to play in this farming simulation and compete with others to maximize your income",
+  "owner": "alpeshkumar9"
+ },
+ {
+  "repo": "Bhupendra-glitch/Kaggriculture",
+  "stars": 0,
+  "size": 18,
+  "pushed": "2026-08-07T12:14:35Z",
+  "desc": "Kaggle x Google",
+  "owner": "Bhupendra-glitch"
+ },
+ {
+  "repo": "kalamunangumi/kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-13T09:42:11Z",
+  "desc": "An agent that plays in a farming simulation and competes with others to maximize income.",
+  "owner": "kalamunangumi"
+ },
+ {
+  "repo": "Dhanvanthraj1401/kaggriculture",
+  "stars": 0,
+  "size": 11,
+  "pushed": "2026-08-13T14:41:29Z",
+  "desc": "AI Farmer for Kaggriculture Kaggle Competition",
+  "owner": "Dhanvanthraj1401"
+ },
+ {
+  "repo": "kvilleda12/Kaggriculture",
+  "stars": 0,
+  "size": 24,
+  "pushed": "2026-08-13T17:47:32Z",
+  "desc": null,
+  "owner": "kvilleda12"
+ },
+ {
+  "repo": "liquanlianshi/Kaggriculture",
+  "stars": 0,
+  "size": 122,
+  "pushed": "2026-08-18T05:22:06Z",
+  "desc": null,
+  "owner": "liquanlianshi"
+ },
+ {
+  "repo": "jivakalan/kaggriculture",
+  "stars": 0,
+  "size": 12,
+  "pushed": "2026-08-21T18:38:33Z",
+  "desc": null,
+  "owner": "jivakalan"
+ },
+ {
+  "repo": "Operator-X/kaggriculture",
+  "stars": 0,
+  "size": 81,
+  "pushed": "2026-08-08T04:47:02Z",
+  "desc": null,
+  "owner": "Operator-X"
+ },
+ {
+  "repo": "Abteeeen/Kaggriculture",
+  "stars": 0,
+  "size": 226,
+  "pushed": "2026-08-10T10:16:05Z",
+  "desc": null,
+  "owner": "Abteeeen"
+ },
+ {
+  "repo": "endtheme123/kaggriculture",
+  "stars": 0,
+  "size": 932,
+  "pushed": "2026-08-13T09:06:03Z",
+  "desc": null,
+  "owner": "endtheme123"
+ },
+ {
+  "repo": "hardwork9047/kaggriculture",
+  "stars": 0,
+  "size": 322,
+  "pushed": "2026-08-22T02:50:28Z",
+  "desc": null,
+  "owner": "hardwork9047"
+ },
+ {
+  "repo": "Huyit2k5/Kaggriculture",
+  "stars": 0,
+  "size": 3410,
+  "pushed": "2026-08-27T03:52:06Z",
+  "desc": null,
+  "owner": "Huyit2k5"
+ },
+ {
+  "repo": "YuriNakayama/kaggriculture",
+  "stars": 0,
+  "size": 13439,
+  "pushed": "2026-08-14T10:01:51Z",
+  "desc": null,
+  "owner": "YuriNakayama"
+ },
+ {
+  "repo": "playeryuban20001/kaggriculture",
+  "stars": 0,
+  "size": 1999,
+  "pushed": "2026-08-25T03:37:05Z",
+  "desc": null,
+  "owner": "playeryuban20001"
+ },
+ {
+  "repo": "Nai1ve/kaggriculture",
+  "stars": 0,
+  "size": 7,
+  "pushed": "2026-08-19T02:19:30Z",
+  "desc": null,
+  "owner": "Nai1ve"
+ },
+ {
+  "repo": "pangwenfeng/kaggriculture",
+  "stars": 0,
+  "size": 1283,
+  "pushed": "2026-08-26T18:48:02Z",
+  "desc": null,
+  "owner": "pangwenfeng"
+ },
+ {
+  "repo": "Modibboali/Kaggriculture",
+  "stars": 0,
+  "size": 6652,
+  "pushed": "2026-08-27T08:34:44Z",
+  "desc": null,
+  "owner": "Modibboali"
+ },
+ {
+  "repo": "Aryamann27/kaggriculture",
+  "stars": 0,
+  "size": 346,
+  "pushed": "2026-08-04T08:58:08Z",
+  "desc": "Kaggle Competition",
+  "owner": "Aryamann27"
+ },
+ {
+  "repo": "atishay-kasliwal/kaggriculture",
+  "stars": 0,
+  "size": 314,
+  "pushed": "2026-08-08T17:00:16Z",
+  "desc": null,
+  "owner": "atishay-kasliwal"
+ },
+ {
+  "repo": "jayparsana05/Kaggriculture",
+  "stars": 0,
+  "size": 797,
+  "pushed": "2026-08-09T18:06:09Z",
+  "desc": "A Kaggle Competition",
+  "owner": "jayparsana05"
+ },
+ {
+  "repo": "addaan1/Kaggriculture",
+  "stars": 0,
+  "size": 42,
+  "pushed": "2026-08-11T03:13:27Z",
+  "desc": null,
+  "owner": "addaan1"
+ },
+ {
+  "repo": "gluzdovds-wq/Kaggriculture",
+  "stars": 0,
+  "size": 2992,
+  "pushed": "2026-08-26T02:14:25Z",
+  "desc": null,
+  "owner": "gluzdovds-wq"
+ },
+ {
+  "repo": "straf10/Kaggriculture",
+  "stars": 0,
+  "size": 36804,
+  "pushed": "2026-08-26T17:28:51Z",
+  "desc": null,
+  "owner": "straf10"
+ },
+ {
+  "repo": "graceyunliu/kaggriculture",
+  "stars": 0,
+  "size": 1351,
+  "pushed": "2026-08-07T05:24:03Z",
+  "desc": null,
+  "owner": "graceyunliu"
+ },
+ {
+  "repo": "okamKTM/kaggriculture",
+  "stars": 0,
+  "size": 26,
+  "pushed": "2026-08-14T13:18:42Z",
+  "desc": null,
+  "owner": "okamKTM"
+ },
+ {
+  "repo": "qiqixie509/Kaggriculture",
+  "stars": 0,
+  "size": 2,
+  "pushed": "2026-08-04T17:07:02Z",
+  "desc": null,
+  "owner": "qiqixie509"
+ },
+ {
+  "repo": "ajeet-krish/Kaggriculture",
+  "stars": 0,
+  "size": 185,
+  "pushed": "2026-08-04T06:15:19Z",
+  "desc": null,
+  "owner": "ajeet-krish"
+ },
+ {
+  "repo": "bredky/kaggriculture",
+  "stars": 0,
+  "size": 1408,
+  "pushed": "2026-08-14T17:19:30Z",
+  "desc": null,
+  "owner": "bredky"
+ },
+ {
+  "repo": "phoebe0511/Kaggriculture",
+  "stars": 0,
+  "size": 84859,
+  "pushed": "2026-08-26T15:36:04Z",
+  "desc": null,
+  "owner": "phoebe0511"
+ },
+ {
+  "repo": "Octahedron-BB/Kaggriculture",
+  "stars": 0,
+  "size": 28643,
+  "pushed": "2026-08-07T07:28:58Z",
+  "desc": null,
+  "owner": "Octahedron-BB"
+ },
+ {
+  "repo": "Smartex-Dan/kaggriculture",
+  "stars": 0,
+  "size": 40,
+  "pushed": "2026-08-12T01:31:15Z",
+  "desc": "For more info, visit https://www.kaggle.com/competitions/kaggriculture",
+  "owner": "Smartex-Dan"
+ },
+ {
+  "repo": "asajjadi/kaggriculture",
+  "stars": 0,
+  "size": 14,
+  "pushed": "2026-08-05T23:41:51Z",
+  "desc": "Heuristic farm-management agent for the Kaggriculture competition \u2014 100% win rate (90/90 episodes) vs random/starter/melon baselines, pure-stdlib, single-file",
+  "owner": "asajjadi"
+ },
+ {
+  "repo": "Talal-Hassan-Programmer/kaggriculture",
+  "stars": 0,
+  "size": 88,
+  "pushed": "2026-06-21T22:18:43Z",
+  "desc": "Multi-agent farm feasibility advisor \u2014 Gemini + Google Search grounding + ADK. Ranks crops by budget, land, and profit margin for a given region. Built for Kaggle's 5-Day AI Agents Intensive.",
+  "owner": "Talal-Hassan-Programmer"
+ },
+ {
+  "repo": "vicky0718/kaggriculture",
+  "stars": 0,
+  "size": 79,
+  "pushed": "2026-08-25T15:47:44Z",
+  "desc": "an agent to play in a farming simulation and compete with others to maximize your income",
+  "owner": "vicky0718"
+ },
+ {
+  "repo": "alpertaskiran/kaggriculture",
+  "stars": 0,
+  "size": 2673,
+  "pushed": "2026-08-24T15:30:05Z",
+  "desc": "Kaggriculture Kaggle competition research, strategies, and agents",
+  "owner": "alpertaskiran"
+ },
+ {
+  "repo": "ParanoiddCoder/kaggriculture-",
+  "stars": 0,
+  "size": 55,
+  "pushed": "2026-08-05T15:08:36Z",
+  "desc": null,
+  "owner": "ParanoiddCoder"
+ },
+ {
+  "repo": "RahulSawant81/Kaggriculture",
+  "stars": 0,
+  "size": 57,
+  "pushed": "2026-08-06T15:49:14Z",
+  "desc": null,
+  "owner": "RahulSawant81"
+ },
+ {
+  "repo": "jponce-ux/Kaggriculture",
+  "stars": 0,
+  "size": 11056,
+  "pushed": "2026-08-07T05:45:20Z",
+  "desc": "Kaggriculture kaggle farm AI model competition",
+  "owner": "jponce-ux"
+ },
+ {
+  "repo": "AYMNrh/Kaggriculture",
+  "stars": 0,
+  "size": 505,
+  "pushed": "2026-08-11T06:43:49Z",
+  "desc": "Kaggle \u00b7 Featured Simulation Competition",
+  "owner": "AYMNrh"
+ },
+ {
+  "repo": "nguyentaidanh/Kaggriculture",
+  "stars": 0,
+  "size": 84,
+  "pushed": "2026-08-09T14:53:25Z",
+  "desc": null,
+  "owner": "nguyentaidanh"
+ },
+ {
+  "repo": "Giru-create/Kaggriculture",
+  "stars": 0,
+  "size": 36,
+  "pushed": "2026-08-16T03:49:58Z",
+  "desc": null,
+  "owner": "Giru-create"
+ },
+ {
+  "repo": "Honkpehedji-Stanley/Kaggriculture",
+  "stars": 0,
+  "size": 140,
+  "pushed": "2026-08-18T07:39:36Z",
+  "desc": null,
+  "owner": "Honkpehedji-Stanley"
+ },
+ {
+  "repo": "Dazzanova/Kaggriculture",
+  "stars": 0,
+  "size": 36,
+  "pushed": "2026-08-24T08:16:04Z",
+  "desc": null,
+  "owner": "Dazzanova"
+ },
+ {
+  "repo": "Subhash21022/kaggriculture",
+  "stars": 0,
+  "size": 132,
+  "pushed": "2026-08-16T15:05:52Z",
+  "desc": null,
+  "owner": "Subhash21022"
+ },
+ {
+  "repo": "AvinashKumarKashyap/kaggriculture",
+  "stars": 0,
+  "size": 11686,
+  "pushed": "2026-08-10T15:11:03Z",
+  "desc": "Kaggriculture : Create an agent to play in this farming simulation and compete with others to maximize your income.",
+  "owner": "AvinashKumarKashyap"
+ },
+ {
+  "repo": "tuannm3812/kaggriculture",
+  "stars": 0,
+  "size": 1186,
+  "pushed": "2026-08-13T06:27:54Z",
+  "desc": null,
+  "owner": "tuannm3812"
+ },
+ {
+  "repo": "Aidan-Tyler/Kaggriculture",
+  "stars": 0,
+  "size": 30,
+  "pushed": "2026-08-13T17:03:04Z",
+  "desc": "Kaggle farming simulation competition",
+  "owner": "Aidan-Tyler"
+ },
+ {
+  "repo": "azrihasin/kaggriculture",
+  "stars": 0,
+  "size": 54,
+  "pushed": "2026-08-16T11:00:11Z",
+  "desc": null,
+  "owner": "azrihasin"
+ },
+ {
+  "repo": "kartik31002/kaggriculture",
+  "stars": 0,
+  "size": 11019,
+  "pushed": "2026-08-13T19:39:39Z",
+  "desc": "kaggricuture competetion agent",
+  "owner": "kartik31002"
+ },
+ {
+  "repo": "Vikaspal505/Kaggriculture",
+  "stars": 1,
+  "size": 18,
+  "pushed": "2026-08-08T17:29:03Z",
+  "desc": null,
+  "owner": "Vikaspal505"
+ },
+ {
+  "repo": "Xuantum369/kaggriculture",
+  "stars": 0,
+  "size": 194,
+  "pushed": "2026-08-23T14:53:54Z",
+  "desc": null,
+  "owner": "Xuantum369"
+ },
+ {
+  "repo": "kenkenkengo0421/Kaggriculture",
+  "stars": 0,
+  "size": 35409,
+  "pushed": "2026-08-27T12:50:21Z",
+  "desc": null,
+  "owner": "kenkenkengo0421"
+ },
+ {
+  "repo": "Tamizharuvi2006/Kaggriculture",
+  "stars": 0,
+  "size": 15087,
+  "pushed": "2026-08-27T13:44:10Z",
+  "desc": null,
+  "owner": "Tamizharuvi2006"
+ },
+ {
+  "repo": "canhdinhtien/kaggriculture",
+  "stars": 0,
+  "size": 378,
+  "pushed": "2026-08-04T09:44:33Z",
+  "desc": null,
+  "owner": "canhdinhtien"
+ },
+ {
+  "repo": "limitless-v/Kaggriculture",
+  "stars": 0,
+  "size": 114,
+  "pushed": "2026-08-07T13:14:15Z",
+  "desc": null,
+  "owner": "limitless-v"
+ },
+ {
+  "repo": "Jameshuang07/kaggriculture",
+  "stars": 0,
+  "size": 4979,
+  "pushed": "2026-08-27T05:13:20Z",
+  "desc": null,
+  "owner": "Jameshuang07"
+ },
+ {
+  "repo": "johnlikescarrot/kaggriculture",
+  "stars": 0,
+  "size": 56756,
+  "pushed": "2026-08-27T14:06:31Z",
+  "desc": null,
+  "owner": "johnlikescarrot"
+ },
+ {
+  "repo": "R-TocoToucan/Kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-14T08:57:33Z",
+  "desc": null,
+  "owner": "R-TocoToucan"
+ },
+ {
+  "repo": "hayato-matsuzawa/Kaggriculture",
+  "stars": 0,
+  "size": 1068,
+  "pushed": "2026-08-21T09:55:38Z",
+  "desc": "Titanic\u30c7\u30fc\u30bf\u306e\u6a5f\u68b0\u5b66\u7fd2\u5206\u6790",
+  "owner": "hayato-matsuzawa"
+ },
+ {
+  "repo": "Rilen/Kaggriculture",
+  "stars": 0,
+  "size": 7362,
+  "pushed": "2026-08-18T01:10:32Z",
+  "desc": null,
+  "owner": "Rilen"
+ },
+ {
+  "repo": "Sellesta/Kaggriculture",
+  "stars": 0,
+  "size": 633,
+  "pushed": "2026-08-25T09:05:26Z",
+  "desc": null,
+  "owner": "Sellesta"
+ },
+ {
+  "repo": "anjipoo/kaggriculture",
+  "stars": 0,
+  "size": 260,
+  "pushed": "2026-08-05T15:44:07Z",
+  "desc": null,
+  "owner": "anjipoo"
+ },
+ {
+  "repo": "BLx-Ankush/Kaggriculture",
+  "stars": 0,
+  "size": 61,
+  "pushed": "2026-08-07T09:16:53Z",
+  "desc": null,
+  "owner": "BLx-Ankush"
+ },
+ {
+  "repo": "JaydonJP/Kaggriculture",
+  "stars": 1,
+  "size": 0,
+  "pushed": "2026-08-07T12:23:17Z",
+  "desc": "Solution to the Kaggle competition, Kaggriculture.",
+  "owner": "JaydonJP"
+ },
+ {
+  "repo": "pranav-bot/kaggriculture",
+  "stars": 0,
+  "size": 336,
+  "pushed": "2026-08-23T15:37:35Z",
+  "desc": null,
+  "owner": "pranav-bot"
+ },
+ {
+  "repo": "shawn924/kaggriculture",
+  "stars": 0,
+  "size": 30,
+  "pushed": "2026-08-24T14:17:47Z",
+  "desc": null,
+  "owner": "shawn924"
+ },
+ {
+  "repo": "garry-p12/kaggriculture",
+  "stars": 0,
+  "size": 44,
+  "pushed": "2026-08-05T04:45:01Z",
+  "desc": null,
+  "owner": "garry-p12"
+ },
+ {
+  "repo": "phucthaiv02/kaggriculture",
+  "stars": 0,
+  "size": 120,
+  "pushed": "2026-08-11T10:29:06Z",
+  "desc": "Create an agent to play in this farming simulation and compete with others to maximize your income",
+  "owner": "phucthaiv02"
+ },
+ {
+  "repo": "Arktosum/kaggriculture",
+  "stars": 0,
+  "size": 20395,
+  "pushed": "2026-08-12T15:08:02Z",
+  "desc": null,
+  "owner": "Arktosum"
+ },
+ {
+  "repo": "naniwazu/kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-17T13:25:00Z",
+  "desc": null,
+  "owner": "naniwazu"
+ },
+ {
+  "repo": "mohanprasath-dev/kaggriculture",
+  "stars": 0,
+  "size": 33453,
+  "pushed": "2026-08-14T19:59:00Z",
+  "desc": null,
+  "owner": "mohanprasath-dev"
+ },
+ {
+  "repo": "JosephParis/kaggriculture",
+  "stars": 0,
+  "size": 1534,
+  "pushed": "2026-08-24T10:27:02Z",
+  "desc": null,
+  "owner": "JosephParis"
+ },
+ {
+  "repo": "d-llen/Kaggriculture",
+  "stars": 0,
+  "size": 43931,
+  "pushed": "2026-08-25T17:55:33Z",
+  "desc": null,
+  "owner": "d-llen"
+ },
+ {
+  "repo": "Hans7331/kaggriculture-agent",
+  "stars": 0,
+  "size": 18,
+  "pushed": "2026-08-19T14:17:55Z",
+  "desc": null,
+  "owner": "Hans7331"
+ },
+ {
+  "repo": "JulioCesarValencia/kaggriculture-bot",
+  "stars": 0,
+  "size": 3,
+  "pushed": "2026-08-20T04:18:33Z",
+  "desc": "Challenger Kaggle",
+  "owner": "JulioCesarValencia"
+ },
+ {
+  "repo": "penelopeeckhar/kaggriculture-agent",
+  "stars": 0,
+  "size": 11540,
+  "pushed": "2026-08-24T21:18:40Z",
+  "desc": null,
+  "owner": "penelopeeckhar"
+ },
+ {
+  "repo": "TinaawhyteD/kaggriculture-agent",
+  "stars": 0,
+  "size": 12,
+  "pushed": "2026-08-26T00:26:53Z",
+  "desc": "AI agent for the Kaggriculture Kaggle competition: a heuristic economic optimizer for a farming simulation",
+  "owner": "TinaawhyteD"
+ },
+ {
+  "repo": "Naisha-123/Kaggriculture_Agent",
+  "stars": 0,
+  "size": 16,
+  "pushed": "2026-08-23T16:13:18Z",
+  "desc": "AI Agent for Kaggriculture Competition",
+  "owner": "Naisha-123"
+ },
+ {
+  "repo": "shivasubramaniyam/kaggriculture-agent",
+  "stars": 0,
+  "size": 2,
+  "pushed": "2026-08-20T05:09:35Z",
+  "desc": "agent built for kaggriculture event ",
+  "owner": "shivasubramaniyam"
+ },
+ {
+  "repo": "sota1111/kaggriculture-gpt",
+  "stars": 0,
+  "size": 3797,
+  "pushed": "2026-08-23T01:16:09Z",
+  "desc": "Kaggle kaggriculture-gpt gpt submission agent",
+  "owner": "sota1111"
+ },
+ {
+  "repo": "loubaliber/kaggriculture-loubal",
+  "stars": 0,
+  "size": 10735,
+  "pushed": "2026-08-18T00:41:30Z",
+  "desc": "Documentation on the Kaggriculture competition in Kaggle",
+  "owner": "loubaliber"
+ },
+ {
+  "repo": "abhl05/kaggriculture-datathon",
+  "stars": 0,
+  "size": 8027,
+  "pushed": "2026-08-06T12:25:13Z",
+  "desc": null,
+  "owner": "abhl05"
+ },
+ {
+  "repo": "dougsgrott/kaggle-kaggriculture",
+  "stars": 0,
+  "size": 606,
+  "pushed": "2026-08-20T23:50:37Z",
+  "desc": null,
+  "owner": "dougsgrott"
+ },
+ {
+  "repo": "neelmurthy1/kaggriculture-project",
+  "stars": 0,
+  "size": 10744,
+  "pushed": "2026-08-21T18:56:37Z",
+  "desc": "We will get the highest score",
+  "owner": "neelmurthy1"
+ },
+ {
+  "repo": "ZhangYiqun018/kaggriculture-exp",
+  "stars": 0,
+  "size": 11956,
+  "pushed": "2026-08-06T08:56:39Z",
+  "desc": null,
+  "owner": "ZhangYiqun018"
+ },
+ {
+  "repo": "fredrickombayo5-dotcom/kaggriculture-agent",
+  "stars": 0,
+  "size": 2,
+  "pushed": "2026-08-04T13:22:07Z",
+  "desc": "Python-based rule-driven agent and local testing harness for the Kaggriculture farming competition environment.",
+  "owner": "fredrickombayo5-dotcom"
+ },
+ {
+  "repo": "zw-2000/zw-kaggriculture",
+  "stars": 0,
+  "size": 92,
+  "pushed": "2026-08-20T01:25:44Z",
+  "desc": null,
+  "owner": "zw-2000"
+ },
+ {
+  "repo": "Bhuvaneshwari244/Kaggriculture---kaggle",
+  "stars": 0,
+  "size": 12,
+  "pushed": "2026-08-04T09:27:25Z",
+  "desc": null,
+  "owner": "Bhuvaneshwari244"
+ },
+ {
+  "repo": "kirbywon/kaggriculture-agent",
+  "stars": 0,
+  "size": 10672,
+  "pushed": "2026-08-10T19:28:14Z",
+  "desc": "Autonomous Python agent for the Kaggle Kaggriculture simulation environment.",
+  "owner": "kirbywon"
+ },
+ {
+  "repo": "NguyenLinh383/Kaggriculture_Agent",
+  "stars": 0,
+  "size": 13,
+  "pushed": "2026-07-07T00:42:56Z",
+  "desc": null,
+  "owner": "NguyenLinh383"
+ },
+ {
+  "repo": "alen-nirmal29/kaggriculture-agent",
+  "stars": 0,
+  "size": 16838,
+  "pushed": "2026-08-17T21:36:22Z",
+  "desc": null,
+  "owner": "alen-nirmal29"
+ },
+ {
+  "repo": "MatteoDoni15/amberle-kaggriculture",
+  "stars": 0,
+  "size": 223,
+  "pushed": "2026-08-07T14:40:57Z",
+  "desc": null,
+  "owner": "MatteoDoni15"
+ },
+ {
+  "repo": "Dev-Aayush-Kumar/Kaggriculture_AK",
+  "stars": 0,
+  "size": 4204,
+  "pushed": "2026-08-25T15:33:33Z",
+  "desc": "Competitive AI agent for Kaggriculture \u2014 autonomous farming, dynamic market optimization, opponent modeling, and strategic planning for head-to-head competition.",
+  "owner": "Dev-Aayush-Kumar"
+ },
+ {
+  "repo": "Pmeet/kaggriculture-agents",
+  "stars": 0,
+  "size": 904,
+  "pushed": "2026-08-25T18:08:35Z",
+  "desc": null,
+  "owner": "Pmeet"
+ },
+ {
+  "repo": "MHaurel/kaggle-kaggriculture",
+  "stars": 0,
+  "size": 11220,
+  "pushed": "2026-08-13T07:17:16Z",
+  "desc": "My code for the Kaggle Kaggriculture competition.",
+  "owner": "MHaurel"
+ },
+ {
+  "repo": "liamnewsam/kaggriculture_competition",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-07-30T22:16:50Z",
+  "desc": null,
+  "owner": "liamnewsam"
+ },
+ {
+  "repo": "Laingo12/kaggriculture-agent",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-20T16:42:30Z",
+  "desc": null,
+  "owner": "Laingo12"
+ },
+ {
+  "repo": "anushaaa2456/kaggriculture-agent",
+  "stars": 0,
+  "size": 2,
+  "pushed": "2026-08-05T17:33:14Z",
+  "desc": null,
+  "owner": "anushaaa2456"
+ },
+ {
+  "repo": "meur99/kaggriculture-farmers",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-06T10:57:29Z",
+  "desc": "This repo is for the team members of \"farmers\" participating in kaggriculture",
+  "owner": "meur99"
+ },
+ {
+  "repo": "keyholder1/kaggriculture-agent",
+  "stars": 0,
+  "size": 61,
+  "pushed": "2026-08-07T13:02:13Z",
+  "desc": "Kaggriculture (Kaggle farming-sim competition) agent -- annotated v1 prototype with empirical failure analysis, v2 with fixes",
+  "owner": "keyholder1"
+ },
+ {
+  "repo": "johnsonhk88/kaggle-Kaggriculture",
+  "stars": 0,
+  "size": 11,
+  "pushed": "2026-08-25T16:57:01Z",
+  "desc": "Kaggle competition : kaggriculture   -- reate an agent to play in this farming simulation and compete with others to maximize your income",
+  "owner": "johnsonhk88"
+ },
+ {
+  "repo": "kirtischaudhari/kaggriculture-ks",
+  "stars": 0,
+  "size": 8,
+  "pushed": "2026-08-10T08:26:26Z",
+  "desc": null,
+  "owner": "kirtischaudhari"
+ },
+ {
+  "repo": "Kaushik-MSclinical/Kaggriculture-kaushik",
+  "stars": 0,
+  "size": 2527,
+  "pushed": "2026-08-10T12:39:31Z",
+  "desc": null,
+  "owner": "Kaushik-MSclinical"
+ },
+ {
+  "repo": "jatingujju/kaggriculture-agent",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-04T07:28:55Z",
+  "desc": "An autonomous AI agent for Kaggle's Kaggriculture simulation competition using strategic planning, market optimization, and multi-agent decision making.",
+  "owner": "jatingujju"
+ },
+ {
+  "repo": "Wch727/kaggriculture-agent",
+  "stars": 0,
+  "size": 418,
+  "pushed": "2026-08-10T03:45:43Z",
+  "desc": null,
+  "owner": "Wch727"
+ },
+ {
+  "repo": "Pr1meGG/fieldops-kaggriculture",
+  "stars": 0,
+  "size": 23870,
+  "pushed": "2026-08-10T16:09:47Z",
+  "desc": null,
+  "owner": "Pr1meGG"
+ },
+ {
+  "repo": "Ziyuhua25/Kaggriculture-Competition",
+  "stars": 0,
+  "size": 656,
+  "pushed": "2026-08-17T08:31:14Z",
+  "desc": "Kaggriculture agent development, benchmarking, and iterative strategy experiments.",
+  "owner": "Ziyuhua25"
+ },
+ {
+  "repo": "Adnan9-63/Kaggriculture-agent",
+  "stars": 0,
+  "size": 69,
+  "pushed": "2026-08-24T03:44:52Z",
+  "desc": null,
+  "owner": "Adnan9-63"
+ },
+ {
+  "repo": "Siva-Subramaniam-DS/Kaggriculture-project",
+  "stars": 0,
+  "size": 609,
+  "pushed": "2026-08-07T11:40:36Z",
+  "desc": null,
+  "owner": "Siva-Subramaniam-DS"
+ },
+ {
+  "repo": "ShashankJangid/kaggriculture-agent",
+  "stars": 0,
+  "size": 151,
+  "pushed": "2026-08-26T11:07:20Z",
+  "desc": null,
+  "owner": "ShashankJangid"
+ },
+ {
+  "repo": "Nagulapati-Srivalli/Kaggle_Kaggriculture",
+  "stars": 0,
+  "size": 6,
+  "pushed": "2026-08-04T12:46:39Z",
+  "desc": null,
+  "owner": "Nagulapati-Srivalli"
+ },
+ {
+  "repo": "simonpr0/kaggriculture-agent",
+  "stars": 0,
+  "size": 24,
+  "pushed": "2026-08-12T01:16:19Z",
+  "desc": "Heuristic agent for the Kaggriculture Kaggle competition",
+  "owner": "simonpr0"
+ },
+ {
+  "repo": "namanmalik385/kaggriculture-team",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-22T16:54:02Z",
+  "desc": null,
+  "owner": "namanmalik385"
+ },
+ {
+  "repo": "ShaunTheKing/kaggriculture-tools",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-07-30T18:27:24Z",
+  "desc": null,
+  "owner": "ShaunTheKing"
+ },
+ {
+  "repo": "nfagundo/kaggriculture-project",
+  "stars": 0,
+  "size": 3,
+  "pushed": "2026-08-15T20:16:30Z",
+  "desc": null,
+  "owner": "nfagundo"
+ },
+ {
+  "repo": "VTTr2004/kaggle-Kaggriculture",
+  "stars": 0,
+  "size": 182,
+  "pushed": "2026-08-26T05:11:02Z",
+  "desc": null,
+  "owner": "VTTr2004"
+ },
+ {
+  "repo": "tanmoypal11/kaggriculture-agent",
+  "stars": 0,
+  "size": 68,
+  "pushed": "2026-08-19T15:34:18Z",
+  "desc": "Autonomous decision-making engine and simulation environment for crop yield optimization and strategic farm management.",
+  "owner": "tanmoypal11"
+ },
+ {
+  "repo": "RyanH12135/Kaggriculture-kaggle",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-03T12:20:25Z",
+  "desc": null,
+  "owner": "RyanH12135"
+ },
+ {
+  "repo": "Rohanjain2312/kaggriculture-lab",
+  "stars": 0,
+  "size": 2718,
+  "pushed": "2026-08-18T01:08:13Z",
+  "desc": "Kaggle Kaggriculture agent, its benchmarking harness, and the evidence log behind every change \u2014 including the ones that lost.",
+  "owner": "Rohanjain2312"
+ },
+ {
+  "repo": "harryii-eng/kaggriculture-agent",
+  "stars": 1,
+  "size": 3,
+  "pushed": "2026-08-15T09:33:37Z",
+  "desc": "Rule-based AI agent for Kaggle's Kaggriculture simulation competition \u2014 plants, waters, harvests, tends livestock, and trades in a reactive market. Built against the confirmed kaggle_environments API.",
+  "owner": "harryii-eng"
+ },
+ {
+  "repo": "prabhuken01/farmguard-kaggriculture",
+  "stars": 0,
+  "size": 26,
+  "pushed": "2026-08-05T19:49:54Z",
+  "desc": "Visual opponent-aware strategy lab for the Kaggriculture AI competition",
+  "owner": "prabhuken01"
+ },
+ {
+  "repo": "deepeshumrao/kaggriculture-agent",
+  "stars": 1,
+  "size": 132,
+  "pushed": "2026-07-11T14:26:43Z",
+  "desc": "Autonomous farming agent for the Google x Kaggle Vibe Coding capstone. Contract-first design, local simulator, 66 tests, self-contained submission.",
+  "owner": "deepeshumrao"
+ },
+ {
+  "repo": "destbreso/kaggriculture-cppsim",
+  "stars": 1,
+  "size": 267,
+  "pushed": "2026-08-26T11:01:44Z",
+  "desc": null,
+  "owner": "destbreso"
+ },
+ {
+  "repo": "kyconf/kaggriculture-bot",
+  "stars": 1,
+  "size": 165,
+  "pushed": "2026-08-25T19:54:40Z",
+  "desc": null,
+  "owner": "kyconf"
+ },
+ {
+  "repo": "thom1505/kaggriculture-agent",
+  "stars": 0,
+  "size": 79,
+  "pushed": "2026-08-07T05:32:16Z",
+  "desc": "Autonomous farming and trading agent for the Kaggriculture",
+  "owner": "thom1505"
+ },
+ {
+  "repo": "tebenia/kaggle_kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-16T02:59:02Z",
+  "desc": null,
+  "owner": "tebenia"
+ },
+ {
+  "repo": "ssrijaganguluri-ai/kaggriculture-agent",
+  "stars": 0,
+  "size": 3,
+  "pushed": "2026-08-26T16:38:58Z",
+  "desc": "Competitive AI agent for Kaggle's Kaggriculture farming simulation. Real-time competition on leaderboard. Baseline: Wheat loop optimization.",
+  "owner": "ssrijaganguluri-ai"
+ },
+ {
+  "repo": "aishhanda/kaggriculture-ai",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-08T17:02:14Z",
+  "desc": null,
+  "owner": "aishhanda"
+ },
+ {
+  "repo": "MedGm/kaggriculture-agent",
+  "stars": 0,
+  "size": 419,
+  "pushed": "2026-08-27T14:17:15Z",
+  "desc": "Crop-heuristic agent for the Kaggle Kaggriculture farming-sim competition",
+  "owner": "MedGm"
+ },
+ {
+  "repo": "Mar-Dev-One/Kaggriculture-Agent",
+  "stars": 0,
+  "size": 21,
+  "pushed": "2026-08-07T23:37:29Z",
+  "desc": "Turn-based multi-agent farm economy bot for Kaggle's Kaggriculture competition.",
+  "owner": "Mar-Dev-One"
+ },
+ {
+  "repo": "MatheusBernardino/kaggriculture-agent",
+  "stars": 0,
+  "size": 10782,
+  "pushed": "2026-08-16T12:48:01Z",
+  "desc": null,
+  "owner": "MatheusBernardino"
+ },
+ {
+  "repo": "Sahil208suman/Kaggriculture-agent",
+  "stars": 0,
+  "size": 19,
+  "pushed": "2026-08-16T17:20:08Z",
+  "desc": "Autonomous AI farming agent built for the Kaggriculture simulation competition.",
+  "owner": "Sahil208suman"
+ },
+ {
+  "repo": "tejrai07/kaggriculture-submissions",
+  "stars": 0,
+  "size": 19,
+  "pushed": "2026-08-12T16:03:34Z",
+  "desc": null,
+  "owner": "tejrai07"
+ },
+ {
+  "repo": "aswithamadisetty/Kaggriculture-AI",
+  "stars": 0,
+  "size": 45359,
+  "pushed": "2026-07-07T07:00:51Z",
+  "desc": "\"AI-powered Agriculture Assistant - Capstone Project by Google X Kaggle\"",
+  "owner": "aswithamadisetty"
+ },
+ {
+  "repo": "denniskimtai/kaggriculture-hackathon",
+  "stars": 0,
+  "size": 2,
+  "pushed": "2026-08-18T11:03:03Z",
+  "desc": null,
+  "owner": "denniskimtai"
+ },
+ {
+  "repo": "S-Riku-tus/pj-kaggriculture",
+  "stars": 0,
+  "size": 897,
+  "pushed": "2026-08-24T04:10:03Z",
+  "desc": null,
+  "owner": "S-Riku-tus"
+ },
+ {
+  "repo": "meerubatiq11-dev/Kaggriculture_project",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-21T07:42:44Z",
+  "desc": null,
+  "owner": "meerubatiq11-dev"
+ },
+ {
+  "repo": "sackm123-cloud/Kaggriculture-competition",
+  "stars": 0,
+  "size": 45,
+  "pushed": "2026-08-07T10:10:13Z",
+  "desc": null,
+  "owner": "sackm123-cloud"
+ },
+ {
+  "repo": "kentarokato-personal/kaggle-kaggriculture",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-20T11:25:41Z",
+  "desc": null,
+  "owner": "kentarokato-personal"
+ },
+ {
+  "repo": "UnseenAnchor/Kaggriculture-Kaggle",
+  "stars": 0,
+  "size": 2814,
+  "pushed": "2026-08-20T16:29:13Z",
+  "desc": "Kaggle Kaggriculture autonomous agent experiments, submissions, and postmortems",
+  "owner": "UnseenAnchor"
+ },
+ {
+  "repo": "yen-ghub/kaggriculture-agent",
+  "stars": 0,
+  "size": 80,
+  "pushed": "2026-08-27T13:53:08Z",
+  "desc": null,
+  "owner": "yen-ghub"
+ },
+ {
+  "repo": "RinKaname/kaggriculture-expertsystem",
+  "stars": 0,
+  "size": 15453,
+  "pushed": "2026-08-05T09:13:45Z",
+  "desc": null,
+  "owner": "RinKaname"
+ },
+ {
+  "repo": "WillyMLee/kaggriculture-workbook",
+  "stars": 0,
+  "size": 777,
+  "pushed": "2026-08-18T15:55:11Z",
+  "desc": null,
+  "owner": "WillyMLee"
+ },
+ {
+  "repo": "Thacha26/kaggriculture-rl-agent",
+  "stars": 0,
+  "size": 27,
+  "pushed": "2026-08-12T02:30:58Z",
+  "desc": "PRD y agente de RL (PPO / Bellman) para la competencia Kaggle Kaggriculture",
+  "owner": "Thacha26"
+ },
+ {
+  "repo": "wanyee-beep/kaggriculture-rsi-agent",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-12T03:15:27Z",
+  "desc": null,
+  "owner": "wanyee-beep"
+ },
+ {
+  "repo": "destbreso/kaggriculture-island-ga",
+  "stars": 0,
+  "size": 48,
+  "pushed": "2026-08-25T01:30:34Z",
+  "desc": null,
+  "owner": "destbreso"
+ },
+ {
+  "repo": "Pushterrance/Kaggriculture-Sheng",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-05T16:15:54Z",
+  "desc": null,
+  "owner": "Pushterrance"
+ },
+ {
+  "repo": "HandreBez/kaggriculture-agent",
+  "stars": 0,
+  "size": 8,
+  "pushed": "2026-08-04T23:51:43Z",
+  "desc": null,
+  "owner": "HandreBez"
+ },
+ {
+  "repo": "DivyanshDeore/capstone-kaggriculture",
+  "stars": 0,
+  "size": 225,
+  "pushed": "2026-06-11T16:12:01Z",
+  "desc": null,
+  "owner": "DivyanshDeore"
+ },
+ {
+  "repo": "igmriegel/Kaggriculture_bot",
+  "stars": 0,
+  "size": 874,
+  "pushed": "2026-08-26T21:02:46Z",
+  "desc": "Bot para a competi\u00e7\u00e3o do Kaggle",
+  "owner": "igmriegel"
+ },
+ {
+  "repo": "JumpingDaiDai/Kaggriculture-Report",
+  "stars": 0,
+  "size": 10,
+  "pushed": "2026-08-17T04:45:35Z",
+  "desc": null,
+  "owner": "JumpingDaiDai"
+ },
+ {
+  "repo": "zansued/kaggriculture-ai-agent",
+  "stars": 0,
+  "size": 2424,
+  "pushed": "2026-08-26T20:02:41Z",
+  "desc": "Autonomous AI agent for Kaggle Kaggriculture farming simulation competition - Metatron's top-performing agent",
+  "owner": "zansued"
+ },
+ {
+  "repo": "emanuellcs/kaggriculture-simulated-planning",
+  "stars": 0,
+  "size": 3029,
+  "pushed": "2026-08-09T23:10:24Z",
+  "desc": "A native C++20 agent for Kaggle Kaggriculture based on market-aware simulated planning.",
+  "owner": "emanuellcs"
+ },
+ {
+  "repo": "Alherma7/AI-agent-Kaggriculture",
+  "stars": 0,
+  "size": 16266,
+  "pushed": "2026-08-27T11:28:25Z",
+  "desc": null,
+  "owner": "Alherma7"
+ },
+ {
+  "repo": "stevefindjob/kagglefarmskills",
+  "stars": 0,
+  "size": 4,
+  "pushed": "2026-08-03T04:36:30Z",
+  "desc": "Cursor skills pack for Kagglefarm / Kaggriculture opponent training",
+  "owner": "stevefindjob"
+ },
+ {
+  "repo": "shloksharmawork/kaggriculture-ai-agent",
+  "stars": 0,
+  "size": 0,
+  "pushed": "2026-08-05T15:12:38Z",
+  "desc": null,
+  "owner": "shloksharmawork"
+ },
+ {
+  "repo": "Edwin-metcalf/Kaggriculture-MnH",
+  "stars": 0,
+  "size": 317,
+  "pushed": "2026-08-08T01:44:14Z",
+  "desc": null,
+  "owner": "Edwin-metcalf"
+ },
+ {
+  "repo": "AMonFer/Kaggriculture-AI-Agent",
+  "stars": 0,
+  "size": 114,
+  "pushed": "2026-08-25T21:56:49Z",
+  "desc": "A hierarchical agent to maximize the number of coins in the bank when the season is over.",
+  "owner": "AMonFer"
+ },
+ {
+  "repo": "jcdumlao14/Kaggriculture-AI-Agent",
+  "stars": 0,
+  "size": 4913,
+  "pushed": "2026-08-26T19:34:10Z",
+  "desc": "AI agent for the Kaggriculture Kaggle Simulation Competition featuring strategic farm planning, dynamic market optimization, resource management, and intelligent decision-making.",
+  "owner": "jcdumlao14"
+ },
+ {
+  "repo": "iZackk26/Kaggriculture---AI-Agent",
+  "stars": 0,
+  "size": 5981,
+  "pushed": "2026-08-07T14:57:04Z",
+  "desc": " Agente para la competencia Kaggriculture de Kaggle, construido midiendo un factor a la vez: 240 experimentos, 99 hallazgos y una base de conocimiento citada al motor.",
+  "owner": "iZackk26"
+ },
+ {
+  "repo": "adityasingh121608-cell/kaggriculture-ai-agent",
+  "stars": 1,
+  "size": 4,
+  "pushed": "2026-08-06T07:29:48Z",
+  "desc": "Autonomous decision engine for Kaggle's Kaggriculture simulation environment.",
+  "owner": "adityasingh121608-cell"
+ },
+ {
+  "repo": "Twu1738/tt_kaggriculture_2026",
+  "stars": 0,
+  "size": 150,
+  "pushed": "2026-08-11T10:54:30Z",
+  "desc": null,
+  "owner": "Twu1738"
+ },
+ {
+  "repo": "aral3000/kaggriculture-ai-agent",
+  "stars": 0,
+  "size": 268,
+  "pushed": "2026-08-06T12:08:21Z",
+  "desc": "Autonomous AI Agent for Kaggle Kaggriculture Simulation Competition ($50k Prize Pool)",
+  "owner": "aral3000"
+ },
+ {
+  "repo": "lopeznomar/kaggriculture-ops-lab",
+  "stars": 0,
+  "size": 115,
+  "pushed": "2026-08-21T14:35:33Z",
+  "desc": "Kaggriculture Ops Lab \u2014 Open-source analytics and decision-support tools for Kaggriculture AI agents. Upload replay JSON files to generate P&L reports, production insights, cost diagnostics, and actionable optimization recommendations.",
+  "owner": "lopeznomar"
+ },
+ {
+  "repo": "leooooeo/Kaggriculture-v1",
+  "stars": 0,
+  "size": 25997,
+  "pushed": "2026-08-17T07:49:12Z",
+  "desc": null,
+  "owner": "leooooeo"
+ },
+ {
+  "repo": "titakatrwa/kaggriculture-replay-lab",
+  "stars": 0,
+  "size": 633,
+  "pushed": "2026-08-05T17:26:21Z",
+  "desc": null,
+  "owner": "titakatrwa"
+ },
+ {
+  "repo": "Donthasrikarthik72/kaggriculture-Ai-agent",
+  "stars": 0,
+  "size": 4,
+  "pushed": "2026-08-26T13:47:24Z",
+  "desc": null,
+  "owner": "Donthasrikarthik72"
+ },
+ {
+  "repo": "RinKaname/kaggriculture-test2",
+  "stars": 0,
+  "size": 508,
+  "pushed": "2026-08-09T00:46:42Z",
+  "desc": null,
+  "owner": "RinKaname"
+ },
+ {
+  "repo": "AiexProjects/Kaggle_kaggriculture_sim_comp",
+  "stars": 0,
+  "size": 7350,
+  "pushed": "2026-08-06T11:30:24Z",
+  "desc": null,
+  "owner": "AiexProjects"
+ },
+ {
+  "repo": "AkashBabu1712/kaggriculture-lets-play-Build",
+  "stars": 0,
+  "size": 8,
+  "pushed": "2026-08-20T08:58:45Z",
+  "desc": "An autonomous reinforcement learning / rule-based agent built for the [Kaggle Kaggriculture Simulation Competition](https://www.kaggle.com/competitions/kaggriculture).  This bot manages a virtual farm, allocates resources, and navigates a dynamic supply-and-demand market to maximize profit over a 30-day simulated season.",
+  "owner": "AkashBabu1712"
+ },
+ {
+  "repo": "victron777/kaggriculture-farmops-guardian-agent",
+  "stars": 0,
+  "size": 26,
+  "pushed": "2026-07-07T03:03:08Z",
+  "desc": "Autonomous Kaggriculture farming resource-management agent using ADK-style multi-agent design, MCP tools, guardrails, memory, evaluation, and deployable API structure.",
+  "owner": "victron777"
+ },
+ {
+  "repo": "Madhur-Sabherwal/kaggriculture-multi-layer-tuning",
+  "stars": 0,
+  "size": 13,
+  "pushed": "2026-08-07T13:47:55Z",
+  "desc": "Multi-layer local LLM tuning loop (strategist-critic-tester) for simulation agents by Madhur Sabherwal",
+  "owner": "Madhur-Sabherwal"
+ },
+ {
+  "repo": "Rahul4368/Kaggriculture-What-the-Top-Farms-Do-a-Live-Meta",
+  "stars": 0,
+  "size": 439,
+  "pushed": "2026-08-11T04:18:06Z",
+  "desc": "Kaggriculture: What the Top Farms Do \u2014 a Live Meta",
+  "owner": "Rahul4368"
+ },
+ {
+  "repo": "Madhur-Sabherwal/kaggriculture-hub-geometry-agent",
+  "stars": 0,
+  "size": 22,
+  "pushed": "2026-08-07T13:48:21Z",
+  "desc": "Hub-first multi-loop agent for Kaggle Kaggriculture - original educational baseline by Madhur Sabherwal",
+  "owner": "Madhur-Sabherwal"
+ },
+ {
+  "repo": "syedjawad11/Kaggle-Competition-Agriculture",
+  "stars": 0,
+  "size": 603,
+  "pushed": "2026-08-22T07:07:43Z",
+  "desc": "Opponent-aware Kaggriculture competition agent and reproducible evaluation tooling.",
+  "owner": "syedjawad11"
+ },
+ {
+  "repo": "QUANTUMBABULAL/kagri",
+  "stars": 0,
+  "size": 35,
+  "pushed": "2026-08-07T17:11:43Z",
+  "desc": "this is for testing and implementing agent for kaggriculture ",
+  "owner": "QUANTUMBABULAL"
+ },
+ {
+  "repo": "VladimirCro/ai-agents-vibecoding-capstone",
+  "stars": 1,
+  "size": 515,
+  "pushed": "2026-08-01T21:57:37Z",
+  "desc": "Google x Kaggle AI Agents Intensive - Vibe Coding capstone (Kaggriculture)",
+  "owner": "VladimirCro"
+ },
+ {
+  "repo": "divyaangelina/Dimitri",
+  "stars": 0,
+  "size": 15,
+  "pushed": "2026-08-07T15:23:35Z",
+  "desc": "A modular decision-making AI built for Kaggle's Kaggriculture simulation",
+  "owner": "divyaangelina"
+ },
+ {
+  "repo": "robsartin/robriculture",
+  "stars": 0,
+  "size": 729,
+  "pushed": "2026-08-26T13:31:47Z",
+  "desc": "Agent for the Kaggle x Google Kaggriculture farming-economy simulation competition",
+  "owner": "robsartin"
+ },
+ {
+  "repo": "mayur-samrutwar/simbaplayskaggri",
+  "stars": 0,
+  "size": 531,
+  "pushed": "2026-08-21T10:02:03Z",
+  "desc": "Kaggriculture bot research, exact submission rollback artifacts, live score registry, and local evaluation suite",
+  "owner": "mayur-samrutwar"
+ },
+ {
+  "repo": "EmmyPencilAI/Gugu-FarmMind",
+  "stars": 0,
+  "size": 169,
+  "pushed": "2026-08-14T11:20:13Z",
+  "desc": "Gugu FarmMind is an autonomous AI farming agent designed to compete in Kaggriculture by optimizing production, labor, land, dynamic market trading, and long-horizon resource allocation.",
+  "owner": "EmmyPencilAI"
+ },
+ {
+  "repo": "tanmay150105/kaggiculture_agents",
+  "stars": 0,
+  "size": 51,
+  "pushed": "2026-08-06T15:12:23Z",
+  "desc": "KaggriCulture Agents is an intelligent multi-agent system designed to revolutionize modern farming through autonomous AI decision-making. This capstone project implements a sophisticated orchestrator that coordinates multiple specialized agents to optimize agricultural operations in real-time.",
+  "owner": "tanmay150105"
+ }
+]

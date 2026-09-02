@@ -1,0 +1,343 @@
+{
+ "episode": 100939868,
+ "opp": "Subramanya N",
+ "cd_cash": 69076.0,
+ "opp_cash": 61035.0,
+ "seed": 2084502533,
+ "final_herd": {
+  "SHEEP": 1,
+  "GOOSE": 7,
+  "COW": 3
+ },
+ "herd_by_day": {
+  "0": {},
+  "1": {
+   "SHEEP": 2,
+   "COW": 3
+  },
+  "2": {
+   "SHEEP": 2,
+   "COW": 3
+  },
+  "3": {
+   "SHEEP": 2,
+   "COW": 3
+  },
+  "4": {
+   "SHEEP": 2,
+   "COW": 3
+  },
+  "5": {
+   "SHEEP": 2,
+   "COW": 3
+  },
+  "6": {
+   "SHEEP": 2,
+   "COW": 3
+  },
+  "7": {
+   "SHEEP": 3,
+   "GOOSE": 2,
+   "COW": 4
+  },
+  "8": {
+   "SHEEP": 3,
+   "GOOSE": 2,
+   "COW": 4
+  },
+  "9": {
+   "SHEEP": 3,
+   "GOOSE": 2,
+   "COW": 4
+  },
+  "10": {
+   "SHEEP": 3,
+   "GOOSE": 3,
+   "COW": 4
+  },
+  "11": {
+   "SHEEP": 3,
+   "GOOSE": 3,
+   "COW": 4
+  },
+  "12": {
+   "SHEEP": 3,
+   "GOOSE": 3,
+   "COW": 4
+  },
+  "13": {
+   "SHEEP": 3,
+   "GOOSE": 4,
+   "COW": 4
+  },
+  "14": {
+   "SHEEP": 3,
+   "GOOSE": 6,
+   "COW": 4
+  },
+  "15": {
+   "SHEEP": 3,
+   "GOOSE": 6,
+   "COW": 4
+  },
+  "16": {
+   "SHEEP": 4,
+   "GOOSE": 6,
+   "COW": 4
+  },
+  "17": {
+   "SHEEP": 4,
+   "GOOSE": 6,
+   "COW": 4
+  },
+  "18": {
+   "SHEEP": 5,
+   "GOOSE": 6,
+   "COW": 4
+  },
+  "19": {
+   "SHEEP": 5,
+   "GOOSE": 6,
+   "COW": 4
+  },
+  "20": {
+   "SHEEP": 5,
+   "GOOSE": 6,
+   "COW": 4
+  },
+  "21": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "22": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "23": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "24": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "25": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "26": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "27": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "28": {
+   "SHEEP": 5,
+   "GOOSE": 7,
+   "COW": 4
+  },
+  "29": {
+   "SHEEP": 1,
+   "GOOSE": 7,
+   "COW": 3
+  }
+ },
+ "total_sells": {
+  "FERTILIZER": 174,
+  "WHEAT": 2382,
+  "WOOL": 105,
+  "MILK": 107,
+  "MELON": 114,
+  "EGG": 208,
+  "STRAWBERRY": 129,
+  "CARROT": 79
+ },
+ "sell_hours_top5": {
+  "FERTILIZER": [
+   [
+    "H02",
+    121
+   ],
+   [
+    "H01",
+    43
+   ],
+   [
+    "H08",
+    2
+   ],
+   [
+    "H23",
+    2
+   ],
+   [
+    "H03",
+    1
+   ]
+  ],
+  "WHEAT": [
+   [
+    "H02",
+    637
+   ],
+   [
+    "H06",
+    239
+   ],
+   [
+    "H09",
+    224
+   ],
+   [
+    "H15",
+    128
+   ],
+   [
+    "H12",
+    112
+   ]
+  ],
+  "WOOL": [
+   [
+    "H04",
+    19
+   ],
+   [
+    "H10",
+    16
+   ],
+   [
+    "H09",
+    11
+   ],
+   [
+    "H15",
+    8
+   ],
+   [
+    "H11",
+    8
+   ]
+  ],
+  "MILK": [
+   [
+    "H02",
+    22
+   ],
+   [
+    "H06",
+    14
+   ],
+   [
+    "H07",
+    13
+   ],
+   [
+    "H10",
+    13
+   ],
+   [
+    "H11",
+    12
+   ]
+  ],
+  "MELON": [
+   [
+    "H12",
+    18
+   ],
+   [
+    "H21",
+    12
+   ],
+   [
+    "H09",
+    12
+   ],
+   [
+    "H10",
+    12
+   ],
+   [
+    "H15",
+    12
+   ]
+  ],
+  "EGG": [
+   [
+    "H02",
+    105
+   ],
+   [
+    "H17",
+    20
+   ],
+   [
+    "H12",
+    14
+   ],
+   [
+    "H14",
+    11
+   ],
+   [
+    "H23",
+    9
+   ]
+  ],
+  "STRAWBERRY": [
+   [
+    "H02",
+    81
+   ],
+   [
+    "H18",
+    8
+   ],
+   [
+    "H20",
+    6
+   ],
+   [
+    "H15",
+    6
+   ],
+   [
+    "H16",
+    6
+   ]
+  ],
+  "CARROT": [
+   [
+    "H00",
+    14
+   ],
+   [
+    "H22",
+    7
+   ],
+   [
+    "H15",
+    4
+   ],
+   [
+    "H16",
+    4
+   ],
+   [
+    "H17",
+    4
+   ]
+  ]
+ },
+ "note": "CD engine is NO longer a fixed tape (replay fidelity 23%). Current meta: GOOSE-heavy herd (7 goose/3 cow/1 sheep), massive wheat trade (2028 bought / 2382 sold), MORNING batch sells concentrated H02/H06/H09 (pre-dump timing vs opponent evening dumps). Egg log-curve = safe volume product."
+}
