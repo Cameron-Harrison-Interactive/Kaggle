@@ -1,0 +1,1701 @@
+"""tape_author3.py — spec-driven generated-tape author (session 104 rebuild).
+
+Validated against the session-102/103 author design (v130_gen lineage):
+  * same layouts (A0/A1/B/C melon, NW/SW wheat, ANIMAL_SLOTS)
+  * same crop calendar (melon 12-day cycles w/ every-2-day water; wheat 5-day
+    cycles w/ water at ages 0,2,3,4 + harvest at age 4)
+  * same market schedule (H00 buys/land/hires, 10-order cap, overflow HIRE to
+    H01; H01 sells), feed supply = n_animals + 2 WHEAT product/day
+  * same snake partition of duties across units, dx-then-dy walks
+
+New in v3 (the session-104 improvement levers):
+  * strawberry block with water-every-day + FERTILIZE routed to production
+    events (2 FERTILIZEs per tile cover all 4 events) + harvest per event
+  * fertilizer retention: FERTILIZER is kept for strawberry instead of dumped
+  * hands ramp: flat `hands` or explicit `ramp` list (per-day hand counts)
+  * sell_hour knob (default 1; test 22/23 night band)
+  * duty carry-over: duties that don't fit in the day slide to the next day
+    instead of being lost
+  * workload-balanced chunk splitting (cost = walk + action), feed-first
+    priority so animals never starve
+
+Env: TAPE_SPEC (json), TAPE_OUT (path), TAPE_VERBOSE=1
+"""
+import json
+import os
+import sys
+
+SPEC = json.loads(os.environ.get(
+    "TAPE_SPEC",
+    '{"SHEEP":4,"COW":12,"GOOSE":0,"hands":9,"melon_start":0,"cow_day":12,'
+    '"ne_day":7,"sw_day":14,"wheat_sell_day":4,"wheat_window":4,'
+    '"straw_tiles":0,"straw_start":2}'))
+
+OUT = os.environ.get("TAPE_OUT")
+VERBOSE = os.environ.get("TAPE_VERBOSE") == "1"
+
+DAYS = 30
+HOURS = 24
+
+# ---------------- layouts ----------------
+MELON_A0 = [(0, 0), (1, 0), (2, 0), (3, 0), (0, 1), (1, 1), (2, 1), (3, 1)]
+MELON_A1 = [(7, 2), (8, 2)]
+MELON_B = [(5, 0), (6, 0), (7, 0), (8, 0), (9, 0), (5, 1), (6, 1), (7, 1),
+           (8, 1), (9, 1), (9, 2), (9, 3), (9, 4)]
+MELON_C = [(0, 8), (1, 8), (2, 8), (3, 8), (0, 9), (1, 9), (2, 9), (3, 9)]
+WHEAT_NW = [(4, 0), (3, 2), (2, 3), (0, 4)]
+WHEAT_SW = [(0, 6), (1, 6), (2, 6), (3, 6), (4, 6), (0, 7), (1, 7), (2, 7),
+            (3, 7), (4, 7), (4, 8), (4, 9)]
+
+NE_DAY = int(SPEC.get("ne_day", 6))
+SW_DAY = int(SPEC.get("sw_day", 12))
+SE_DAY = int(SPEC.get("se_day", 99))
+SE_CARROT_N = int(SPEC.get("se_carrot", 0))
+SE_WHEAT_N = int(SPEC.get("se_wheat", 0))
+MELON_START = int(SPEC.get("melon_start", 6))
+COW_DAY = int(SPEC.get("cow_day", 9))
+STRAW_N = int(SPEC.get("straw_tiles", 0))
+STRAW_START = int(SPEC.get("straw_start", 2))
+WHEAT_SELL_DAY = int(SPEC.get("wheat_sell_day", 14))
+WHEAT_SELL_FROM = int(SPEC.get("wheat_sell_from", WHEAT_SELL_DAY))
+SELL_HOUR = int(SPEC.get("sell_hour", 1))
+FEED_BUFFER = int(SPEC.get("feed_buffer", 2))
+
+# zone toggles (H2H-first options):
+#   straw_zone "b": strawberries claim the first STRAW_N B-zone tiles (the
+#     H2H cash crop at $220-240) instead of the A0 melon corner
+#   melon_b=0 / melon_c=0: the remaining B/C melon tiles become wheat-only
+#     (feed self-sufficiency vs the wheat machines that double bought-feed
+#     prices)
+if SPEC.get("farm_plan") == "packed":
+    STRAW_N = 0
+    STRAW_SET = []
+elif SPEC.get("straw_zone", "a0") == "ba0":
+    STRAW_SET = (MELON_B + MELON_A0)[:STRAW_N]
+elif SPEC.get("straw_zone", "a0") in ("b", "bc"):
+    STRAW_SET = (MELON_B + MELON_C)[:STRAW_N]
+elif SPEC.get("straw_zone", "a0") == "bca0":
+    STRAW_SET = (MELON_B + MELON_C + MELON_A0)[:STRAW_N]
+else:
+    STRAW_SET = (MELON_A0 + MELON_A1 + MELON_B + MELON_C)[:STRAW_N]
+# SE-quadrant strawberries (v5): virgin tiles, shed-nearest rows first.
+# Appended AFTER the zone tiles so the B/C/A0 wave scheduling is unchanged;
+# the SE wave is keyed off quad_unlock_day(t) == SE_DAY.
+SE_STRAW_N = int(SPEC.get("se_straw", 0))
+SE_STRAW_SET = [
+    (x, y) for y in range(5, 10) for x in range(5, 10)
+][:SE_STRAW_N]
+STRAW_SET = list(STRAW_SET) + [t for t in SE_STRAW_SET if t not in STRAW_SET]
+# melon_a0=0: drop the A0 melon corner (its tiles become wheat-only)
+# farm_plan=packed drops ALL melon (A0/A1/B/C)
+_PACKED = SPEC.get("farm_plan") == "packed"
+_A0_MELON = [] if (_PACKED or not SPEC.get("melon_a0", 1)) else [t for t in MELON_A0 if t not in STRAW_SET]
+_B_MELON = [] if _PACKED else [t for t in MELON_B if t not in STRAW_SET]
+_C_MELON = [] if _PACKED else [t for t in MELON_C if t not in STRAW_SET]
+_A1_MELON = [] if _PACKED else [t for t in MELON_A1 if t not in STRAW_SET]
+_MELON_ALL = _A0_MELON + _A1_MELON + _B_MELON + _C_MELON
+# safe idle tiles for extra wheat (central first = short walks; shed-adjacent
+# center cross excluded)
+_WHEAT_EXTRA_TILES = [(4, 0), (3, 3), (7, 3), (8, 3), (6, 4), (7, 4), (8, 4),
+                      (0, 5), (1, 5), (2, 5), (1, 6), (1, 7), (4, 9)]
+_MELON_REST = [t for t in _MELON_ALL if t not in STRAW_SET]
+
+MELON_QUAD_DAY = {}
+for t in MELON_A0:
+    MELON_QUAD_DAY[t] = MELON_START
+for t in MELON_A1 + MELON_B:
+    MELON_QUAD_DAY[t] = NE_DAY
+for t in MELON_C:
+    MELON_QUAD_DAY[t] = SW_DAY
+MELON_SET = [t for t in _MELON_REST]
+# hybrid plan: the FIRST 16-19 animals take the center ring (walks of 1-2
+# steps from the spawn tiles) while the champion crop layout is untouched;
+# the far-NW animal tiles they vacate become wheat.
+_HYB_RING = [
+    ((3, 3), 0), ((4, 2), 0), ((3, 2), 0), ((2, 3), 0),
+    ((3, 4), 0), ((4, 1), 0), ((2, 2), 0), ((1, 3), 0),
+    ((5, 3), 7), ((6, 3), 7), ((5, 4), 7), ((6, 4), 7),
+    ((5, 2), 7), ((6, 2), 7), ((2, 4), 0), ((1, 4), 0),
+    ((4, 5), 14), ((3, 5), 14), ((4, 6), 14),
+]
+_HYB_FREED_WHEAT = [(0, 2), (0, 3), (1, 2), (0, 4), (4, 0)]
+# wheat_sw=0 (v6 bought-feed mode): drop the 12 SW wheat tiles (5-day cycles
+# are ~17 ops/day of duty); feed comes from the auto-sized BUY_PRODUCT top-up
+# instead. carrot_sw tiles stay farmed as carrots either way.
+WHEAT_ONLY = set(WHEAT_NW + (WHEAT_SW if int(SPEC.get("wheat_sw", 1))
+                             else WHEAT_SW[:int(SPEC.get("carrot_sw", 0))])
+                + [t for t in MELON_B if t not in STRAW_SET and t not in _B_MELON]
+                + [t for t in MELON_C if t not in STRAW_SET and t not in _C_MELON]
+                + [t for t in MELON_A0 if t not in STRAW_SET and t not in _A0_MELON]
+                + [t for t in MELON_A1 if t not in STRAW_SET and t not in _A1_MELON]
+                + _WHEAT_EXTRA_TILES[:int(SPEC.get("wheat_extra", 0))]
+                + (_HYB_FREED_WHEAT if SPEC.get("farm_plan") == "hybrid" else []))
+if SPEC.get("farm_plan") == "hybrid":
+    WHEAT_ONLY -= set(_HYB_RING)
+
+# ---- geese: dedicated coop tiles ----
+# (4,3)/(3,4) are the only genuinely free unlocked tiles and both are
+# shed-adjacent (coops visited daily -> want zero detour). Extra geese
+# convert wheat tiles listed in spec "goose_tiles" (removed from wheat).
+_goose_extra = [tuple(t) for t in SPEC.get("goose_tiles", [])]
+for _t in _goose_extra:
+    WHEAT_ONLY.discard(_t)
+GOOSE_SLOTS = [(4, 3), (3, 4)] + _goose_extra
+
+
+
+def quad_unlock_day(t):
+    x, y = t
+    if x >= 5 and y < 5:
+        return NE_DAY
+    if x < 5 and y >= 5:
+        return SW_DAY
+    if x >= 5 and y >= 5:
+        return SE_DAY
+    return 0
+
+
+# ---------------- animals ----------------
+# hybrid plan: the FIRST 16-19 animals take the center ring (walks of 1-2
+# steps from the spawn tiles) while the champion crop layout is untouched;
+# the far-NW animal tiles they vacate become wheat.
+_PACKED_SLOTS = [
+    ((3, 3), 0), ((4, 2), 0), ((3, 2), 0), ((2, 3), 0), ((3, 4), 0),
+    ((4, 1), 0), ((2, 2), 0), ((1, 3), 0), ((2, 4), 0), ((3, 1), 0),
+    ((5, 3), 7), ((5, 4), 7), ((6, 3), 7), ((6, 4), 7), ((5, 2), 7),
+    ((6, 2), 7), ((7, 3), 7), ((7, 4), 7), ((8, 3), 7), ((8, 4), 7),
+    ((4, 5), 14), ((3, 5), 14), ((4, 6), 14), ((3, 6), 14), ((2, 5), 14),
+    ((1, 5), 14), ((0, 5), 14), ((4, 7), 14), ((3, 7), 14), ((2, 6), 14),
+]
+ANIMAL_SLOTS = (list(_HYB_RING) if SPEC.get("farm_plan") == "hybrid"
+                else list(_PACKED_SLOTS) if SPEC.get("farm_plan") == "packed" else [
+    ((4, 1), 0), ((0, 2), 0), ((0, 3), 0), ((4, 2), 0),
+    ((1, 2), 3), ((2, 2), 3), ((1, 3), 4), ((2, 4), 4), ((1, 4), 5),
+    ((5, 2), 6), ((6, 2), 6), ((5, 3), 6), ((6, 3), 7), ((5, 4), 7),
+    ((3, 5), 7), ((4, 5), 7),
+])
+# sheep/cows share the base ANIMAL_SLOTS exactly as before; geese get
+# their own coop tiles and NEVER steal pasture slots (the 18-animal overflow
+# silently dropped cows when geese took base slots).
+KINDS = (["SHEEP"] * int(SPEC.get("SHEEP", 4))
+        + ["COW"] * int(SPEC.get("COW", 12)))
+STRUCT = {"COW": "BUILD_PASTURE", "SHEEP": "BUILD_PASTURE", "GOOSE": "BUILD_COOP"}
+# overflow animal slots: skip any tile wheat/straw/melon now owns — animals
+# can only take genuinely free tiles
+_EXTRA_SLOTS = [((0, 5), 14), ((1, 5), 14), ((2, 5), 14), ((1, 6), 14),
+                ((1, 7), 14), ((4, 9), 14), ((4, 0), 0), ((3, 3), 0),
+                ((7, 3), 7), ((8, 3), 7), ((6, 4), 7), ((7, 4), 7), ((8, 4), 7)]
+_i = 0
+while len(ANIMAL_SLOTS) < len(KINDS) and _i < len(_EXTRA_SLOTS):
+    _t, _d = _EXTRA_SLOTS[_i]
+    if _t not in WHEAT_ONLY and _t not in STRAW_SET and _t not in _MELON_ALL:
+        ANIMAL_SLOTS.append((_t, _d))
+    _i += 1
+
+GOOSE_DAY = int(SPEC.get("goose_day", 1))
+_gstagger = SPEC.get("goose_stagger")  # optional per-goose day list
+ANIMALS = []  # (tile, kind, place_day)
+_gn = int(SPEC.get("GOOSE", 0))
+for _i in range(_gn):
+    if _i >= len(GOOSE_SLOTS):
+        break  # no free coop tile: extra geese silently skipped (spec error)
+    tile = GOOSE_SLOTS[_i]
+    if _gstagger and _i < len(_gstagger):
+        d = max(int(_gstagger[_i]), quad_unlock_day(tile))
+    else:
+        d = max(GOOSE_DAY, quad_unlock_day(tile))
+    if d < DAYS:
+        ANIMALS.append((tile, "GOOSE", d))
+_COW_STAGGER = int(SPEC.get("cow_stagger", 0))
+_cow_i = 0
+for (tile, d), kind in zip(ANIMAL_SLOTS, KINDS):
+    d = max(d, quad_unlock_day(tile))
+    if kind == "COW":
+        d = max(d, COW_DAY)
+        if _COW_STAGGER:
+            # v6: spread cows 1/day from COW_DAY so the $400/day drumbeat is
+            # funded by wool + first-straw revenue instead of one $4.8k lump
+            d = COW_DAY + _cow_i * _COW_STAGGER
+            _cow_i += 1
+    if d >= DAYS:
+        continue
+    ANIMALS.append((tile, kind, d))
+
+# animals alive at day d
+def animals_on(day):
+    return [a for a in ANIMALS if a[2] <= day]
+
+# production days (harvest visible day): placed + first + k*interval
+PROD = {"SHEEP": (6, 3), "COW": (8, 2), "GOOSE": (4, 1)}
+
+def animal_harvest_days(kind, placed):
+    first, iv = PROD[kind]
+    out = []
+    d = placed + first
+    while d < DAYS:
+        out.append(d)
+        d += iv
+    return out
+
+# ---------------- hands ----------------
+_H = int(SPEC.get("hands", 7))
+_RAMP = SPEC.get("ramp")
+if _RAMP:
+    HANDS_PER_DAY = [int(x) for x in _RAMP]
+else:
+    HANDS_PER_DAY = [3, 3, 3, 4, 4, 5] + [_H] * (DAYS - 6)
+HANDS_PER_DAY = (HANDS_PER_DAY + [_H] * DAYS)[:DAYS]
+
+# ---------------- crop calendar ----------------
+# per tile -> list of (day, action) crop duties
+CROP_DUTIES = {}
+HARVEST_CROP = {}  # (tile, day) -> crop of that HARVEST duty
+
+def add(t, day, act):
+    if 0 <= day < DAYS:
+        CROP_DUTIES.setdefault(t, []).append((day, act))
+
+def add_harvest(t, day, crop):
+    add(t, day, "HARVEST")
+    if 0 <= day < DAYS:
+        HARVEST_CROP[(t, day)] = crop
+
+# strawberry: FERTILIZE at each production event (ev = plant + first - 1 +
+# k*iv is the EOD production day; fertilized_until covers ev..ev+2), HARVEST
+# the day after each event, WATER every day it lives.
+STRAW_FIRST, STRAW_IV, STRAW_EVENTS = 10, 2, 4
+
+# ---------------- wave scheduling ----------------
+# Expensive seed waves (strawberry $100/seed, melon $80/seed) get a
+# cash-aware plant day: never on a one-shot land day, only when the morning
+# wallet (after the H00 product sells that now precede all buys) covers the
+# seeds plus a margin. Cheap wheat plants wherever the cycle says.
+SEED_PRICE = {"MELON": 80, "WHEAT": 10, "STRAWBERRY": 100, "TOMATO": 50, "CARROT": 20}
+ANIMAL_COST = {"COW": 400, "SHEEP": 500, "GOOSE": 300}
+
+def _hire_cost_n(n):
+    # fibonacci-indexed daily re-hire cost: 1,1,2,3,5,...
+    a, b, tot = 1, 1, 0
+    for _ in range(n):
+        tot += a
+        a, b = b, a + b
+    return tot
+
+def _schedule_waves():
+    """Returns plant_day per strawberry/melon tile."""
+    waves = []  # (earliest, tiles, crop)
+    straw_nw = [t for t in STRAW_SET if quad_unlock_day(t) == 0]
+    straw_ne = [t for t in STRAW_SET if quad_unlock_day(t) == NE_DAY]
+    straw_sw = [t for t in STRAW_SET if quad_unlock_day(t) == SW_DAY]
+    straw_se = [t for t in STRAW_SET if quad_unlock_day(t) == SE_DAY]
+    for tiles, e in ((straw_nw, STRAW_START), (straw_ne, NE_DAY + 1),
+                     (straw_sw, SW_DAY + 1),
+                     (straw_se, max(SE_DAY + 2, 17))):
+        if tiles:
+            waves.append([e, tiles, "STRAWBERRY"])
+    mel_nw = [t for t in MELON_SET if quad_unlock_day(t) == 0]
+    mel_ne = [t for t in MELON_SET if quad_unlock_day(t) == NE_DAY]
+    mel_sw = [t for t in MELON_SET if quad_unlock_day(t) == SW_DAY]
+    for tiles, e in ((mel_nw, MELON_START), (mel_ne, NE_DAY + 1),
+                     (mel_sw, SW_DAY + 1)):
+        if tiles:
+            waves.append([e, tiles, "MELON"])
+    waves.sort(key=lambda w: (w[0], w[2]))
+
+    # conservative revenue model (scheduling only)
+    rev = [0.0] * (DAYS + 40)
+    for tile, kind, pd in ANIMALS:
+        first, iv = PROD[kind]
+        val = {"SHEEP": 400, "COW": 250, "GOOSE": 80}[kind]
+        d = pd + first + 1  # EOD event -> sold next morning
+        while d < DAYS:
+            rev[d] += val
+            d += iv
+    for d in range(DAYS):
+        rev[d] += len(animals_on(d)) * 28          # fertilizer trickle
+        if d >= 4:
+            rev[d] += 60                            # NW wheat harvests
+        if d >= SW_DAY + 4:
+            rev[d] += 150                           # SW wheat harvests
+
+    money = 3000.0
+    plant_day = {}
+    wi = 0
+    for d in range(DAYS):
+        money += rev[d]
+        if d == NE_DAY and NE_DAY < DAYS:
+            money -= 1000
+        if d == SW_DAY and SW_DAY < DAYS:
+            money -= 2000
+        if d == SE_DAY and SE_DAY < DAYS:
+            money -= 4000
+        if SE_DAY < DAYS and d >= SE_DAY:
+            money -= 8 * (SE_CARROT_N + SE_WHEAT_N) // 4
+        for tile, kind, pd in ANIMALS:
+            if pd == d:
+                money -= ANIMAL_COST[kind]
+        money -= _hire_cost_n(HANDS_PER_DAY[d])
+        n_an = len(animals_on(d))
+        if n_an:
+            money -= (n_an + 1) * 26
+        money -= 10  # wheat seed trickle
+        while wi < len(waves) and waves[wi][0] <= d:
+            e, tiles, crop = waves[wi]
+            cost = SEED_PRICE[crop] * len(tiles)
+            if money >= cost + 200:
+                money -= cost
+                for t in tiles:
+                    plant_day[t] = d
+                # future harvest revenue from this wave
+                n = len(tiles)
+                if crop == "STRAWBERRY":
+                    # model_straw_rev: revenue per tile-cycle fed back into the
+                    # wave scheduler's cash model. Default 350 ($87/u) is the
+                    # legacy conservative value; H2H-measured floor is ~$150/u
+                    # (8u x $150 = 1200), so 700 is still ~40% conservative.
+                    _sr = int(SPEC.get("model_straw_rev", 350))
+                    for hd in (d + 13, d + 17):
+                        if hd < DAYS:
+                            rev[hd] += _sr * n
+                else:
+                    for hd in (d + 13, d + 26):
+                        if hd < DAYS:
+                            rev[hd] += 600 * n
+                    for hd in (d + 13 + 9, d + 26 + 9):  # wheat-filler cycle
+                        if hd < DAYS:
+                            rev[hd] += 200 * n
+                wi += 1
+            else:
+                break
+    # unschedulable waves: plant at earliest anyway (spec search should
+    # avoid these; they mostly no-op)
+    while wi < len(waves):
+        e, tiles, crop = waves[wi]
+        for t in tiles:
+            plant_day[t] = e
+        wi += 1
+    return plant_day
+
+PLANT_DAY = _schedule_waves()
+
+# strawberry duties — LEAN calendar (engine facts: ongoing crops produce
+# +1/event at EOD regardless of water; water only (a) prevents 2-consecutive-
+# unwatered death, (b) unlocks the fertilized +2 on event days, which need
+# watered THAT day; fertilized_until covers ev..ev+2 so 2 ferts cover all 4
+# events; HARVEST drains accumulated units so ONE harvest after the last
+# event collects everything).
+# events (EOD): p+9, p+11, p+13, p+15 -> water ev days (fert bonus) plus
+# even-offset days p..p+8 (survival).
+for _si, t in enumerate(STRAW_SET):
+    p = PLANT_DAY[t]
+    if SPEC.get("straw_stagger"):
+        p = p + (_si % int(SPEC.get("straw_stagger")))
+    # far tiles (deep in the NE corner) die of missed waters in the D15-20
+    # crunch — give them the SHORT calendar: events p+9/p+11 only, harvest
+    # p+12 (4 units guaranteed), then a wheat filler cycle on the freed tile
+    short = SPEC.get("straw_short_far", 0) and t[0] >= 8
+    add(t, p, "DIG"); add(t, p, "PLANT:STRAWBERRY"); add(t, p, "WATER")
+    for k in range(2, 9, 2):          # survival waters p+2..p+8
+        add(t, p + k, "WATER")
+    if short:
+        for ev in (p + 9, p + 11):
+            add(t, ev, "WATER")       # event-day water (fert bonus)
+        if p + 9 < DAYS:
+            add(t, p + 9, "FERTILIZE")  # covers ev p+9..p+11
+        if p + 12 < DAYS:
+            add_harvest(t, p + 12, "STRAWBERRY")
+        # wheat filler on the freed tile
+        w = p + 13
+        while w + 4 <= DAYS - 1:
+            add(t, w, "DIG"); add(t, w, "PLANT:WHEAT"); add(t, w, "WATER")
+            add(t, w + 2, "WATER"); add(t, w + 3, "WATER")
+            add(t, w + 4, "WATER"); add_harvest(t, w + 4, "WHEAT")
+            w += 5
+        continue
+    for ev in (p + 9, p + 11, p + 13, p + 15):
+        add(t, ev, "WATER")           # event-day water (fert bonus)
+    for ev in (p + 9, p + 13):        # fertilized_until covers ev..ev+2
+        if ev < DAYS:
+            add(t, ev, "FERTILIZE")
+    # yield_units caps at 4: harvest after event 2 (p+11 EOD) and after the
+    # last event (p+15 EOD) -> 4 + 4 = 8 units per tile
+    if p + 12 < DAYS:
+        add_harvest(t, p + 12, "STRAWBERRY")
+    elif p + 9 < DAYS:
+        add_harvest(t, DAYS - 1, "STRAWBERRY")  # late plant: salvage event-1
+    if p + 16 < DAYS:
+        add_harvest(t, p + 16, "STRAWBERRY")
+    elif p + 14 <= DAYS - 1 and p + 12 != DAYS - 1 and p + 13 < DAYS:
+        add_harvest(t, DAYS - 1, "STRAWBERRY")  # event-3 units, final day
+
+# melon tiles: cycles
+for t in MELON_SET:
+    p = PLANT_DAY[t]
+    while p < DAYS:
+        add(t, p, "DIG"); add(t, p, "PLANT:MELON"); add(t, p, "WATER")
+        for k in range(1, 7):
+            add(t, p + 2 * k, "WATER")
+        add_harvest(t, p + 12, "MELON")
+        nxt = p + 13
+        if nxt + 12 <= DAYS - 1:
+            p = nxt  # another melon cycle
+        elif nxt + 4 <= DAYS - 1:
+            # wheat filler cycle(s)
+            w = nxt
+            while w + 4 <= DAYS - 1:
+                add(t, w, "DIG"); add(t, w, "PLANT:WHEAT"); add(t, w, "WATER")
+                add(t, w + 2, "WATER"); add(t, w + 3, "WATER")
+                add(t, w + 4, "WATER"); add_harvest(t, w + 4, "WHEAT")
+                w += 5
+            break
+        else:
+            break
+
+# SE quadrant tiles (x>=5, y>=5): optional late carrot/wheat expansion
+SE_TILES = [(x, y) for y in range(5, 10) for x in range(5, 10)]
+SE_CARROT_SET = SE_TILES[:SE_CARROT_N]
+SE_WHEAT_SET = SE_TILES[SE_CARROT_N:SE_CARROT_N + SE_WHEAT_N]
+for t in SE_CARROT_SET:
+    w = max(SE_DAY + 1, 16)
+    while w + 3 <= DAYS - 1:
+        add(t, w, "DIG"); add(t, w, "PLANT:CARROT"); add(t, w, "WATER")
+        add(t, w + 2, "WATER")
+        add(t, w + 3, "WATER"); add_harvest(t, w + 3, "CARROT")
+        w += 4
+for t in SE_WHEAT_SET:
+    w = max(SE_DAY + 1 + (SE_TILES.index(t) % 5), 16)
+    while w + 4 <= DAYS - 1:
+        add(t, w, "DIG"); add(t, w, "PLANT:WHEAT"); add(t, w, "WATER")
+        add(t, w + 2, "WATER"); add(t, w + 3, "WATER")
+        add(t, w + 4, "WATER"); add_harvest(t, w + 4, "WHEAT")
+        w += 5
+
+# wheat-only tiles: 5-day cycles, first plant staggered by index to spread
+# the 7-duty load (NW: +idx days; SW: idx%5 days after sw_day).
+# CARROT_N switches that many SW tiles to 3-day carrot cycles instead
+# (carrot: seed $20, window 2-3, yield 3, town eats 100-550/game).
+CARROT_N = int(SPEC.get("carrot_sw", 0))
+CARROT_SET = set(WHEAT_SW[:CARROT_N])
+for t in sorted(WHEAT_ONLY):
+    if t in CARROT_SET:
+        # carrot cycles: plant w, water w+2/w+3, harvest w+3 (yield 3)
+        w = max(SW_DAY + 1 + (WHEAT_SW.index(t) % 3), quad_unlock_day(t))
+        while w + 3 <= DAYS - 1:
+            add(t, w, "DIG"); add(t, w, "PLANT:CARROT"); add(t, w, "WATER")
+            add(t, w + 2, "WATER")
+            add(t, w + 3, "WATER"); add_harvest(t, w + 3, "CARROT")
+            w += 4
+        continue
+    if t in WHEAT_NW:
+        start = WHEAT_NW.index(t)
+    elif t in WHEAT_SW:
+        start = SW_DAY + (WHEAT_SW.index(t) % 5)
+    elif t in MELON_B:
+        # B-zone tile demoted to wheat (melon_b=0, not claimed by straw)
+        start = NE_DAY + 1 + (MELON_B.index(t) % 5)
+    elif t in MELON_C:
+        # C-zone tile demoted to wheat (melon_c=0, not claimed by straw)
+        start = SW_DAY + 1 + (MELON_C.index(t) % 5)
+    elif t in MELON_A0:
+        # A0 melon corner demoted to wheat
+        start = MELON_A0.index(t)
+    elif t in MELON_A1:
+        # A1 melon tiles demoted to wheat
+        start = NE_DAY + 1 + (MELON_A1.index(t) % 3)
+    elif t in _WHEAT_EXTRA_TILES:
+        # wheat_extra idle tile: stagger from its quad unlock
+        start = quad_unlock_day(t) + (_WHEAT_EXTRA_TILES.index(t) % 4)
+    else:
+        # freed far-NW animal tile (hybrid plan)
+        start = 1 + (sorted(WHEAT_ONLY).index(t) % 4)
+    start = max(start, quad_unlock_day(t))
+    w = start
+    while w + 4 <= DAYS - 1:
+        add(t, w, "DIG"); add(t, w, "PLANT:WHEAT"); add(t, w, "WATER")
+        add(t, w + 2, "WATER"); add(t, w + 3, "WATER")
+        add(t, w + 4, "WATER"); add_harvest(t, w + 4, "WHEAT")
+        w += 5
+
+# ---------------- market plan ----------------
+# Liquidity design (engine fact: market orders execute in queue order within
+# a turn, so SELLs placed before BUYs fund them the same morning):
+#   H00 = [product sells (wool/milk/egg/straw/melon)] + [land, animals,
+#         feed product, seeds] + hires   — buys happen after the morning
+#         income lands.
+#   H01 = [overflow buys] + [wheat + fertilizer sells] + hire overflow —
+#         wheat/fert sell AFTER the H01 unit pickups (units act before the
+#         market inside a turn), so feed/fert pickups are never starved.
+
+def market_plan(day, feed_need=None):
+    """(h00_orders, h01_orders); feed_need = today's planned WHEAT pickups
+    (exact sizing against the tape-grounded SHED_W ledger when provided)"""
+    h00 = []
+    buys = []
+    if day == NE_DAY and NE_DAY < DAYS:
+        buys.append(["BUY_LAND"])
+    if day == SW_DAY and SW_DAY < DAYS:
+        buys.append(["BUY_LAND"])
+    # SE: emit on the day and retry for two more days (a failed cash
+    # purchase otherwise silently kills the whole SE wave; a repeat order
+    # after success is a harmless engine no-op).
+    if (
+        SE_DAY < DAYS
+        and SE_DAY <= day <= SE_DAY + 2
+        and (SE_STRAW_N or SE_CARROT_N or SE_WHEAT_N)
+    ):
+        buys.append(["BUY_LAND"])
+    # animals placing today
+    placing = {}
+    for tile, kind, pd in ANIMALS:
+        if pd == day:
+            placing[kind] = placing.get(kind, 0) + 1
+    for kind in sorted(placing):
+        buys.append(["BUY_ANIMAL", kind, placing[kind]])
+    # feed product (ledger-sized: only top up to need + buffer)
+    n_animals = len(animals_on(day))
+    if n_animals:
+        _need = feed_need if feed_need is not None else n_animals
+        buys.append(["BUY_PRODUCT", "WHEAT",
+                     max(0, _need + FEED_BUFFER - SHED_W["lo"])])
+    # seeds needed today (all plant duties incl. melon cycle replants)
+    seeds = {}
+    for t, duties in CROP_DUTIES.items():
+        for d, act in duties:
+            if d == day and act.startswith("PLANT:"):
+                crop = act.split(":")[1]
+                seeds[crop] = seeds.get(crop, 0) + 1
+    for crop in sorted(seeds):
+        buys.append(["BUY_SEED", crop, seeds[crop]])
+    # hires come after the morning sells (prepended by the day loop, funding
+    # them) but BEFORE the other buys: a missed hire cascades into
+    # uncompleted placements/care, while a slipped buy costs a day at most.
+    # Cap them so the buys still fit in the 10-order H00 queue.
+    hires = HANDS_PER_DAY[day]
+    n_sells = len(SELL_H00[day]) if day < len(SELL_H00) else 0
+    room = max(0, 10 - n_sells - len(buys))
+    n_h00_hires = min(hires, room)
+    h00 += [["HIRE"]] * n_h00_hires
+    h00 += buys
+    rem = hires - n_h00_hires
+    h01 = [["HIRE"]] * rem
+    return h00, h01
+
+def _fert_ledger():
+    """Daily FERTILIZER shed ledger: production, pickup need, sellable surplus.
+    Units pick up before the market sells (engine order), so selling the
+    post-pickup surplus is safe. The reserve only covers what tomorrow's
+    collection won't produce anyway (production usually exceeds the need)."""
+    need = [0] * DAYS
+    for t, dl in CROP_DUTIES.items():
+        for d, act in dl:
+            if act == "FERTILIZE" and 0 <= d < DAYS:
+                need[d] += 1
+    shed = 0
+    sell_qty = [0] * DAYS
+    for d in range(DAYS):
+        avail = shed
+        take = min(need[d], avail)
+        prod_next = len(animals_on(d + 1)) if d + 1 < DAYS else 0
+        reserve = max(0, (need[d + 1] if d + 1 < DAYS else 0) - prod_next) + 2
+        sell_qty[d] = max(0, avail - take - reserve)
+        shed = avail - take - sell_qty[d] + len(animals_on(d))
+    return sell_qty
+
+FERT_SELL_QTY = _fert_ledger()
+
+def _wheat_ledger():
+    """WHEAT shed model: how much sits in the shed at H00 of each day (for
+    sizing the daily BUY_PRODUCT top-up). Flow: H00 buy -> H01 unit pickup
+    (feed) -> H01 sell -> mid-day harvests -> EOD."""
+    harvests = [0] * DAYS
+    for (t, d), crop in HARVEST_CROP.items():
+        if crop == "WHEAT" and 0 <= d < DAYS:
+            harvests[d] += 4
+    shed_h00 = [0] * DAYS
+    shed = 0
+    for d in range(DAYS):
+        shed_h00[d] = shed
+        n_an = len(animals_on(d))
+        buy = max(0, n_an + FEED_BUFFER - shed)
+        shed += buy - n_an
+        # mirror sell_plan_h01: endgame dumps everything; otherwise sell only
+        # the surplus above a 2-day feed reserve, and only if >= 20 units
+        if d >= DAYS - 2:
+            sold = shed
+        elif d >= max(WHEAT_SELL_FROM, WHEAT_SELL_DAY):
+            if d < COW_DAY:
+                sold = max(0, shed - 4)
+            else:
+                sold = max(0, shed - n_an * int(SPEC.get("feed_reserve", 2)))
+                if sold < 20:
+                    sold = 0
+        else:
+            sold = 0
+        shed -= sold
+        shed += harvests[d]
+    return shed_h00
+
+WHEAT_SHED = _wheat_ledger()
+
+# exact wheat ledger: what the TAPE ITSELF leaves in the shed at each H00.
+# Author-time running value (reset per author() call); drift-free because
+# every term comes from the emitted plan: buys, pickups, sells, and a
+# conservative 2u/wheat-harvest for the EOD inventory drop.
+SHED_W = {"lo": 0, "hi": 0}   # lo: lower bound (buy sizing), hi: upper (sell sizing)
+
+# every duty on an animal tile is critical when animal_critical is set:
+# FEED/PLACE/BUILD always were; CARE / COLLECT_FERTILIZER / animal HARVEST
+# must never be silently dropped either (care bonus + milk/wool collects).
+ANIMAL_TILE_SET = frozenset(t for t, _k, _pd in ANIMALS)
+
+# executed HARVEST ops (tile, day) recorded during tape emission; pass 2
+# rebuilds the sell plans from this ground truth.
+HARVEST_LOG = []
+
+# multi-item shed-capacity ledger: standing stock per item through the day
+# (H00 sells -> buys -> pickups -> H04 sells -> H23 sells) plus the EOD
+# inventory inflow; when the total would pass the shed cap the H23 drain
+# sells flat-curve items first so the EOD drop never discards produce.
+CAP_LEDGER = {}
+
+# ---------------- price-aware sell planner ----------------
+# market_price(item, inv) sits at base when inventory == I0 (10k) and falls
+# as we push it above; the town shops (unlocking every 3 days, drawn from
+# 8 shop types) drain it back toward I0. Marginal price of the k-th unit
+# above I0 (from MARKET_PARAMS):
+#   WOOL    base 200: k=30 $148, k=40 $107, k=60 $1   (sq, harsh)
+#   MILK    base 160: k=30 $97,  k=40 $76             (linear)
+#   STRAW   base 120: k=30 $62,  k=60 $5              (linear, harsh)
+#   MELON   base 250: k=60 $214, k=100 $150           (sq, gentle)
+#   EGG     base 50:  k=12 $29                        (log)
+#   FERT    base 100: k=100 $80                       (linear, ~flat!)
+#   WHEAT   base 25:  ~flat                           (log, gentle)
+# Policy: each morning, sell down to the profitable depth k* (price >= ~60%
+# of base); expected town consumption pulls k back down between days. The
+# H23 pass drains piles (a floored sell beats the EOD discard) and the last
+# two days dump everything.
+import math as _math
+
+_MP = {  # item: (base, T, above_func, above_target)
+    "WHEAT": (25, 400, "log", 0.2), "CARROT": (35, 450, "sqrt", 0.7),
+    "STRAWBERRY": (120, 100, "linear", 1.6), "MELON": (250, 300, "sq", 3.6),
+    "EGG": (50, 332, "log", 0.2), "MILK": (160, 122, "linear", 1.6),
+    "WOOL": (200, 105, "sq", 3.2), "FERTILIZER": (100, 200, "linear", 0.4),
+}
+
+def _shape(f, x):
+    if f == "linear":
+        return x
+    if f == "sq":
+        return x * x
+    if f == "sqrt":
+        return _math.sqrt(x)
+    if f == "log":
+        return _math.log(1.0 + x)
+    return x
+
+def _marginal_price(item, k):
+    base, T, f, tgt = _MP[item]
+    amp = tgt * base / _shape(f, T)
+    return max(1.0, base - amp * _shape(f, max(0, k)))
+
+def _profit_depth(item, frac=0.35):
+    """max k where marginal price >= frac*base."""
+    base = _MP[item][0]
+    k = 0
+    while k < 2000 and _marginal_price(item, k) >= frac * base:
+        k += 1
+    # depth_over (v6): per-item measured sell-depth override. The offline
+    # cumulative-decay model badly underestimates real market depth (the
+    # engine anchors price at inv=10,000 and shops consume continuously;
+    # measured: 116u straw realized $263/u vs model floor at 40u). Overrides
+    # can only DEEPEN (max), never shallow, so default behavior is unchanged.
+    _ov = SPEC.get("depth_over") or {}
+    if item in _ov:
+        k = max(k, int(_ov[item]))
+    return k
+
+# expected town consumption per day (8 shop types drawn uniformly; each
+# instance consumes 1 of each of its products (2 if single-product) every
+# 4 hours = 6x/day; town center: 1/day of everything but fert)
+_SHOP_RATE = {  # expected units/day per unlocked instance
+    "WHEAT": 6 * 5 / 8, "MILK": 6 * 3 / 8, "EGG": 6 * 2 / 8,
+    "WOOL": 6 * 2 / 8, "STRAWBERRY": 6 * 4 / 8, "CARROT": 6 * 3 / 8,
+    "MELON": 0.0, "FERTILIZER": 0.0,
+}
+def _consume_rate(item, day):
+    n = min(8, day // 3)
+    return _SHOP_RATE.get(item, 0.0) * n + (1.0 if item != "FERTILIZER" else 0.0)
+
+_ANIMAL_UNITS = {"SHEEP": 4, "COW": 3, "GOOSE": 2}  # per event, with care
+
+def _build_sell_plans(straw_moves=None, prod_override=None):
+    """Returns (h00_rows, h23_rows) per day: price-aware trickle in the
+    morning, pile-drain at H23, endgame dump. straw_moves maps
+    (tile, planned_day) -> deferred day for capacity-deferred straw
+    harvests so the arrival schedule (and the depth counter) tracks the
+    tape's actual execution."""
+    # daily production (units landing in the shed at EOD of day d).
+    # CARE bonus accumulates +1 per cared+fed day and pops at the event:
+    # the FIRST event yields min(1 + days_since_placement, max_held) —
+    # with care from placement day that is max_held; later events yield
+    # 1 + interval cares.
+    _FIRST = {"SHEEP": 6, "COW": 6, "GOOSE": 4}
+    _THEN = {"SHEEP": 4, "COW": 3, "GOOSE": 2}
+    prod = {it: [0] * DAYS for it in ("WOOL", "MILK", "EGG",
+                                      "STRAWBERRY", "MELON", "CARROT")}
+    if prod_override is not None:
+        # ground truth: the tape's own executed harvest days
+        for it in prod:
+            prod[it] = list(prod_override.get(it, [0] * DAYS))
+    else:
+        for tile, kind, pd in ANIMALS:
+            item = {"SHEEP": "WOOL", "COW": "MILK", "GOOSE": "EGG"}[kind]
+            evs = animal_harvest_days(kind, pd)
+            for i, ev in enumerate(evs):
+                if ev < DAYS:
+                    prod[item][ev] += _FIRST[kind] if i == 0 else _THEN[kind]
+        for (t, d), crop in HARVEST_CROP.items():
+            if crop == "STRAWBERRY" and d < DAYS:
+                _nd = (straw_moves or {}).get((t, d), d)
+                prod["STRAWBERRY"][_nd] += 4
+            elif crop == "MELON" and d < DAYS:
+                prod["MELON"][d] += 5
+            elif crop == "CARROT" and d < DAYS:
+                prod["CARROT"][d] += 3
+
+    k = {it: 0.0 for it in prod}
+    avail = {it: 0 for it in prod}
+    h00 = [[] for _ in range(DAYS)]
+    h23 = [[] for _ in range(DAYS)]
+    for d in range(DAYS):
+        endgame = d >= DAYS - 2
+        for it in prod:
+            avail[it] += prod[it][d - 1] if d >= 1 else 0
+            if avail[it] <= 0:
+                # still track consumption (k may go negative -> above-base
+                # prices, room to sell more tomorrow)
+                k[it] -= _consume_rate(it, d)
+                continue
+            if endgame:
+                q = avail[it]
+            elif it == "MILK" and d < int(SPEC.get("milk_from", 0)):
+                # hold milk for the late demand peak (price rises all
+                # season); pile bounded by pile_max below
+                q = 0
+            else:
+                # sell down to the profitable depth (k+q <= k*), but at
+                # least drain to a sane pile
+                kstar = _profit_depth(it)
+                q = int(max(0, min(avail[it], kstar - k[it])))
+                _pm = int(SPEC.get("milk_pile", 15))
+                pile_max = _pm if it in ("WOOL", "MILK", "EGG") else 25
+                if avail[it] - q > pile_max:
+                    q = avail[it] - pile_max
+            if q > 0:
+                h00[d].append(["SELL", it, q])
+                avail[it] -= q
+                k[it] += q
+            k[it] -= _consume_rate(it, d)
+        # H23: drain piles that would risk the EOD discard. MILK/EGG get an
+        # unconditional SELL 99 — the day's harvests land in the shed during
+        # the day (after the H00 sell), and the order self-limits at the shed
+        # contents, so 99 = "sell everything actually there" with zero
+        # model-timing risk.
+        if not endgame:
+            _md = int(SPEC.get("milk_drain", 10))
+            if d < int(SPEC.get("milk_from", 0)):
+                _md = max(_md, int(SPEC.get("milk_pile", 15)))
+            _xd = int(SPEC.get("melon_drain", 20))
+            _ed = int(SPEC.get("egg_drain", 8))
+            for it, cap in (("MILK", _md), ("WOOL", 8), ("EGG", _ed),
+                            ("STRAWBERRY", 14), ("MELON", _xd), ("CARROT", 20)):
+                if avail[it] > cap:
+                    q = avail[it] - cap
+                    h23[d].append(["SELL", it, q])
+                    avail[it] -= q
+                    k[it] += q
+    return h00, h23
+
+SELL_H00, SELL_H23 = _build_sell_plans()
+
+def sell_plan_h00(day):
+    """Morning sells (items units never pick up) — execute BEFORE the buys
+    in the same H00 market queue, funding them."""
+    return SELL_H00[day]
+
+def sell_plan_h01(day, post_pickup_wheat=None):
+    """Post-pickup sells: wheat (only the surplus above a 2-day feed
+    reserve — own wheat beats buying it back at drained prices) and
+    fertilizer surplus."""
+    s = []
+    endgame = day >= DAYS - 2
+    n_an = len(animals_on(day))
+    _fr = int(SPEC.get("feed_reserve", 2))
+    _w = post_pickup_wheat if post_pickup_wheat is not None else WHEAT_SHED[day]
+    if day < COW_DAY:
+        surplus = max(0, _w - 4)
+    else:
+        surplus = max(0, _w - n_an * _fr)
+        if surplus < 20:
+            surplus = 0
+    if endgame:
+        s.append(["SELL", "WHEAT", 99])
+    elif day >= max(WHEAT_SELL_FROM, WHEAT_SELL_DAY) and surplus > 0:
+        s.append(["SELL", "WHEAT", surplus])
+    if day >= 1 and FERT_SELL_QTY[day] > 0:
+        s.append(["SELL", "FERTILIZER",
+                  99 if endgame else max(6, min(20, FERT_SELL_QTY[day]))])
+    return s
+
+def sell_plan_h23(day, post_pickup_wheat=None):
+    """Late-day pile drain (before the EOD inventory drop). Wheat/fert have
+    flat price curves — always worth a second pass."""
+    rows = list(SELL_H23[day])
+    if day >= DAYS - 2:
+        # dump EVERYTHING: the EOD inventory drop discards overflow, so any
+        # standing stock not sold here is at risk tonight (engine no-ops
+        # sells of items not in the shed - zero-cost insurance)
+        for _it in ("WHEAT", "FERTILIZER", "MILK", "WOOL", "EGG",
+                    "STRAWBERRY", "MELON", "CARROT"):
+            rows.append(["SELL", _it, 99])
+    else:
+        n_an = len(animals_on(day))
+        _fr2 = int(SPEC.get("feed_reserve", 2))
+        _w = (post_pickup_wheat if post_pickup_wheat is not None
+              else WHEAT_SHED[day])
+        if day < COW_DAY:
+            surplus = max(0, _w - 4)
+        else:
+            surplus = max(0, _w - n_an * _fr2)
+            if surplus < 20:
+                surplus = 0
+        if day >= max(WHEAT_SELL_FROM, WHEAT_SELL_DAY) and surplus > 0:
+            rows.append(["SELL", "WHEAT", surplus])
+        if day >= 1 and FERT_SELL_QTY[day] > 0:
+            rows.append(["SELL", "FERTILIZER", 16])
+    return rows[:10]
+
+# ---------------- duty assembly per day ----------------
+# duties are grouped by TILE (one walk, all actions); tile-groups sorted in a
+# single global spatial snake (x, y-snake) — animals and crops interleaved,
+# the proven v130 partition. Overload is shed spatially (tail of the snake
+# carries/drops), never chaotically.
+
+def day_duties(day):
+    """list of (prio, tile, [actions...]) — pure spatial snake order"""
+    groups = []
+
+    # animal tile groups
+    for tile, kind, pd in animals_on(day):
+        if pd == day:
+            # v6h3: tape stays byte-identical to v6h2 (BUILD/PLACE/FEED);
+            # weed protection moved to a runtime guard in the player (see
+            # emit_v6h3.py): DIG fires only when the target tile is an
+            # actual weed, so clean seeds replay v6h2s exactly.
+            groups.append((0, tile, [["BUILD", kind], ["PLACE", kind], ["FEED"]]))
+        else:
+            if kind == "GOOSE" and SPEC.get("goose_lite"):
+                # survival + yield only: skip the fertilizer-collect walk
+                acts = [["FEED"], ["CARE"]]
+            else:
+                acts = [["FEED"], ["CARE"], ["COLLECT_FERTILIZER"]]
+            if day in animal_harvest_days(kind, pd):
+                acts.append(["HARVEST"])
+            groups.append((0, tile, acts))
+    # crop tile groups
+    by_tile = {}
+    for t, dl in CROP_DUTIES.items():
+        acts = []
+        for d, act in dl:
+            if d != day:
+                continue
+            if act.startswith("PLANT:"):
+                acts.append(["DIG"])
+                acts.append(["PLANT", act.split(":")[1]])
+            else:
+                acts.append([act])
+        if acts:
+            order = {"DIG": 0, "PLANT": 1, "FERTILIZE": 2, "WATER": 3, "HARVEST": 4}
+            acts.sort(key=lambda a: order.get(a[0], 9))
+            by_tile[t] = acts
+    for t, acts in by_tile.items():
+        groups.append((1, t, acts))
+
+    def skey(e):
+        _prio, (x, y), _acts = e
+        return (x, y if x % 2 == 0 else -y)
+    groups.sort(key=skey)
+    return groups
+
+# ---------------- scheduler ----------------
+SHED_TILES = [(5, 4), (4, 5), (5, 5), (4, 4)]  # hand spawn order (cycling)
+
+def unit_starts(n_hands):
+    starts = [(4, 4)]  # farmer
+    for i in range(n_hands):
+        starts.append(SHED_TILES[i % 4])
+    return starts
+
+def manh(a, b):
+    return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+def step_toward(p, t):
+    dx = t[0] - p[0]
+    dy = t[1] - p[1]
+    if dx > 0:
+        return (p[0] + 1, p[1]), "EAST"
+    if dx < 0:
+        return (p[0] - 1, p[1]), "WEST"
+    if dy > 0:
+        return (p[0], p[1] + 1), "SOUTH"
+    if dy < 0:
+        return (p[0], p[1] - 1), "NORTH"
+    return p, None
+
+
+def build_day2(day, duties):
+    # `duties` = pre-merged (carry + fresh), already snake-sorted tile groups.
+    # Contiguous snake chunks (the proven v130 walk pattern), then a
+    # critical-swap post-pass: FEED/PLACE/BUILD groups that landed in the
+    # leftover are force-fitted into the nearest unit's chunk, evicting that
+    # unit's most expensive non-critical tail groups if needed. Crops carry;
+    # animals never starve.
+    n_hands = HANDS_PER_DAY[day]
+    n_units = 1 + n_hands
+    starts = unit_starts(n_hands)
+    budget = int(SPEC.get("duty_budget", 22))
+    hard_cap = budget + 2
+
+    _WC = SPEC.get("water_critical", 0)
+
+    _AC = SPEC.get("animal_critical", 1)
+
+    def is_critical(g):
+        if any(a[0] in ("FEED", "PLACE", "BUILD") for a in g[2]):
+            return True
+        if _AC and g[1] in ANIMAL_TILE_SET:
+            return True
+        return (_WC and g[1] in STRAW_SET
+                and any(a[0] == "WATER" for a in g[2]))
+
+    # contiguous snake chunks
+    chunks = []
+    unit_pos = []
+    unit_cost = []
+    idx = 0
+    for u in range(n_units):
+        pos = starts[u]
+        c = 0
+        chunk = []
+        while idx < len(duties):
+            prio, tile, acts = duties[idx]
+            w = manh(pos, tile) + len(acts)
+            if c + w > budget and chunk:
+                break
+            chunk.append(duties[idx])
+            c += w
+            pos = tile
+            idx += 1
+        chunks.append(chunk)
+        unit_pos.append(pos)
+        unit_cost.append(c)
+    leftover = list(duties[idx:])
+
+    # --- cluster router v2 (spec: router=cluster) ---
+    # Critical groups (one per animal: FEED/CARE/COLLECT) are dealt
+    # round-robin across units so no unit carries a concentrated feed load
+    # (a shed shortfall then starves whole clusters — the failure mode that
+    # made the plain-NN router lose H2H); crop groups fill remaining budget
+    # by nearest unit. Each unit then visits its share nearest-neighbor
+    # from its spawn. Default router="snake" = the original band behavior.
+    if SPEC.get("router") == "cluster":
+        crits = [g for g in duties if is_critical(g)]
+        crops = [g for g in duties if not is_critical(g)]
+        share = [[] for _ in range(n_units)]
+        for i, g in enumerate(crits):
+            share[i % n_units].append(g)
+        # end positions after each unit's critical sweep (NN order)
+        def _nn_cost(pool, start):
+            pos = start
+            c = 0
+            rest = list(pool)
+            seq = []
+            while rest:
+                j = min(range(len(rest)),
+                        key=lambda j: (manh(pos, rest[j][1]), j))
+                g = rest.pop(j)
+                c += manh(pos, g[1]) + len(g[2])
+                pos = g[1]
+                seq.append(g)
+            return seq, c, pos
+        loads = []
+        ends = []
+        for u in range(n_units):
+            seq, c, pos = _nn_cost(share[u], starts[u])
+            share[u] = seq
+            loads.append(c)
+            ends.append(pos)
+        # crops: nearest unit WITH budget headroom (walk from its current
+        # end + acts must fit); otherwise the group carries to tomorrow
+        leftover_router = []
+        for g in crops:
+            best, bw = None, None
+            for u in range(n_units):
+                w = manh(ends[u], g[1]) + len(g[2])
+                if loads[u] + w > budget:
+                    continue
+                if bw is None or w < bw:
+                    best, bw = u, w
+            if best is None:
+                leftover_router.append(g)
+            else:
+                share[best].append(g)
+                loads[best] += bw
+                ends[best] = g[1]
+        chunks = [list(share[u]) for u in range(n_units)]
+        # NN-order each unit's crop tail from where its criticals ended
+        for u in range(n_units):
+            crit_part = [g for g in chunks[u] if is_critical(g)]
+            crop_part = [g for g in chunks[u] if not is_critical(g)]
+            if crop_part:
+                pos = crit_part[-1][1] if crit_part else starts[u]
+                ordered = list(crit_part)
+                rest = list(crop_part)
+                while rest:
+                    j = min(range(len(rest)),
+                            key=lambda j: (manh(pos, rest[j][1]), j))
+                    g = rest.pop(j)
+                    ordered.append(g)
+                    pos = g[1]
+                chunks[u] = ordered
+        for u in range(n_units):
+            p = starts[u]
+            c2 = 0
+            for _pr, t2, _a in chunks[u]:
+                c2 += manh(p, t2) + len(_a)
+                p = t2
+            unit_pos[u] = p
+            unit_cost[u] = c2
+        if leftover_router:
+            leftover = leftover + leftover_router
+    elif SPEC.get("router", "snake") == "nn" and any(chunks):
+        pairs = []
+        for u in range(n_units):
+            for c in range(len(chunks)):
+                w0 = manh(starts[u], chunks[c][0][1]) if chunks[c] else 0
+                pairs.append((w0, u, c))
+        pairs.sort()
+        taken_u, taken_c, assign = set(), set(), {}
+        for _w, u, c in pairs:
+            if u in taken_u or c in taken_c or c >= len(chunks):
+                continue
+            assign[u] = c
+            taken_u.add(u)
+            taken_c.add(c)
+        for u in range(n_units):
+            if u not in assign:
+                assign[u] = None
+        new_chunks = [[] for _ in range(n_units)]
+        for u in range(n_units):
+            if assign[u] is not None and chunks[assign[u]]:
+                band = chunks[assign[u]]
+                crit = [g for g in band if is_critical(g)]
+                rest = [g for g in band if not is_critical(g)]
+                pos = starts[u]
+                ordered = []
+                for pool in (crit, rest):
+                    pool = list(pool)
+                    while pool:
+                        i = min(range(len(pool)),
+                                key=lambda i: (manh(pos, pool[i][1]), i))
+                        g = pool.pop(i)
+                        ordered.append(g)
+                        pos = g[1]
+                new_chunks[u] = ordered
+        chunks = new_chunks
+        for u in range(n_units):
+            p = starts[u]
+            c2 = 0
+            for _pr, t2, _a in chunks[u]:
+                c2 += manh(p, t2) + len(_a)
+                p = t2
+            unit_pos[u] = p
+            unit_cost[u] = c2
+
+    # critical-swap post-pass
+    still_left = []
+    for g in leftover:
+        if not is_critical(g):
+            still_left.append(g)
+            continue
+        w = len(g[2])
+        # nearest unit by end position
+        u = min(range(n_units), key=lambda u: (manh(unit_pos[u], g[1]), u))
+        # evict non-critical tail groups until it fits the hard cap
+        evicted = []
+        while unit_cost[u] + manh(unit_pos[u], g[1]) + w > hard_cap:
+            tail = None
+            for i in range(len(chunks[u]) - 1, -1, -1):
+                if not is_critical(chunks[u][i]):
+                    tail = i
+                    break
+            if tail is None:
+                break
+            tg = chunks[u].pop(tail)
+            # recompute this unit's cost/pos after eviction
+            p = starts[u]
+            c2 = 0
+            for _pr, t2, _a in chunks[u]:
+                c2 += manh(p, t2) + len(_a)
+                p = t2
+            unit_pos[u] = p
+            unit_cost[u] = c2
+            evicted.append(tg)
+        # criticals go to the FRONT of the unit's day (animals before crops)
+        chunks[u].insert(0, g)
+        p = starts[u]
+        c2 = 0
+        for _pr, t2, _a in chunks[u]:
+            c2 += manh(p, t2) + len(_a)
+            p = t2
+        unit_pos[u] = p
+        unit_cost[u] = c2
+        still_left.extend(evicted)
+    leftover = still_left
+
+    # pickups at H01/H02/H03: animals for PLACEs, wheat for FEEDs, fert for
+    # FERTILIZEs — each item type is its own PICKUP hour (v130 pattern).
+    # Late hires (overflow HIRE at H01) don't exist during H01 unit actions:
+    # they get a lead PASS and their pickups shift one hour later.
+    # two-pass market plan: pass 1 fixes the hire split (order COUNTS are
+    # size-independent), then today's pickups are computed from the chunks
+    # and pass 2 sizes the WHEAT buy from the tape's own pickup demand
+    # against the exact running shed ledger — the plan buys exactly what the
+    # plan will pick up (no model drift, no clipped pickups).
+    _h00, _h01 = market_plan(day)
+    sells_h00 = sell_plan_h00(day)
+    _ovf = (sells_h00 + _h00)[10:]
+    n_late = sum(1 for o in _ovf + _h01 if o and o[0] == "HIRE")
+    pickups = []
+    for u in range(n_units):
+        late = (u >= n_units - n_late) and u > 0
+        n_feed = 0
+        n_place = {}
+        n_fert = 0
+        for _p, _t, acts in chunks[u]:
+            for a in acts:
+                if a[0] == "FEED":
+                    n_feed += 1
+                elif a[0] == "PLACE":
+                    n_place[a[1]] = n_place.get(a[1], 0) + 1
+                elif a[0] == "FERTILIZE":
+                    n_fert += 1
+        pk = []
+        if late:
+            pk.append(["PASS"])
+        for kind in sorted(n_place):
+            pk.append(["PICKUP", kind, n_place[kind]])
+        if n_feed:
+            pk.append(["PICKUP", "WHEAT", n_feed])
+        if n_fert:
+            pk.append(["PICKUP", "FERTILIZER", n_fert])
+        pickups.append(pk or [["PASS"]])
+
+    feed_need = sum(p[2] for pk in pickups for p in pk
+                    if p[0] == "PICKUP" and p[1] == "WHEAT")
+    h00, h01_mkt = market_plan(day, feed_need)
+    pre_lo, pre_hi = SHED_W["lo"], SHED_W["hi"]
+    _bw = sum(o[2] for o in h00 + h01_mkt
+              if len(o) > 2 and o[0] == "BUY_PRODUCT" and o[1] == "WHEAT")
+    post_pick_w = pre_lo + _bw - feed_need      # lo tier (buy side)
+    post_pick_hi = pre_hi + _bw - feed_need     # hi tier (sell side)
+    sells_h01 = sell_plan_h01(day, post_pick_hi)
+    # assemble the market queues: H00 = morning sells + buys (sells first,
+    # funding the buys), H01 = overflow buys + hire overflow, H04 =
+    # wheat/fert sells AFTER the H01-H04 pickup window
+    full_h00 = sells_h00 + h00
+    overflow = full_h00[10:]
+    mkt_h00 = full_h00[:10]
+    mkt_h01 = overflow + h01_mkt
+
+    # ---- capacity ledger: exact standing stock + tonight's inflow ----
+    n_feed_exec = sum(1 for ch in chunks for _p, _t, acts in ch
+                      for a in acts if a[0] == "FEED")
+    n_fert_exec = sum(1 for ch in chunks for _p, _t, acts in ch
+                      for a in acts if a[0] == "FERTILIZE")
+    n_collect = sum(1 for ch in chunks for _p, _t, acts in ch
+                    for a in acts if a[0] == "COLLECT_FERTILIZER")
+    fert_need = sum(p[2] for pk in pickups for p in pk
+                    if p[0] == "PICKUP" and p[1] == "FERTILIZER")
+    crop_of = {}
+    for t, dl in CROP_DUTIES.items():
+        for _d2, act in dl:
+            if act.startswith("PLANT:"):
+                crop_of[t] = act.split(":")[1]
+    harv = {}
+    for ch in chunks:
+        for _p, t, acts in ch:
+            for a in acts:
+                if a[0] == "HARVEST" and t in crop_of:
+                    c = crop_of[t]
+                    harv[c] = harv.get(c, 0) + 1
+    inv_eod = {"WHEAT": max(0, feed_need - n_feed_exec)
+               + 4 * harv.get("WHEAT", 0),
+               "FERTILIZER": max(0, fert_need + n_collect - n_fert_exec)}
+    for c, y in (("STRAWBERRY", 4), ("MELON", 5), ("CARROT", 3)):
+        if harv.get(c):
+            inv_eod[c] = y * harv[c]
+    _FIRST = {"SHEEP": 6, "COW": 6, "GOOSE": 4}
+    _THEN = {"SHEEP": 4, "COW": 3, "GOOSE": 2}
+    for _tile, _kind, _pd in ANIMALS:
+        _item = {"SHEEP": "WOOL", "COW": "MILK", "GOOSE": "EGG"}[_kind]
+        _evs = animal_harvest_days(_kind, _pd)
+        if day in _evs:
+            inv_eod[_item] = (inv_eod.get(_item, 0)
+                              + (_FIRST[_kind] if _evs.index(day) == 0
+                                 else _THEN[_kind]))
+    # shed flows in day order
+    for o in sells_h00:
+        if o[0] == "SELL":
+            CAP_LEDGER[o[1]] = max(0, CAP_LEDGER.get(o[1], 0) - o[2])
+    CAP_LEDGER["WHEAT"] = CAP_LEDGER.get("WHEAT", 0) + _bw
+    for _kind in ("COW", "SHEEP", "GOOSE"):
+        _nb = sum(o[2] for o in h00 + h01_mkt
+                  if o[:2] == ["BUY_ANIMAL", _kind])
+        CAP_LEDGER[_kind] = CAP_LEDGER.get(_kind, 0) + _nb
+    CAP_LEDGER["WHEAT"] = max(0, CAP_LEDGER["WHEAT"] - feed_need)
+    CAP_LEDGER["FERTILIZER"] = max(0, CAP_LEDGER.get("FERTILIZER", 0)
+                                    - fert_need)
+    for _kind in ("COW", "SHEEP", "GOOSE"):
+        _np = sum(p[2] for pk in pickups for p in pk
+                  if p[0] == "PICKUP" and p[1] == _kind)
+        CAP_LEDGER[_kind] = max(0, CAP_LEDGER.get(_kind, 0) - _np)
+    for o in sells_h01:
+        if o[0] == "SELL":
+            CAP_LEDGER[o[1]] = max(0, CAP_LEDGER.get(o[1], 0) - o[2])
+    h23_base = sell_plan_h23(day, post_pick_hi)
+    for o in h23_base:
+        if o[0] == "SELL":
+            CAP_LEDGER[o[1]] = max(0, CAP_LEDGER.get(o[1], 0) - o[2])
+    standing = sum(v for k, v in CAP_LEDGER.items()
+                   if k not in ("COW", "SHEEP", "GOOSE"))
+    over = standing + sum(inv_eod.values()) - 96
+    emerg = []
+    if over > 0:
+        for _it, _floor in (("WHEAT", 0), ("FERTILIZER", 2), ("MILK", 0),
+                            ("WOOL", 0), ("EGG", 0), ("STRAWBERRY", 0),
+                            ("MELON", 0), ("CARROT", 0)):
+            if over <= 0:
+                break
+            _free = CAP_LEDGER.get(_it, 0) - _floor
+            if _free <= 0:
+                continue
+            _q = min(_free, over)
+            emerg.append(["SELL", _it, _q])
+            CAP_LEDGER[_it] -= _q
+            over -= _q
+    # merge emergency into the H23 rows (same-item rows combine; emergency
+    # first — discard prevention outranks trickle revenue)
+    _merged = {}
+    for o in emerg + [r for r in h23_base]:
+        if o[0] == "SELL":
+            _merged[o[1]] = _merged.get(o[1], 0) + o[2]
+        else:
+            _merged[json.dumps(o)] = o
+    mkt23_rows = ([["SELL", it, q] for it, q in _merged.items()
+                   if isinstance(it, str)]
+                  + [v for k, v in _merged.items() if not isinstance(k, str)])
+    mkt23_rows = [r if len(r) == 3 else r for r in mkt23_rows][:10]
+
+    pos = list(starts)
+    cur = [0] * n_units      # group index
+    sub = [0] * n_units      # action index within group
+    day_rows = []
+
+    def work_row(u):
+        """one hour of work for unit u (walk or act); returns row"""
+        chunk = chunks[u]
+        if cur[u] >= len(chunk):
+            return ["PASS"]
+        _prio, tile, acts = chunk[cur[u]]
+        if pos[u] == tile:
+            a = list(acts[sub[u]])
+            if a[0] == "BUILD":
+                a = [STRUCT[a[1]]]
+            row = a
+            if a[0] == "HARVEST":
+                HARVEST_LOG.append((tile, day))
+            sub[u] += 1
+            if sub[u] >= len(acts):
+                cur[u] += 1
+                sub[u] = 0
+        else:
+            pos[u], mv = step_toward(pos[u], tile)
+            row = [mv]
+        return row
+
+    for h in range(HOURS):
+        if h == 0:
+            day_rows.append({"farmer": ["PASS"],
+                             "hands": [["PASS"]] * n_hands,
+                             "market": mkt_h00})
+            continue
+        if h <= 4:
+            # pickup hours: each unit does its h-th pickup if it has one,
+            # otherwise starts working (H04 drains entries pushed past the
+            # window by a late-hire lead PASS); H04 also runs the wheat/fert
+            # sells AFTER the pickup window
+            mkt = mkt_h01[:10] if h == 1 else (sells_h01 if h == 4 else [])
+            frow = None
+            hrows = [None] * n_hands
+            for u in range(n_units):
+                if len(pickups[u]) >= h:
+                    row = list(pickups[u][h - 1])
+                else:
+                    row = work_row(u)
+                if u == 0:
+                    frow = row
+                else:
+                    hrows[u - 1] = row
+            day_rows.append({"farmer": frow, "hands": hrows, "market": mkt[:10]})
+            continue
+        frow = ["PASS"]
+        hrows = [["PASS"]] * n_hands
+        # H23: pile-drain sells — empties the shed just before the EOD
+        # inventory drop (overflow is DISCARDED, so a floored sell beats
+        # losing the units entirely)
+        mkt23 = mkt23_rows if h == HOURS - 1 else []
+        for u in range(n_units):
+            row = work_row(u)
+            if u == 0:
+                frow = row
+            else:
+                hrows[u - 1] = row
+        day_rows.append({"farmer": frow, "hands": hrows, "market": mkt23})
+    # critical groups assigned but not completed by H23 carry to the next day
+    # (non-critical work is dropped: carried PLANT rows would poison the
+    # atomic seed-demand check and inflate the next day's load)
+    for u in range(n_units):
+        if cur[u] < len(chunks[u]):
+            leftover.extend(g for g in chunks[u][cur[u]:] if is_critical(g))
+    # ---- exact wheat ledger into tomorrow's H00 (all terms from the plan;
+    # harvests counted at a conservative 2u — leftovers recycle at EOD) ----
+    _h23 = sell_plan_h23(day, post_pick_hi)
+    sold_w = sum(o[2] for o in sells_h01 + _h23 if o[:2] == ["SELL", "WHEAT"])
+    wheat_h = sum(1 for (_t, _d), _c in HARVEST_CROP.items()
+                  if _c == "WHEAT" and _d == day)
+    SHED_W["lo"] = max(0, post_pick_w - sold_w + 2 * wheat_h)
+    SHED_W["hi"] = max(0, post_pick_hi - sold_w + 4 * wheat_h)
+    for _it, _n in inv_eod.items():
+        CAP_LEDGER[_it] = CAP_LEDGER.get(_it, 0) + _n
+    return day_rows, leftover
+
+
+def author():
+    global SELL_H00, SELL_H23
+    tape = []
+    carry = []  # list of [group, age]
+    stats = []
+    SHED_W["lo"] = SHED_W["hi"] = 0   # ledger restarts with the empty shed
+    CAP_LEDGER.clear()
+
+    # ---- v6h2: straw p+12 harvest deferral (capacity pre-pass) ----
+    # The EOD inventory drop is capped at 100 total shed slots. A straw
+    # tile's first harvest (p+12) may slip later (yield persists on the
+    # tile); the p+16 final harvest may not (the tile dies right after).
+    # While fixed inflow + 4u/kept straw + margin would pass 96, defer
+    # straw p+12 groups into the next day (latest-in-snake first).
+    p_day = {}
+    for _t, _dl in CROP_DUTIES.items():
+        for _d, _a in _dl:
+            if _a == "PLANT:STRAWBERRY":
+                p_day[_t] = _d
+    _AF = {"SHEEP": 6, "COW": 6, "GOOSE": 4}
+    _AT = {"SHEEP": 4, "COW": 3, "GOOSE": 2}
+    fixed_in = [0] * DAYS
+    for _d in range(DAYS):
+        fixed_in[_d] += len(animals_on(_d))          # fert collects
+        for (_t, _hd), _c in HARVEST_CROP.items():
+            if _hd == _d and _c == "WHEAT":
+                fixed_in[_d] += 4
+            elif _hd == _d and _c == "MELON":
+                fixed_in[_d] += 5
+            elif _hd == _d and _c == "CARROT":
+                fixed_in[_d] += 3
+        for _tile, _kind, _pd in ANIMALS:
+            _evs = animal_harvest_days(_kind, _pd)
+            if _d in _evs:
+                fixed_in[_d] += (_AF[_kind] if _evs.index(_d) == 0
+                                 else _AT[_kind])
+    day_groups = {d: day_duties(d) for d in range(DAYS)}
+
+    def _is_deferrable_straw(g, d):
+        if len(g[2]) != 1 or g[2][0][0] != "HARVEST":
+            return False
+        _p = p_day.get(g[1])
+        if _p is None:
+            return False
+        return 12 <= d - _p <= 14 and d + 1 <= _p + 14
+
+    straw_moves = {}
+    _load = {}
+    for _d in range(DAYS):
+        _gs = day_groups[_d]
+        _straw = [g for g in _gs if _is_deferrable_straw(g, _d)]
+        _rest = [g for g in _gs if not _is_deferrable_straw(g, _d)]
+        _over = (fixed_in[_d] + 4 * (len(_straw) + len(_load.get(_d, [])))
+                 + 12 - 96)
+        _i = len(_straw) - 1
+        while _over > 0 and _i >= 0:
+            g = _straw[_i]
+            if _d + 1 <= p_day[g[1]] + 14:
+                straw_moves[(g[1], _d)] = _d + 1
+                _load.setdefault(_d + 1, []).append(g)
+                _straw.pop(_i)
+                _over -= 4
+            _i -= 1
+        day_groups[_d] = _rest + _straw + _load.pop(_d, [])
+    if VERBOSE and straw_moves:
+        print("straw deferrals:", len(straw_moves),
+              "moves:", sorted(straw_moves.items()))
+    # pass-1 sell plans: best static estimate (deferred arrivals)
+    SELL_H00, SELL_H23 = _build_sell_plans(straw_moves)
+
+    def snake_key(e):
+        _p, (x, y), _a = e
+        return (x, y if x % 2 == 0 else -y)
+
+    def _run_days():
+        tape = []
+        carry = []  # list of [group, age]
+        stats = []
+        SHED_W["lo"] = SHED_W["hi"] = 0
+        CAP_LEDGER.clear()
+        del HARVEST_LOG[:]
+        for day in range(DAYS):
+            fresh = [[g, 0] for g in day_groups[day]]
+            merged = carry + fresh
+            # re-sort everything into the spatial snake (carried groups keep
+            # their spatial slot — no scatter)
+            merged.sort(key=lambda ga: snake_key(ga[0]))
+            groups = [g for g, _age in merged]
+            rows, leftover = build_day2(day, groups)
+            tape.extend(rows)
+            # age the leftovers; drop stale (>=2 days) non-critical groups
+            age_of = {id(g): a for g, a in merged}
+            new_carry = []
+            n_drop = 0
+            for g in leftover:
+                age = age_of.get(id(g), 0) + 1
+                critical = (any(a[0] in ("FEED", "PLACE", "BUILD")
+                                for a in g[2])
+                            or (SPEC.get("animal_critical", 1)
+                                and g[1] in ANIMAL_TILE_SET)
+                            or (SPEC.get("water_critical", 0)
+                                and g[1] in STRAW_SET
+                                and any(a[0] == "WATER" for a in g[2])))
+                if age >= 2 and not critical:
+                    n_drop += 1
+                    continue
+                new_carry.append([g, age])
+            carry = new_carry
+            if leftover:
+                stats.append((day, len(leftover), n_drop))
+        return tape, stats
+
+    # pass 1: emit with estimated sells, recording actual harvest days
+    tape, stats = _run_days()
+
+    # ground-truth arrival schedule from the tape's own execution
+    def _actual_prod():
+        crop_of = {}
+        for t, dl in CROP_DUTIES.items():
+            for _d2, act in dl:
+                if act.startswith("PLANT:"):
+                    crop_of[t] = act.split(":")[1]
+        _YLDC = {"STRAWBERRY": 4, "MELON": 5, "CARROT": 3}
+        prod = {it: [0] * DAYS for it in ("WOOL", "MILK", "EGG",
+                                          "STRAWBERRY", "MELON", "CARROT")}
+        animal_of = {t: k for t, k, _pd in ANIMALS}
+        seen = {}
+        for tile, d in list(HARVEST_LOG):
+            if d >= DAYS:
+                continue
+            if tile in animal_of:
+                kind = animal_of[tile]
+                item = {"SHEEP": "WOOL", "COW": "MILK",
+                        "GOOSE": "EGG"}[kind]
+                i = seen.get(tile, 0)
+                prod[item][d] += (6 if i == 0
+                                  else _THEN_REF[kind])
+                seen[tile] = i + 1
+            elif tile in crop_of and crop_of[tile] in _YLDC:
+                prod[crop_of[tile]][d] += _YLDC[crop_of[tile]]
+        return prod
+
+    _THEN_REF = {"SHEEP": 4, "COW": 3, "GOOSE": 2}
+    actual = _actual_prod()
+    if VERBOSE:
+        print("actual arrivals (pass1):",
+              {it: [(d, n) for d, n in enumerate(v) if n]
+               for it, v in actual.items() if any(v)})
+    # pass 2: identical unit rows, sell plans rebuilt on ground truth
+    SELL_H00, SELL_H23 = _build_sell_plans(None, prod_override=actual)
+    tape, stats = _run_days()
+    if VERBOSE and stats:
+        print("carry-over (day, left, dropped):", stats[:14],
+              "total-left", sum(s[1] for s in stats))
+    return tape
+
+
+if __name__ == "__main__":
+    tape = author()
+    body = json.dumps(tape, separators=(",", ":"))
+    doc = '"""v3 generated tape (tape_author3 spec %s). Pure replay."""\n' % json.dumps(SPEC, sort_keys=True)
+    doc += "import json\nTAPE = json.loads(r'''%s''')\n\n" % body
+    _mk = {"on": int(SPEC.get("maker", 0)), "chunk": int(SPEC.get("maker_chunk", 25)),
+           "slope": float(SPEC.get("maker_slope", 0.75)),
+           "base": float(SPEC.get("maker_base", 28.0)),
+           "d0": int(SPEC.get("maker_d0", 2)), "d1": int(SPEC.get("maker_d1", 23)),
+           "intraday": int(SPEC.get("maker_intraday", 0)),
+           "cash_floor": float(SPEC.get("maker_cash_floor", 9000))}
+    doc += (
+        "MK = %s\n"
+        "_MKP = {'pos': 0, 'pend': None, 'ref': None}\n"
+        "\n"
+        "def _maker(mk, obs, day, hr, money):\n"
+        "    # reactive wheat scalper: the town consumes ~30 wheat every 4h\n"
+        "    # (price ticks up ~$1); sell into that spike, buy back in the calm.\n"
+        "    # Net-flat intraday where possible; reconcile via public money.\n"
+        "    if not MK['on']:\n"
+        "        return mk\n"
+        "    try:\n"
+        "        wp = obs['market']['prices']['WHEAT']\n"
+        "    except Exception:\n"
+        "        return mk\n"
+        "    st = _MKP\n"
+        "    if st['pend'] is not None and st['ref'] is not None:\n"
+        "        kind, ch, px = st['pend']\n"
+        "        st['pend'] = None\n"
+        "        dm = money - st['ref']\n"
+        "        if kind == 'S' and dm >= ch * px * 0.6:\n"
+        "            st['pos'] -= ch\n"
+        "        elif kind == 'B' and dm <= -ch * px * 0.6:\n"
+        "            st['pos'] += ch\n"
+        "        # else: order failed silently (shed/cash) -> no state change\n"
+        "    st['ref'] = money\n"
+        "    if day > MK['d1']:\n"
+        "        # endgame: liquidate any held chunk at a nonzero margin\n"
+        "        if st['pos'] > 0 and hr in (4, 8, 12, 16, 20) and wp >= 30:\n"
+        "            mk.append(['SELL', 'WHEAT', st['pos']])\n"
+        "            st['pend'] = ('S', st['pos'], wp)\n"
+        "        return mk\n"
+        "    if day < MK['d0']:\n"
+        "        return mk\n"
+        "    trend = MK['base'] + MK['slope'] * day\n"
+        "    if hr in (4, 8, 12, 16, 20):\n"
+        "        if st['pos'] >= MK['chunk'] and wp >= trend + 1:\n"
+        "            mk.append(['SELL', 'WHEAT', MK['chunk']])\n"
+        "            st['pend'] = ('S', MK['chunk'], wp)\n"
+        "    elif MK.get('intraday'):\n"
+        "        # intraday-only: buy late morning, flat again by H20; the\n"
+        "        # stock never occupies the shed at EOD (no harvest discards)\n"
+        "        _floor = float(MK.get('cash_floor', 9000))\n"
+        "        if 10 <= hr <= 11 and st['pos'] < MK['chunk']:\n"
+        "            if wp <= trend - 2 and money >= _floor + MK['chunk'] * (wp + 2):\n"
+        "                mk.append(['BUY_PRODUCT', 'WHEAT', MK['chunk']])\n"
+        "                st['pend'] = ('B', MK['chunk'], wp)\n"
+        "        elif st['pos'] > 0 and hr in (12, 16, 20) and wp >= trend - 1:\n"
+        "            mk.append(['SELL', 'WHEAT', st['pos']])\n"
+        "            st['pend'] = ('S', st['pos'], wp)\n"
+        "        elif 21 <= hr <= 22 and st['pos'] > 0:\n"
+        "            mk.append(['SELL', 'WHEAT', st['pos']])\n"
+        "            st['pend'] = ('S', st['pos'], wp)\n"
+        "    elif 10 <= hr <= 18 and st['pos'] < MK['chunk']:\n"
+        "        _floor = float(MK.get('cash_floor', 9000))\n"
+        "        if wp <= trend - 2 and money >= _floor + MK['chunk'] * (wp + 2):\n"
+        "            mk.append(['BUY_PRODUCT', 'WHEAT', MK['chunk']])\n"
+        "            st['pend'] = ('B', MK['chunk'], wp)\n"
+        "    return mk\n"
+        "\n"
+        "def agent(obs, configuration=None):\n"
+        "    try:\n"
+        "        step = int(obs.get('step', 0) or 0)\n"
+        "    except Exception:\n"
+        "        step = 0\n"
+        "    t = TAPE[min(step, len(TAPE) - 1)]\n"
+        "    farm_hands = 0\n"
+        "    money = 0\n"
+        "    try:\n"
+        "        seat = 1 if int(obs.get('player', 0) or 0) == 1 else 0\n"
+        "        farms = obs.get('farms', []) or []\n"
+        "        farm_hands = len(farms[seat].get('hands', [])) if seat < len(farms) else 0\n"
+        "        try:\n"
+        "            money = float(farms[seat].get('money', 0) or 0)\n"
+        "        except Exception:\n"
+        "            pass\n"
+        "    except Exception:\n"
+        "        pass\n"
+        "    rows = list(t.get('hands', []))\n"
+        "    if len(rows) > farm_hands:\n"
+        "        rows = rows[:farm_hands]\n"
+        "    elif len(rows) < farm_hands:\n"
+        "        rows = rows + [['PASS']] * (farm_hands - len(rows))\n"
+        "    mk = list(t.get('market', []))\n"
+        "    if len(mk) < 10:\n"
+        "        mk = _maker(mk, obs, step // 24, step %% 24, money)\n"
+        "    if (step %% 24) in (0, 23):\n"
+        "        mk = _milk_gate(mk, obs, step // 24)\n"
+        "    return {'farmer': t.get('farmer', ['PASS']), 'hands': rows,\n"
+        "            'market': mk}\n" % json.dumps(_mk))
+    _mg = {"on": int(SPEC.get("milk_gate", 0)),
+           "gate": float(SPEC.get("milk_gate_px", 170.0)),
+           "cap": int(SPEC.get("milk_gate_cap", 40)),
+           "days": int(SPEC.get("milk_gate_days", 28))}
+    doc += (
+        "MG = %s\n"
+        "_MST = {'skipped': 0}\n"
+        "\n"
+        "def _milk_gate(mk, obs, day):\n"
+        "    # the town's shop draws are a per-seed lottery; when few\n"
+        "    # milk-draining shops unlock, dumping the planned volume crashes\n"
+        "    # the shared milk price to single digits. The realized price is\n"
+        "    # public: hold the pile when it is below the gate, trickle only\n"
+        "    # the overflow above the shed-safety cap, and release the whole\n"
+        "    # backlog the first morning the price recovers.\n"
+        "    if not MG['on']:\n"
+        "        return mk\n"
+        "    try:\n"
+        "        mp = obs['market']['prices']['MILK']\n"
+        "    except Exception:\n"
+        "        return mk\n"
+        "    out = []\n"
+        "    for o in mk:\n"
+        "        if (isinstance(o, list) and len(o) >= 3 and o[0] == 'SELL'\n"
+        "                and o[1] == 'MILK'):\n"
+        "            if day >= MG['days']:\n"
+        "                o = ['SELL', 'MILK', 99]\n"
+        "                _MST['skipped'] = 0\n"
+        "            elif mp >= MG['gate']:\n"
+        "                q = int(o[2]) + _MST['skipped']\n"
+        "                _MST['skipped'] = 0\n"
+        "                o = ['SELL', 'MILK', q]\n"
+        "            else:\n"
+        "                over = int(o[2]) + _MST['skipped'] - MG['cap']\n"
+        "                if over > 0:\n"
+        "                    _MST['skipped'] = MG['cap']\n"
+        "                    o = ['SELL', 'MILK', over]\n"
+        "                else:\n"
+        "                    _MST['skipped'] += int(o[2])\n"
+        "                    o = None\n"
+        "        if o is not None:\n"
+        "            out.append(o)\n"
+        "    return out\n" % json.dumps(_mg))
+    if OUT:
+        os.makedirs(os.path.dirname(OUT) or ".", exist_ok=True)
+        open(OUT, "w").write(doc)
+        if VERBOSE:
+            print("wrote", OUT, len(tape), "steps")
+    else:
+        print(doc)

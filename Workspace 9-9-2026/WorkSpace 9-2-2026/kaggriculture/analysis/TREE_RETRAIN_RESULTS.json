@@ -1,0 +1,22 @@
+{
+ "date": "2026-09-07",
+ "design": "router with _TREES replaced by forced leaves (lock tape T for blocks 1-4), 4 seeds each, both seats (s=seed%2)",
+ "results_W_L_T_margin": {
+  "baseline (verbatim trees)": {"router": "0-0-4T +0", "v16": "4-0 +103,906", "hamburger": "4-0 +153,733", "JOSHNA": "4-0 +227,631", "keiz-tape": "4-0 +514,049", "CD-tape": "4-0 +645,551"},
+  "lock0 (always tape0)":      {"router": "0-4 -35,300", "v16": "4-0 +78,621", "hamburger": "4-0 +127,276", "JOSHNA": "4-0 +200,568", "keiz-tape": "4-0 +464,069", "CD-tape": "4-0 +608,876"},
+  "lock1":                     {"router": "0-4 -39,909", "v16": "4-0 +69,981", "hamburger": "4-0 +126,429", "JOSHNA": "4-0 +195,459", "keiz-tape": "4-0 +464,762", "CD-tape": "4-0 +603,003"},
+  "lock2 (7C tape)":           {"router": "2-2 -25,574", "v16": "4-0 +81,889", "hamburger": "4-0 +135,109", "JOSHNA": "4-0 +205,143", "keiz-tape": "4-0 +491,015", "CD-tape": "4-0 +633,466"},
+  "lock3":                     {"router": "1-3 -32,325", "v16": "4-0 +75,956", "hamburger": "4-0 +127,792", "JOSHNA": "4-0 +200,466", "keiz-tape": "4-0 +475,833", "CD-tape": "4-0 +610,712"},
+  "lock4 (sheep variant)":     {"router": "0-4 -36,797", "v16": "4-0 +88,907", "hamburger": "4-0 +135,445", "JOSHNA": "4-0 +202,475", "keiz-tape": "4-0 +472,873", "CD-tape": "4-0 +638,685"}
+ },
+ "verdict_tree_retrain": "FALSIFIED. Every lock loses H2H to verbatim routing (twin army punishes rigidity); baseline beats or matches every lock vs every non-twin class; non-twins are already 4-0 for all conditions -> no flippable games via routing. Feature space saturated: trees use shop-unlock (x28=YARN count) + milk demand (x35) + carrot price (x4); rival features never used, but no gate on rival build can separate Ant-class from twins because router herd IS Ant-class.",
+ "diagnostics_herd": {
+  "router@t288_seed201": {"animals": "9 COW / 5 SHEEP / 3 GOOSE (17)", "money": 15197, "empty_tiles": 4, "quadrants": 3},
+  "router@t340": {"empty_tiles": 0},
+  "ant@t288_seed201": {"animals": "7 COW / 6 SHEEP / 3 GOOSE (16)", "money": 11510, "empty_tiles": 2},
+  "note": "Census 5C/4S/4G was PER-TAPE buys; router accumulates across d0/d6 switches to 17 animals. Herd-scale gap vs Ant-class ~ zero. Wheat tile ~$55/day vs goose ~$15/day -> geese cannibalize wheat tiles; tapes are tile-optimal.",
+  "revenue_attrib_seed201_202": "Router: MELON/FERT/WHEAT/MILK 6-11k each + STRB 1-5k + EGG 1k; Ant: FERT/WHEAT/MILK/MELON similar, STRB 0-5k, WOOL ~0. No exploitable product gap. Router beats ant_tape_v26 by +21k to +51k on 5 seeds (avg +38k)."
+ },
+ "verdict_herd_scale": "FALSIFIED at diagnosis: (1) router already runs 17-animal herd matching Ant-class; (2) no empty-tile headroom without cannibalizing wheat (higher $/tile); (3) no gate separates Ant-class from twins (same herd class) -> any anti-Ant branch breaks twin tie symmetry (8.5 BT pts) ; (4) eggs uncrashable but thin (~1k/game); (5) local Ant proxy loses to router 6-0 by $38k avg -> live losses are context, not class.",
+ "live_losses_reading": "Router 2540.8: first 12 live = 5W-2L-5T; both losses to Ant/bharat-class = seed/context (their crashes hit our strb/melon windows), not a fixable class weakness."
+}
