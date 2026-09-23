@@ -1,0 +1,1621 @@
+{
+ "teams": {
+  "Harrison Interactive": {
+   "eps": 57,
+   "wins": 27,
+   "med": 52164.0,
+   "avg": 51677.912280701756,
+   "max": 95630.0
+  },
+  "Tomohiro Nagai": {
+   "eps": 1,
+   "wins": 1,
+   "med": 111743.0,
+   "avg": 111743.0,
+   "max": 111743.0
+  },
+  "lookapmaka": {
+   "eps": 1,
+   "wins": 0,
+   "med": 47536.0,
+   "avg": 47536.0,
+   "max": 47536.0
+  },
+  "Shiva Neshan yuva": {
+   "eps": 1,
+   "wins": 0,
+   "med": 27516.0,
+   "avg": 27516.0,
+   "max": 27516.0
+  },
+  "Mohammed Mukthar": {
+   "eps": 1,
+   "wins": 1,
+   "med": 63075.0,
+   "avg": 63075.0,
+   "max": 63075.0
+  },
+  "Tegar Putrayas Dentatama": {
+   "eps": 1,
+   "wins": 1,
+   "med": 77998.0,
+   "avg": 77998.0,
+   "max": 77998.0
+  },
+  "Sarthak Vedant Mohanty": {
+   "eps": 1,
+   "wins": 1,
+   "med": 93232.0,
+   "avg": 93232.0,
+   "max": 93232.0
+  },
+  "Akshay Sawant": {
+   "eps": 1,
+   "wins": 0,
+   "med": 21048.0,
+   "avg": 21048.0,
+   "max": 21048.0
+  },
+  "llllllc666": {
+   "eps": 1,
+   "wins": 0,
+   "med": 16846.0,
+   "avg": 16846.0,
+   "max": 16846.0
+  },
+  "Chen Jiaqi": {
+   "eps": 1,
+   "wins": 1,
+   "med": 60549.0,
+   "avg": 60549.0,
+   "max": 60549.0
+  },
+  "Saravana Thiagarajan K": {
+   "eps": 1,
+   "wins": 1,
+   "med": 67167.0,
+   "avg": 67167.0,
+   "max": 67167.0
+  },
+  "Iam Intolerable": {
+   "eps": 1,
+   "wins": 0,
+   "med": 11686.0,
+   "avg": 11686.0,
+   "max": 11686.0
+  },
+  "Nithin Nambi": {
+   "eps": 1,
+   "wins": 1,
+   "med": 53513.0,
+   "avg": 53513.0,
+   "max": 53513.0
+  },
+  "KavYaHD": {
+   "eps": 1,
+   "wins": 0,
+   "med": 28492.0,
+   "avg": 28492.0,
+   "max": 28492.0
+  },
+  "Wzjj98": {
+   "eps": 1,
+   "wins": 0,
+   "med": 9809.0,
+   "avg": 9809.0,
+   "max": 9809.0
+  },
+  "SILVISTON EMMANUEL": {
+   "eps": 1,
+   "wins": 0,
+   "med": 48054.0,
+   "avg": 48054.0,
+   "max": 48054.0
+  },
+  "dentalsoup": {
+   "eps": 1,
+   "wins": 0,
+   "med": 19063.0,
+   "avg": 19063.0,
+   "max": 19063.0
+  },
+  "Julio Cesar Filho": {
+   "eps": 1,
+   "wins": 0,
+   "med": 57569.0,
+   "avg": 57569.0,
+   "max": 57569.0
+  },
+  "WYSSR1225": {
+   "eps": 1,
+   "wins": 0,
+   "med": 77648.0,
+   "avg": 77648.0,
+   "max": 77648.0
+  },
+  "Petro Tarnavskyi": {
+   "eps": 1,
+   "wins": 1,
+   "med": 82039.0,
+   "avg": 82039.0,
+   "max": 82039.0
+  },
+  "Romain Bomba": {
+   "eps": 1,
+   "wins": 0,
+   "med": 71912.0,
+   "avg": 71912.0,
+   "max": 71912.0
+  },
+  "dafei2025": {
+   "eps": 1,
+   "wins": 1,
+   "med": 66266.0,
+   "avg": 66266.0,
+   "max": 66266.0
+  },
+  "Alexander & Erik": {
+   "eps": 1,
+   "wins": 0,
+   "med": 43045.0,
+   "avg": 43045.0,
+   "max": 43045.0
+  },
+  "Prince Raj": {
+   "eps": 1,
+   "wins": 1,
+   "med": 32995.0,
+   "avg": 32995.0,
+   "max": 32995.0
+  },
+  "Asanka Pradeep": {
+   "eps": 1,
+   "wins": 1,
+   "med": 83924.0,
+   "avg": 83924.0,
+   "max": 83924.0
+  },
+  "GarrieD": {
+   "eps": 1,
+   "wins": 1,
+   "med": 81637.0,
+   "avg": 81637.0,
+   "max": 81637.0
+  },
+  "Shoki Suzuki": {
+   "eps": 1,
+   "wins": 0,
+   "med": 26912.0,
+   "avg": 26912.0,
+   "max": 26912.0
+  },
+  "Kelvin Lai": {
+   "eps": 1,
+   "wins": 1,
+   "med": 64186.0,
+   "avg": 64186.0,
+   "max": 64186.0
+  },
+  "Spiros Skarmoutsos": {
+   "eps": 1,
+   "wins": 1,
+   "med": 97729.0,
+   "avg": 97729.0,
+   "max": 97729.0
+  },
+  "Aria Muse": {
+   "eps": 1,
+   "wins": 1,
+   "med": 60645.0,
+   "avg": 60645.0,
+   "max": 60645.0
+  },
+  "Ian Kim": {
+   "eps": 1,
+   "wins": 0,
+   "med": 46741.0,
+   "avg": 46741.0,
+   "max": 46741.0
+  },
+  "Dhiya Nachimuthu": {
+   "eps": 1,
+   "wins": 0,
+   "med": 10558.0,
+   "avg": 10558.0,
+   "max": 10558.0
+  },
+  "Yuchen20": {
+   "eps": 1,
+   "wins": 0,
+   "med": 40579.0,
+   "avg": 40579.0,
+   "max": 40579.0
+  },
+  "jignesh13": {
+   "eps": 1,
+   "wins": 0,
+   "med": 32331.0,
+   "avg": 32331.0,
+   "max": 32331.0
+  },
+  "Jared Wilder": {
+   "eps": 1,
+   "wins": 1,
+   "med": 96531.0,
+   "avg": 96531.0,
+   "max": 96531.0
+  },
+  "Chaitanya Jamble": {
+   "eps": 1,
+   "wins": 0,
+   "med": 32983.0,
+   "avg": 32983.0,
+   "max": 32983.0
+  },
+  "Sida Zuo": {
+   "eps": 1,
+   "wins": 1,
+   "med": 167047.0,
+   "avg": 167047.0,
+   "max": 167047.0
+  },
+  "Alan T. Andrea": {
+   "eps": 1,
+   "wins": 1,
+   "med": 115649.0,
+   "avg": 115649.0,
+   "max": 115649.0
+  },
+  "SeaEag1e": {
+   "eps": 1,
+   "wins": 0,
+   "med": 22411.0,
+   "avg": 22411.0,
+   "max": 22411.0
+  },
+  "Josh Hipps": {
+   "eps": 1,
+   "wins": 1,
+   "med": 96037.0,
+   "avg": 96037.0,
+   "max": 96037.0
+  },
+  "Recep Bark\u0131n Topcu": {
+   "eps": 1,
+   "wins": 0,
+   "med": 39995.0,
+   "avg": 39995.0,
+   "max": 39995.0
+  },
+  "yat0i811": {
+   "eps": 1,
+   "wins": 1,
+   "med": 73951.0,
+   "avg": 73951.0,
+   "max": 73951.0
+  },
+  "otter_0714": {
+   "eps": 1,
+   "wins": 0,
+   "med": 53152.0,
+   "avg": 53152.0,
+   "max": 53152.0
+  },
+  "muelsyse111": {
+   "eps": 1,
+   "wins": 1,
+   "med": 44097.0,
+   "avg": 44097.0,
+   "max": 44097.0
+  },
+  "Uttam Limbani": {
+   "eps": 1,
+   "wins": 1,
+   "med": 56679.0,
+   "avg": 56679.0,
+   "max": 56679.0
+  },
+  "T.Uehira": {
+   "eps": 1,
+   "wins": 1,
+   "med": 53184.0,
+   "avg": 53184.0,
+   "max": 53184.0
+  },
+  "Mr Michael Chung": {
+   "eps": 1,
+   "wins": 0,
+   "med": 26042.0,
+   "avg": 26042.0,
+   "max": 26042.0
+  },
+  "TedT": {
+   "eps": 1,
+   "wins": 0,
+   "med": 42022.0,
+   "avg": 42022.0,
+   "max": 42022.0
+  },
+  "Jasmeen": {
+   "eps": 1,
+   "wins": 0,
+   "med": 8544.0,
+   "avg": 8544.0,
+   "max": 8544.0
+  },
+  "Ace Team": {
+   "eps": 3,
+   "wins": 2,
+   "med": 76651.0,
+   "avg": 98961.66666666667,
+   "max": 166602.0
+  },
+  "Youssef Yacoup": {
+   "eps": 1,
+   "wins": 1,
+   "med": 47000.0,
+   "avg": 47000.0,
+   "max": 47000.0
+  },
+  "Alexandrine Cakpo": {
+   "eps": 1,
+   "wins": 0,
+   "med": 82423.0,
+   "avg": 82423.0,
+   "max": 82423.0
+  },
+  "Sean Peppers": {
+   "eps": 11,
+   "wins": 5,
+   "med": 108543.0,
+   "avg": 109971.09090909091,
+   "max": 142127.0
+  },
+  "\u5cb8\u672c\u6e67\u58eb\u90ce": {
+   "eps": 1,
+   "wins": 0,
+   "med": 118371.0,
+   "avg": 118371.0,
+   "max": 118371.0
+  },
+  "Ryan Shan": {
+   "eps": 1,
+   "wins": 0,
+   "med": 68238.0,
+   "avg": 68238.0,
+   "max": 68238.0
+  },
+  "Leonardo Viola10": {
+   "eps": 2,
+   "wins": 1,
+   "med": 83501.0,
+   "avg": 83501.0,
+   "max": 106446.0
+  },
+  "F4": {
+   "eps": 1,
+   "wins": 1,
+   "med": 74113.0,
+   "avg": 74113.0,
+   "max": 74113.0
+  },
+  "let cats farm": {
+   "eps": 11,
+   "wins": 7,
+   "med": 71576.0,
+   "avg": 85016.90909090909,
+   "max": 141114.0
+  },
+  "elmo": {
+   "eps": 13,
+   "wins": 6,
+   "med": 96835.0,
+   "avg": 98047.0,
+   "max": 128646.0
+  },
+  "SpaTaro": {
+   "eps": 12,
+   "wins": 8,
+   "med": 96612.5,
+   "avg": 98290.83333333333,
+   "max": 129370.0
+  },
+  "oh-Artistburger-AHA-TastyMeat!": {
+   "eps": 1,
+   "wins": 0,
+   "med": 117643.0,
+   "avg": 117643.0,
+   "max": 117643.0
+  },
+  "Auto Fermers": {
+   "eps": 3,
+   "wins": 0,
+   "med": 92442.0,
+   "avg": 97128.0,
+   "max": 108382.0
+  },
+  "Mengfei Li": {
+   "eps": 10,
+   "wins": 7,
+   "med": 105174.5,
+   "avg": 102805.2,
+   "max": 139734.0
+  },
+  "Otter Vibe": {
+   "eps": 9,
+   "wins": 7,
+   "med": 105495.0,
+   "avg": 108771.33333333333,
+   "max": 133047.0
+  },
+  "Cyrus": {
+   "eps": 1,
+   "wins": 1,
+   "med": 124566.0,
+   "avg": 124566.0,
+   "max": 124566.0
+  },
+  "cooked": {
+   "eps": 9,
+   "wins": 5,
+   "med": 107511.0,
+   "avg": 100310.0,
+   "max": 151926.0
+  },
+  "yukino": {
+   "eps": 11,
+   "wins": 8,
+   "med": 96121.0,
+   "avg": 105739.0,
+   "max": 153951.0
+  },
+  "keiz": {
+   "eps": 13,
+   "wins": 10,
+   "med": 87339.0,
+   "avg": 89781.76923076923,
+   "max": 126049.0
+  },
+  "V\u00e2n Nguy\u1ec5n": {
+   "eps": 1,
+   "wins": 1,
+   "med": 127905.0,
+   "avg": 127905.0,
+   "max": 127905.0
+  },
+  "yuki0731": {
+   "eps": 16,
+   "wins": 9,
+   "med": 86575.5,
+   "avg": 91040.125,
+   "max": 143463.0
+  },
+  "Agricola": {
+   "eps": 10,
+   "wins": 9,
+   "med": 86498.5,
+   "avg": 87619.6,
+   "max": 141900.0
+  },
+  "Fih": {
+   "eps": 9,
+   "wins": 6,
+   "med": 101075.0,
+   "avg": 112180.77777777778,
+   "max": 171505.0
+  },
+  "ISAKA Tsuyoshi": {
+   "eps": 2,
+   "wins": 0,
+   "med": 99951.5,
+   "avg": 99951.5,
+   "max": 110947.0
+  },
+  "AI\u662f\u6211\u7684\u8c46\u5305": {
+   "eps": 13,
+   "wins": 8,
+   "med": 86587.0,
+   "avg": 92879.92307692308,
+   "max": 152226.0
+  },
+  "AM": {
+   "eps": 9,
+   "wins": 9,
+   "med": 88886.0,
+   "avg": 96770.22222222222,
+   "max": 141304.0
+  },
+  "kay.liechtenstein": {
+   "eps": 10,
+   "wins": 4,
+   "med": 79831.0,
+   "avg": 85999.5,
+   "max": 129321.0
+  },
+  "C\u01b0\u1eddng D\u01b0\u1ee3c S\u0129": {
+   "eps": 2,
+   "wins": 2,
+   "med": 108656.0,
+   "avg": 108656.0,
+   "max": 111946.0
+  },
+  "Matthew Huang": {
+   "eps": 13,
+   "wins": 9,
+   "med": 85812.0,
+   "avg": 95104.46153846153,
+   "max": 154576.0
+  },
+  "Squirrel": {
+   "eps": 9,
+   "wins": 8,
+   "med": 101070.0,
+   "avg": 97399.88888888889,
+   "max": 122719.0
+  },
+  "zekenoe": {
+   "eps": 3,
+   "wins": 0,
+   "med": 82373.0,
+   "avg": 77557.33333333333,
+   "max": 83720.0
+  },
+  "Sufi Afifi": {
+   "eps": 2,
+   "wins": 0,
+   "med": 97115.5,
+   "avg": 97115.5,
+   "max": 111608.0
+  },
+  "Ant": {
+   "eps": 2,
+   "wins": 0,
+   "med": 93209.5,
+   "avg": 93209.5,
+   "max": 105877.0
+  },
+  "KouFu": {
+   "eps": 11,
+   "wins": 4,
+   "med": 92942.0,
+   "avg": 95118.54545454546,
+   "max": 131359.0
+  },
+  "test_money": {
+   "eps": 11,
+   "wins": 7,
+   "med": 93191.0,
+   "avg": 95733.63636363637,
+   "max": 137950.0
+  },
+  "Driz Lo": {
+   "eps": 8,
+   "wins": 7,
+   "med": 127305.0,
+   "avg": 126872.625,
+   "max": 183163.0
+  },
+  "Chiranjith": {
+   "eps": 2,
+   "wins": 0,
+   "med": 59238.0,
+   "avg": 59238.0,
+   "max": 79128.0
+  },
+  "fog flower": {
+   "eps": 3,
+   "wins": 1,
+   "med": 121470.0,
+   "avg": 120472.66666666667,
+   "max": 132104.0
+  },
+  "binghua": {
+   "eps": 11,
+   "wins": 2,
+   "med": 84679.0,
+   "avg": 84862.63636363637,
+   "max": 103641.0
+  },
+  "atl132": {
+   "eps": 1,
+   "wins": 1,
+   "med": 83624.0,
+   "avg": 83624.0,
+   "max": 83624.0
+  },
+  "xxxzzz123312123321": {
+   "eps": 2,
+   "wins": 0,
+   "med": 96583.0,
+   "avg": 96583.0,
+   "max": 141042.0
+  },
+  "HD h Joratos": {
+   "eps": 1,
+   "wins": 1,
+   "med": 75259.0,
+   "avg": 75259.0,
+   "max": 75259.0
+  },
+  "unreal": {
+   "eps": 1,
+   "wins": 0,
+   "med": 86646.0,
+   "avg": 86646.0,
+   "max": 86646.0
+  },
+  "Yuuki4543": {
+   "eps": 12,
+   "wins": 6,
+   "med": 85990.5,
+   "avg": 88104.25,
+   "max": 111694.0
+  },
+  "Xu Suyi": {
+   "eps": 1,
+   "wins": 1,
+   "med": 89837.0,
+   "avg": 89837.0,
+   "max": 89837.0
+  },
+  "Zachary Zhang": {
+   "eps": 12,
+   "wins": 9,
+   "med": 87704.5,
+   "avg": 92201.58333333333,
+   "max": 136563.0
+  },
+  "redblackbst": {
+   "eps": 10,
+   "wins": 7,
+   "med": 92165.5,
+   "avg": 97250.4,
+   "max": 134834.0
+  },
+  "Khalid": {
+   "eps": 2,
+   "wins": 0,
+   "med": 100024.5,
+   "avg": 100024.5,
+   "max": 106070.0
+  },
+  "Michael Roust": {
+   "eps": 1,
+   "wins": 1,
+   "med": 28933.0,
+   "avg": 28933.0,
+   "max": 28933.0
+  },
+  "Hiro Nomo": {
+   "eps": 15,
+   "wins": 8,
+   "med": 90898.0,
+   "avg": 93134.2,
+   "max": 129464.0
+  },
+  "Bohan Shao": {
+   "eps": 2,
+   "wins": 0,
+   "med": 86231.0,
+   "avg": 86231.0,
+   "max": 94625.0
+  },
+  "hidenov": {
+   "eps": 10,
+   "wins": 4,
+   "med": 88327.5,
+   "avg": 87668.8,
+   "max": 105267.0
+  },
+  "faye": {
+   "eps": 6,
+   "wins": 1,
+   "med": 93905.5,
+   "avg": 101005.66666666667,
+   "max": 135592.0
+  },
+  "Yusuke Hayashi": {
+   "eps": 10,
+   "wins": 1,
+   "med": 102149.5,
+   "avg": 94631.4,
+   "max": 122408.0
+  },
+  "Castian Hans": {
+   "eps": 1,
+   "wins": 0,
+   "med": 97309.0,
+   "avg": 97309.0,
+   "max": 97309.0
+  },
+  "Zyy7390": {
+   "eps": 3,
+   "wins": 1,
+   "med": 78208.0,
+   "avg": 90869.33333333333,
+   "max": 117978.0
+  },
+  "Mark Astrid": {
+   "eps": 13,
+   "wins": 5,
+   "med": 91803.0,
+   "avg": 88572.84615384616,
+   "max": 109867.0
+  },
+  "Shadowell888": {
+   "eps": 1,
+   "wins": 0,
+   "med": 72897.0,
+   "avg": 72897.0,
+   "max": 72897.0
+  },
+  "Yohanes Lengkong": {
+   "eps": 3,
+   "wins": 1,
+   "med": 84617.0,
+   "avg": 99506.0,
+   "max": 137062.0
+  },
+  "Hanserong": {
+   "eps": 3,
+   "wins": 0,
+   "med": 79746.0,
+   "avg": 94985.0,
+   "max": 125778.0
+  },
+  "JYShane": {
+   "eps": 2,
+   "wins": 0,
+   "med": 100295.0,
+   "avg": 100295.0,
+   "max": 110631.0
+  },
+  "Tomoki Hirose": {
+   "eps": 3,
+   "wins": 1,
+   "med": 83552.0,
+   "avg": 82306.33333333333,
+   "max": 96281.0
+  },
+  "Blu3s": {
+   "eps": 1,
+   "wins": 0,
+   "med": 65757.0,
+   "avg": 65757.0,
+   "max": 65757.0
+  },
+  "DECEM": {
+   "eps": 9,
+   "wins": 5,
+   "med": 109078.0,
+   "avg": 104067.66666666667,
+   "max": 146493.0
+  },
+  "M & M & P & Q": {
+   "eps": 11,
+   "wins": 9,
+   "med": 109314.0,
+   "avg": 114989.63636363637,
+   "max": 163678.0
+  },
+  "linmumu009": {
+   "eps": 1,
+   "wins": 1,
+   "med": 113017.0,
+   "avg": 113017.0,
+   "max": 113017.0
+  },
+  "automatylicza": {
+   "eps": 11,
+   "wins": 10,
+   "med": 92826.0,
+   "avg": 97641.36363636363,
+   "max": 143409.0
+  },
+  "Sergei Fironov": {
+   "eps": 2,
+   "wins": 0,
+   "med": 84937.5,
+   "avg": 84937.5,
+   "max": 98172.0
+  },
+  "maco-macoo": {
+   "eps": 15,
+   "wins": 8,
+   "med": 85638.0,
+   "avg": 88432.06666666667,
+   "max": 132637.0
+  },
+  "VanKoha": {
+   "eps": 11,
+   "wins": 5,
+   "med": 101634.0,
+   "avg": 105924.36363636363,
+   "max": 144738.0
+  },
+  "RngRng": {
+   "eps": 9,
+   "wins": 7,
+   "med": 95867.0,
+   "avg": 97559.66666666667,
+   "max": 130088.0
+  },
+  "lihaha.36": {
+   "eps": 1,
+   "wins": 1,
+   "med": 107438.0,
+   "avg": 107438.0,
+   "max": 107438.0
+  },
+  "JianYuan Deng": {
+   "eps": 2,
+   "wins": 0,
+   "med": 94648.0,
+   "avg": 94648.0,
+   "max": 95064.0
+  },
+  "Anthropic Banned My Account": {
+   "eps": 1,
+   "wins": 1,
+   "med": 87688.0,
+   "avg": 87688.0,
+   "max": 87688.0
+  },
+  "Emre Cirak": {
+   "eps": 4,
+   "wins": 1,
+   "med": 104918.5,
+   "avg": 96561.25,
+   "max": 122361.0
+  },
+  "Utkarsh Prakash Srivastava": {
+   "eps": 1,
+   "wins": 0,
+   "med": 63363.0,
+   "avg": 63363.0,
+   "max": 63363.0
+  },
+  "esis_ai": {
+   "eps": 2,
+   "wins": 2,
+   "med": 91809.5,
+   "avg": 91809.5,
+   "max": 109213.0
+  },
+  "Jay Prrajapati": {
+   "eps": 1,
+   "wins": 0,
+   "med": 56717.0,
+   "avg": 56717.0,
+   "max": 56717.0
+  },
+  "David Goldrajch": {
+   "eps": 1,
+   "wins": 0,
+   "med": 75767.0,
+   "avg": 75767.0,
+   "max": 75767.0
+  },
+  "sukeke": {
+   "eps": 4,
+   "wins": 0,
+   "med": 103976.0,
+   "avg": 106973.0,
+   "max": 128977.0
+  },
+  "extra eclaire": {
+   "eps": 2,
+   "wins": 1,
+   "med": 87980.0,
+   "avg": 87980.0,
+   "max": 95456.0
+  },
+  "GIVE ME A JOB": {
+   "eps": 8,
+   "wins": 1,
+   "med": 89420.5,
+   "avg": 91826.125,
+   "max": 140765.0
+  },
+  "DhanaLakshmiMalla": {
+   "eps": 1,
+   "wins": 0,
+   "med": 54455.0,
+   "avg": 54455.0,
+   "max": 54455.0
+  },
+  "GermanJurado1": {
+   "eps": 8,
+   "wins": 6,
+   "med": 86308.0,
+   "avg": 88394.625,
+   "max": 115681.0
+  },
+  "xiongrui666": {
+   "eps": 13,
+   "wins": 5,
+   "med": 70320.0,
+   "avg": 76345.76923076923,
+   "max": 108651.0
+  },
+  "ultimatum_game": {
+   "eps": 12,
+   "wins": 7,
+   "med": 102854.0,
+   "avg": 108899.91666666667,
+   "max": 174404.0
+  },
+  "Yuanchen Huang": {
+   "eps": 2,
+   "wins": 0,
+   "med": 75949.0,
+   "avg": 75949.0,
+   "max": 98621.0
+  },
+  "Avish Sinha": {
+   "eps": 3,
+   "wins": 1,
+   "med": 72761.0,
+   "avg": 87871.66666666667,
+   "max": 121542.0
+  },
+  "t3l3k3n3sis": {
+   "eps": 2,
+   "wins": 1,
+   "med": 101213.0,
+   "avg": 101213.0,
+   "max": 106792.0
+  },
+  "carbonapi": {
+   "eps": 1,
+   "wins": 1,
+   "med": 86600.0,
+   "avg": 86600.0,
+   "max": 86600.0
+  },
+  "Maham Haroon": {
+   "eps": 2,
+   "wins": 0,
+   "med": 145942.0,
+   "avg": 145942.0,
+   "max": 152827.0
+  },
+  "T Soo": {
+   "eps": 1,
+   "wins": 0,
+   "med": 151504.0,
+   "avg": 151504.0,
+   "max": 151504.0
+  },
+  "Xiangyu Liu": {
+   "eps": 8,
+   "wins": 3,
+   "med": 88654.0,
+   "avg": 94170.75,
+   "max": 134921.0
+  },
+  "ReCurSiON": {
+   "eps": 1,
+   "wins": 0,
+   "med": 95084.0,
+   "avg": 95084.0,
+   "max": 95084.0
+  },
+  "kwon yong deuk": {
+   "eps": 1,
+   "wins": 0,
+   "med": 87312.0,
+   "avg": 87312.0,
+   "max": 87312.0
+  },
+  "rian": {
+   "eps": 3,
+   "wins": 2,
+   "med": 109169.0,
+   "avg": 108090.33333333333,
+   "max": 116785.0
+  },
+  "PeriwinkleBlueOvO": {
+   "eps": 2,
+   "wins": 2,
+   "med": 110926.5,
+   "avg": 110926.5,
+   "max": 117025.0
+  },
+  "\u8fd9\u662f AI \u7684\u80dc\u5229": {
+   "eps": 1,
+   "wins": 0,
+   "med": 74360.0,
+   "avg": 74360.0,
+   "max": 74360.0
+  },
+  "dont share my work for value": {
+   "eps": 1,
+   "wins": 0,
+   "med": 100035.0,
+   "avg": 100035.0,
+   "max": 100035.0
+  },
+  "Boiled-Sweet-Potato": {
+   "eps": 1,
+   "wins": 1,
+   "med": 83285.0,
+   "avg": 83285.0,
+   "max": 83285.0
+  },
+  "Ryuto Yoda": {
+   "eps": 3,
+   "wins": 0,
+   "med": 97742.0,
+   "avg": 97997.33333333333,
+   "max": 103433.0
+  },
+  "theredbluepill": {
+   "eps": 1,
+   "wins": 0,
+   "med": 58032.0,
+   "avg": 58032.0,
+   "max": 58032.0
+  },
+  "Igor V": {
+   "eps": 2,
+   "wins": 0,
+   "med": 98136.0,
+   "avg": 98136.0,
+   "max": 144150.0
+  },
+  "zigiella": {
+   "eps": 1,
+   "wins": 0,
+   "med": 89237.0,
+   "avg": 89237.0,
+   "max": 89237.0
+  },
+  "Grim Reaper": {
+   "eps": 1,
+   "wins": 1,
+   "med": 66439.0,
+   "avg": 66439.0,
+   "max": 66439.0
+  },
+  "JackGong": {
+   "eps": 1,
+   "wins": 0,
+   "med": 122408.0,
+   "avg": 122408.0,
+   "max": 122408.0
+  },
+  "NoMoreThan20Words": {
+   "eps": 1,
+   "wins": 0,
+   "med": 44438.0,
+   "avg": 44438.0,
+   "max": 44438.0
+  },
+  "Tarang222": {
+   "eps": 8,
+   "wins": 6,
+   "med": 96130.5,
+   "avg": 111530.75,
+   "max": 163308.0
+  },
+  "Takamichi Toda": {
+   "eps": 3,
+   "wins": 1,
+   "med": 95583.0,
+   "avg": 105111.0,
+   "max": 153771.0
+  },
+  "Rojiomote": {
+   "eps": 1,
+   "wins": 1,
+   "med": 89377.0,
+   "avg": 89377.0,
+   "max": 89377.0
+  },
+  "Kostiantyn Isaienkov": {
+   "eps": 2,
+   "wins": 0,
+   "med": 87782.5,
+   "avg": 87782.5,
+   "max": 100209.0
+  },
+  "NineThree": {
+   "eps": 1,
+   "wins": 0,
+   "med": 71754.0,
+   "avg": 71754.0,
+   "max": 71754.0
+  },
+  "zeyu lau": {
+   "eps": 1,
+   "wins": 1,
+   "med": 103313.0,
+   "avg": 103313.0,
+   "max": 103313.0
+  },
+  "\u81ea\u5df1\u627e\u5dee\u8ddd": {
+   "eps": 2,
+   "wins": 2,
+   "med": 123596.5,
+   "avg": 123596.5,
+   "max": 136563.0
+  },
+  "Pawan Rama Mali": {
+   "eps": 1,
+   "wins": 0,
+   "med": 116320.0,
+   "avg": 116320.0,
+   "max": 116320.0
+  },
+  "David Wang": {
+   "eps": 2,
+   "wins": 0,
+   "med": 117972.5,
+   "avg": 117972.5,
+   "max": 129185.0
+  },
+  "Arnav Goel": {
+   "eps": 1,
+   "wins": 0,
+   "med": 49329.0,
+   "avg": 49329.0,
+   "max": 49329.0
+  },
+  "mtmr_s1": {
+   "eps": 8,
+   "wins": 7,
+   "med": 108801.0,
+   "avg": 101495.5,
+   "max": 130712.0
+  },
+  "Ashok Kumar Garain": {
+   "eps": 1,
+   "wins": 0,
+   "med": 50323.0,
+   "avg": 50323.0,
+   "max": 50323.0
+  },
+  "LuanHengYu": {
+   "eps": 1,
+   "wins": 0,
+   "med": 79134.0,
+   "avg": 79134.0,
+   "max": 79134.0
+  },
+  "daulettoibazar": {
+   "eps": 1,
+   "wins": 0,
+   "med": 101571.0,
+   "avg": 101571.0,
+   "max": 101571.0
+  },
+  "weichy7": {
+   "eps": 2,
+   "wins": 0,
+   "med": 110292.0,
+   "avg": 110292.0,
+   "max": 116764.0
+  },
+  "by": {
+   "eps": 1,
+   "wins": 0,
+   "med": 65017.0,
+   "avg": 65017.0,
+   "max": 65017.0
+  },
+  "Baha Enes \u00d6ren": {
+   "eps": 1,
+   "wins": 0,
+   "med": 94501.0,
+   "avg": 94501.0,
+   "max": 94501.0
+  },
+  "Michael Todd Overdorf": {
+   "eps": 1,
+   "wins": 0,
+   "med": 74870.0,
+   "avg": 74870.0,
+   "max": 74870.0
+  },
+  "kokinnwakashuu": {
+   "eps": 1,
+   "wins": 0,
+   "med": 83819.0,
+   "avg": 83819.0,
+   "max": 83819.0
+  },
+  "sash": {
+   "eps": 1,
+   "wins": 0,
+   "med": 55987.0,
+   "avg": 55987.0,
+   "max": 55987.0
+  },
+  "4eta": {
+   "eps": 1,
+   "wins": 0,
+   "med": 129299.0,
+   "avg": 129299.0,
+   "max": 129299.0
+  },
+  "Troy_xx": {
+   "eps": 1,
+   "wins": 0,
+   "med": 66597.0,
+   "avg": 66597.0,
+   "max": 66597.0
+  },
+  "\u30c7\u30ef\u30f3\u30b7\u30e5": {
+   "eps": 2,
+   "wins": 2,
+   "med": 106574.0,
+   "avg": 106574.0,
+   "max": 110799.0
+  },
+  "Adam Li": {
+   "eps": 1,
+   "wins": 0,
+   "med": 78149.0,
+   "avg": 78149.0,
+   "max": 78149.0
+  },
+  "Poor farmer": {
+   "eps": 1,
+   "wins": 0,
+   "med": 65561.0,
+   "avg": 65561.0,
+   "max": 65561.0
+  },
+  "bugkeeper": {
+   "eps": 1,
+   "wins": 0,
+   "med": 142440.0,
+   "avg": 142440.0,
+   "max": 142440.0
+  },
+  "10pi": {
+   "eps": 1,
+   "wins": 0,
+   "med": 122937.0,
+   "avg": 122937.0,
+   "max": 122937.0
+  },
+  "Yitao111": {
+   "eps": 1,
+   "wins": 0,
+   "med": 26283.0,
+   "avg": 26283.0,
+   "max": 26283.0
+  },
+  "chungkuangwen": {
+   "eps": 1,
+   "wins": 0,
+   "med": 92863.0,
+   "avg": 92863.0,
+   "max": 92863.0
+  },
+  "Pantheon": {
+   "eps": 1,
+   "wins": 0,
+   "med": 100940.0,
+   "avg": 100940.0,
+   "max": 100940.0
+  },
+  "KongKongDe": {
+   "eps": 2,
+   "wins": 0,
+   "med": 74007.0,
+   "avg": 74007.0,
+   "max": 85702.0
+  },
+  "AlekseiProvorov": {
+   "eps": 1,
+   "wins": 1,
+   "med": 95671.0,
+   "avg": 95671.0,
+   "max": 95671.0
+  },
+  "Atilla Y": {
+   "eps": 1,
+   "wins": 0,
+   "med": 37208.0,
+   "avg": 37208.0,
+   "max": 37208.0
+  },
+  "YuyaSuzuki": {
+   "eps": 1,
+   "wins": 1,
+   "med": 84612.0,
+   "avg": 84612.0,
+   "max": 84612.0
+  },
+  "Agent 0": {
+   "eps": 2,
+   "wins": 0,
+   "med": 81909.5,
+   "avg": 81909.5,
+   "max": 86751.0
+  },
+  "GPT-5.6 Sol\ud83c\udfc6": {
+   "eps": 2,
+   "wins": 0,
+   "med": 63020.5,
+   "avg": 63020.5,
+   "max": 64271.0
+  },
+  "Beyond": {
+   "eps": 1,
+   "wins": 0,
+   "med": 56841.0,
+   "avg": 56841.0,
+   "max": 56841.0
+  },
+  "aowhite": {
+   "eps": 1,
+   "wins": 0,
+   "med": 103444.0,
+   "avg": 103444.0,
+   "max": 103444.0
+  },
+  "Jules": {
+   "eps": 1,
+   "wins": 0,
+   "med": 82151.0,
+   "avg": 82151.0,
+   "max": 82151.0
+  },
+  "apoyusiken": {
+   "eps": 1,
+   "wins": 0,
+   "med": 51667.0,
+   "avg": 51667.0,
+   "max": 51667.0
+  },
+  "Pai": {
+   "eps": 1,
+   "wins": 0,
+   "med": 84389.0,
+   "avg": 84389.0,
+   "max": 84389.0
+  },
+  "Giord Frank": {
+   "eps": 1,
+   "wins": 0,
+   "med": 120021.0,
+   "avg": 120021.0,
+   "max": 120021.0
+  },
+  "Ad Space Available": {
+   "eps": 1,
+   "wins": 0,
+   "med": 81603.0,
+   "avg": 81603.0,
+   "max": 81603.0
+  },
+  "motemen": {
+   "eps": 1,
+   "wins": 0,
+   "med": 105820.0,
+   "avg": 105820.0,
+   "max": 105820.0
+  },
+  "Atomo333": {
+   "eps": 1,
+   "wins": 1,
+   "med": 96904.0,
+   "avg": 96904.0,
+   "max": 96904.0
+  },
+  "Nguy\u1ec5n C\u00f4ng Tu\u1ea5n": {
+   "eps": 1,
+   "wins": 0,
+   "med": 69334.0,
+   "avg": 69334.0,
+   "max": 69334.0
+  },
+  "concord": {
+   "eps": 1,
+   "wins": 1,
+   "med": 70677.0,
+   "avg": 70677.0,
+   "max": 70677.0
+  },
+  "Naru041104": {
+   "eps": 1,
+   "wins": 1,
+   "med": 96413.0,
+   "avg": 96413.0,
+   "max": 96413.0
+  },
+  "malone001": {
+   "eps": 1,
+   "wins": 0,
+   "med": 52899.0,
+   "avg": 52899.0,
+   "max": 52899.0
+  },
+  "yu9824": {
+   "eps": 1,
+   "wins": 0,
+   "med": 120720.0,
+   "avg": 120720.0,
+   "max": 120720.0
+  },
+  "Toru59er": {
+   "eps": 1,
+   "wins": 0,
+   "med": 81109.0,
+   "avg": 81109.0,
+   "max": 81109.0
+  },
+  "Devansh3007": {
+   "eps": 1,
+   "wins": 0,
+   "med": 62647.0,
+   "avg": 62647.0,
+   "max": 62647.0
+  },
+  "kwa": {
+   "eps": 1,
+   "wins": 0,
+   "med": 148483.0,
+   "avg": 148483.0,
+   "max": 148483.0
+  },
+  "SJY321": {
+   "eps": 1,
+   "wins": 0,
+   "med": 75885.0,
+   "avg": 75885.0,
+   "max": 75885.0
+  },
+  "Vishal Kishore": {
+   "eps": 1,
+   "wins": 0,
+   "med": 88082.0,
+   "avg": 88082.0,
+   "max": 88082.0
+  },
+  "leemc95": {
+   "eps": 1,
+   "wins": 0,
+   "med": 85910.0,
+   "avg": 85910.0,
+   "max": 85910.0
+  },
+  "Randy": {
+   "eps": 1,
+   "wins": 0,
+   "med": 94672.0,
+   "avg": 94672.0,
+   "max": 94672.0
+  },
+  "THIRD FARM CLUB": {
+   "eps": 1,
+   "wins": 1,
+   "med": 123733.0,
+   "avg": 123733.0,
+   "max": 123733.0
+  },
+  "rsraki": {
+   "eps": 1,
+   "wins": 0,
+   "med": 32783.0,
+   "avg": 32783.0,
+   "max": 32783.0
+  },
+  "H\u1ed3 Tu\u1ea5n Kh\u00f4i": {
+   "eps": 1,
+   "wins": 1,
+   "med": 127340.0,
+   "avg": 127340.0,
+   "max": 127340.0
+  },
+  "Yanis Belami": {
+   "eps": 1,
+   "wins": 1,
+   "med": 126208.0,
+   "avg": 126208.0,
+   "max": 126208.0
+  },
+  "Vu Tran Hoang": {
+   "eps": 1,
+   "wins": 0,
+   "med": 108999.0,
+   "avg": 108999.0,
+   "max": 108999.0
+  },
+  "cha7ura": {
+   "eps": 1,
+   "wins": 0,
+   "med": 75856.0,
+   "avg": 75856.0,
+   "max": 75856.0
+  },
+  "Suliman Tadros": {
+   "eps": 1,
+   "wins": 1,
+   "med": 83531.0,
+   "avg": 83531.0,
+   "max": 83531.0
+  },
+  "Gronk": {
+   "eps": 1,
+   "wins": 0,
+   "med": 96822.0,
+   "avg": 96822.0,
+   "max": 96822.0
+  },
+  "Cropy and Paste": {
+   "eps": 1,
+   "wins": 0,
+   "med": 91295.0,
+   "avg": 91295.0,
+   "max": 91295.0
+  },
+  "Juste Me (\u25cf'\u25e1'\u25cf)": {
+   "eps": 1,
+   "wins": 1,
+   "med": 131150.0,
+   "avg": 131150.0,
+   "max": 131150.0
+  },
+  "rock paper scissors": {
+   "eps": 1,
+   "wins": 0,
+   "med": 116494.0,
+   "avg": 116494.0,
+   "max": 116494.0
+  },
+  "Ilya Zaytsev": {
+   "eps": 1,
+   "wins": 1,
+   "med": 93761.0,
+   "avg": 93761.0,
+   "max": 93761.0
+  },
+  "Ioannis Tzachristas": {
+   "eps": 1,
+   "wins": 0,
+   "med": 100063.0,
+   "avg": 100063.0,
+   "max": 100063.0
+  },
+  "track": {
+   "eps": 1,
+   "wins": 0,
+   "med": 146240.0,
+   "avg": 146240.0,
+   "max": 146240.0
+  },
+  "\u30b0\u30ec\u30a4\u30e9\u30c3\u30c8\u30eb\u30fc\u30c7\u30a6\u30b9": {
+   "eps": 1,
+   "wins": 1,
+   "med": 119856.0,
+   "avg": 119856.0,
+   "max": 119856.0
+  },
+  "khursani": {
+   "eps": 1,
+   "wins": 0,
+   "med": 106699.0,
+   "avg": 106699.0,
+   "max": 106699.0
+  },
+  "Aura Farmers": {
+   "eps": 1,
+   "wins": 0,
+   "med": 88455.0,
+   "avg": 88455.0,
+   "max": 88455.0
+  },
+  "Foxure": {
+   "eps": 1,
+   "wins": 0,
+   "med": 56335.0,
+   "avg": 56335.0,
+   "max": 56335.0
+  }
+ }
+}
